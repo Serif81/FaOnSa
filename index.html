@@ -4,51 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prüfungstrainer Website</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
+        /* Globales Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
             color: #333;
-        }
-        header {
-            background: #4CAF50;
-            color: white;
-            padding: 1em 0;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000; /* sorgt dafür, dass der Header über dem Inhalt liegt */
-        }
-        nav {
-            background: #333;
-            color: white;
-            padding: 1em;
-            text-align: center;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        nav ul li {
-            margin: 0.5em;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            padding: 0.5em 1em;
-            background: #4CAF50;
-            border-radius: 4px;
-        }
-        nav ul li a:hover {
-            background: #45a049;
         }
         main {
             padding: 2em;
@@ -57,7 +20,7 @@
             background: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            margin-top: 4em; /* Anpassung für den fixierten Header */
+            margin-top: 4em; /* Platz für den fixierten Header */
         }
         section {
             display: none;
@@ -73,6 +36,51 @@
             position: fixed;
             width: 100%;
             bottom: 0;
+        }
+
+        /* Fixierter Header */
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            background: #333;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+            margin-top: 4em; /* Platz unter dem fixierten Header */
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0.5em;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 0.5em 1em;
+            background: #4CAF50;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            background: #45a049;
         }
 
         /* Responsive Styles */

@@ -4,18 +4,20 @@ body {
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
-    line-height: 1.6;
+}
+
+header {
+    background: #4CAF50;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
 }
 
 nav {
     background: #333;
     color: white;
-    padding: 1em 0;
+    padding: 1em;
     text-align: center;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    top: 0; /* Positionierung am oberen Rand */
 }
 
 nav ul {
@@ -46,15 +48,15 @@ nav ul li a:hover {
 main {
     padding: 2em;
     max-width: 800px;
-    margin: 6em auto 2em; /* Anpassung des oberen Abstands */
+    margin: auto;
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    margin-top: 2em;
 }
 
 section {
-    display: block;
-    margin-bottom: 2em;
+    display: none;
 }
 
 h1 {
@@ -66,4 +68,20 @@ footer {
     padding: 1em 0;
     background: #333;
     color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main {
+        padding: 1em;
+        margin-top: 1em;
+    }
 }

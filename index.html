@@ -4,80 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meine Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background: #4CAF50;
-            color: white;
-            padding: 1em 0;
-            text-align: center;
-        }
-        nav {
-            background: #333;
-            color: white;
-            padding: 1em;
-            text-align: center;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 10px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            padding: 0.5em 1em;
-            background: #4CAF50;
-            border-radius: 4px;
-        }
-        nav ul li a:hover {
-            background: #45a049;
-        }
-        main {
-            padding: 2em;
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            margin-top: 2em;
-        }
-        h1 {
-            color: #4CAF50;
-        }
-        section {
-            display: none;
-        }
-        section.active {
-            display: block;
-        }
-        footer {
-            text-align: center;
-            padding: 1em 0;
-            background: #333;
-            color: white;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
-    <script>
-        function showSection(id) {
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(id).classList.add('active');
-        }
-    </script>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
@@ -85,17 +12,37 @@
     </header>
     <nav>
         <ul>
-            <li><a href="#" onclick="showSection('home')">Home</a></li>
-            <li><a href="#" onclick="showSection('impressum')">Impressum</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#leistungen">Leistungen</a></li>
+            <li><a href="#ueber-mich">Über mich</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="#impressum">Impressum</a></li>
+            <li><a href="#datenschutz">Datenschutz</a></li>
         </ul>
     </nav>
-
     <main>
-        <section id="home" class="active">
-            <h1>Über mich</h1>
-            <p>Mein Name ist Serif und ich bin Prüfungstrainer. Ich biete verschiedene Dienstleistungen an, um Menschen bei der Vorbereitung auf ihre Prüfungen zu unterstützen. Meine Trainingsmethoden sind effektiv und bewährt, und ich habe vielen Menschen geholfen, ihre Prüfungen erfolgreich zu bestehen.</p>
+        <section id="home">
+            <h1>Home</h1>
+            <p>Willkommen auf meiner Website! Hier finden Sie Informationen zu meinen Dienstleistungen als Prüfungstrainer.</p>
         </section>
-
+        <section id="leistungen">
+            <h1>Leistungen</h1>
+            <p>Ich biete eine Vielzahl von Dienstleistungen an, um Ihnen bei der Vorbereitung auf Prüfungen zu helfen. Dazu gehören:</p>
+            <ul>
+                <li>Einzelunterricht</li>
+                <li>Gruppenkurse</li>
+                <li>Online-Training</li>
+                <li>Prüfungssimulationen</li>
+            </ul>
+        </section>
+        <section id="ueber-mich">
+            <h1>Über mich</h1>
+            <p>Mein Name ist Serif und ich bin seit mehreren Jahren als Prüfungstrainer tätig. Mit meiner Erfahrung und meinem Wissen unterstütze ich Menschen dabei, ihre Prüfungen erfolgreich zu bestehen.</p>
+        </section>
+        <section id="kontakt">
+            <h1>Kontakt</h1>
+            <p>Sie können mich unter folgender E-Mail-Adresse erreichen: <a href="mailto:Serif.u@ggh.de">Serif.u@ggh.de</a></p>
+        </section>
         <section id="impressum">
             <h1>Impressum</h1>
             <p>Angaben gemäß § 5 TMG</p>
@@ -143,9 +90,80 @@
                 Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
             </p>
         </section>
+        <section id="datenschutz">
+            <h1>Datenschutz</h1>
+            <p>Ihre Privatsphäre ist uns wichtig. Diese Datenschutzerklärung erläutert, welche persönlichen Daten wir von Ihnen erfassen und wie wir diese verwenden.</p>
+            <p><strong>Erhebung und Verarbeitung personenbezogener Daten</strong></p>
+            <p>Wir erheben und verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung unserer Dienstleistungen erforderlich ist. Dies umfasst unter anderem Ihren Namen, Ihre E-Mail-Adresse und Ihre Telefonnummer.</p>
+            <p><strong>Nutzung und Weitergabe personenbezogener Daten</strong></p>
+            <p>Wir verwenden Ihre personenbezogenen Daten ausschließlich zur Bearbeitung Ihrer Anfragen und zur Erbringung unserer Dienstleistungen. Eine Weitergabe Ihrer Daten an Dritte erfolgt nur, wenn dies gesetzlich vorgeschrieben ist oder Sie ausdrücklich eingewilligt haben.</p>
+            <p><strong>Sicherheit</strong></p>
+            <p>Wir treffen angemessene technische und organisatorische Maßnahmen, um Ihre personenbezogenen Daten vor Verlust, Missbrauch und unbefugtem Zugriff zu schützen.</p>
+            <p><strong>Ihre Rechte</strong></p>
+            <p>Sie haben das Recht, jederzeit Auskunft über die von uns gespeicherten personenbezogenen Daten zu erhalten und deren Berichtigung, Löschung oder Einschränkung der Verarbeitung zu verlangen. Wenden Sie sich hierzu bitte an die oben im Impressum angegebene Kontaktadresse.</p>
+        </section>
     </main>
     <footer>
         &copy; 2024 Mein Name. Alle Rechte vorbehalten.
     </footer>
 </body>
 </html>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+header {
+    background: #4CAF50;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+nav {
+    background: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 0.5em 1em;
+    background: #4CAF50;
+    border-radius: 4px;
+}
+nav ul li a:hover {
+    background: #45a049;
+}
+main {
+    padding: 2em;
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 2em;
+}
+h1 {
+    color: #4CAF50;
+}
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background: #333;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

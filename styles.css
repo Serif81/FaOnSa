@@ -4,7 +4,9 @@ body {
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
+    line-height: 1.6; /* Improved readability */
 }
+
 header {
     background: #4CAF50;
     color: white;
@@ -14,12 +16,14 @@ header {
     width: 100%;
     z-index: 1000; /* Ensure header is above other content */
 }
+
 nav {
     background: #333;
     color: white;
-    padding: 1em;
+    padding: 1em 0;
     text-align: center;
 }
+
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -28,9 +32,11 @@ nav ul {
     justify-content: center;
     flex-wrap: wrap;
 }
+
 nav ul li {
     margin: 0.5em;
 }
+
 nav ul li a {
     text-decoration: none;
     color: white;
@@ -38,9 +44,11 @@ nav ul li a {
     background: #4CAF50;
     border-radius: 4px;
 }
+
 nav ul li a:hover {
     background: #45a049;
 }
+
 main {
     padding: 2em;
     max-width: 800px;
@@ -49,13 +57,21 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
+
 section {
     display: none;
 }
+
 h1 {
     color: #4CAF50;
 }
+
 footer {
     text-align: center;
     padding: 1em 0;
-    background: #
+    background: #333;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

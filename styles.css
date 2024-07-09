@@ -4,7 +4,7 @@ body {
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
-    line-height: 1.6; /* Improved readability */
+    line-height: 1.6;
 }
 
 nav {
@@ -14,7 +14,8 @@ nav {
     text-align: center;
     position: fixed;
     width: 100%;
-    z-index: 1000; /* Ensure navigation is above other content */
+    z-index: 1000;
+    top: 0; /* Positionierung am oberen Rand */
 }
 
 nav ul {
@@ -45,15 +46,15 @@ nav ul li a:hover {
 main {
     padding: 2em;
     max-width: 800px;
-    margin: 6em auto 2em; /* Adjusted margin to accommodate fixed navigation */
+    margin: 6em auto 2em; /* Anpassung des oberen Abstands */
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
 section {
-    display: block; /* Ensure sections are visible */
-    margin-bottom: 2em; /* Add space between sections */
+    display: block;
+    margin-bottom: 2em;
 }
 
 h1 {

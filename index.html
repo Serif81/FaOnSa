@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Willkommen auf meiner Prüfungstrainer Website</h1>
+    </header>
+
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
@@ -88,5 +92,28 @@
     <footer>
         &copy; 2024 Mein Name. Alle Rechte vorbehalten.
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var sections = document.querySelectorAll("section");
+            var navLinks = document.querySelectorAll("nav a");
+
+            function showSection(sectionId) {
+                sections.forEach(section => {
+                    section.style.display = section.id === sectionId ? "block" : "none";
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    var targetSectionId = this.getAttribute("href").substring(1);
+                    showSection(targetSectionId);
+                });
+            });
+
+            showSection("home");
+        });
+    </script>
 </body>
 </html>

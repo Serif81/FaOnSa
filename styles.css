@@ -12,6 +12,9 @@ nav {
     color: white;
     padding: 1em 0;
     text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000; /* Ensure navigation is above other content */
 }
 
 nav ul {
@@ -42,13 +45,14 @@ nav ul li a:hover {
 main {
     padding: 2em;
     max-width: 800px;
-    margin: 2em auto; /* Center main content */
+    margin: 6em auto 2em; /* Adjusted margin to accommodate fixed navigation */
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
 section {
+    display: block; /* Ensure sections are visible */
     margin-bottom: 2em; /* Add space between sections */
 }
 

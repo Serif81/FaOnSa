@@ -5,21 +5,21 @@ body {
     background-color: #f4f4f9;
     color: #333;
 }
-
 header {
     background: #4CAF50;
     color: white;
     padding: 1em 0;
     text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000; /* Ensure header is above other content */
 }
-
 nav {
     background: #333;
     color: white;
     padding: 1em;
     text-align: center;
 }
-
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -28,11 +28,9 @@ nav ul {
     justify-content: center;
     flex-wrap: wrap;
 }
-
 nav ul li {
     margin: 0.5em;
 }
-
 nav ul li a {
     text-decoration: none;
     color: white;
@@ -40,48 +38,24 @@ nav ul li a {
     background: #4CAF50;
     border-radius: 4px;
 }
-
 nav ul li a:hover {
     background: #45a049;
 }
-
 main {
     padding: 2em;
     max-width: 800px;
-    margin: auto;
+    margin: 6em auto 2em; /* Adjusted margin to accommodate fixed header */
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    margin-top: 2em;
 }
-
 section {
     display: none;
 }
-
 h1 {
     color: #4CAF50;
 }
-
 footer {
     text-align: center;
     padding: 1em 0;
-    background: #333;
-    color: white;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-/* Responsive Styles */
-@media (max-width: 600px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    main {
-        padding: 1em;
-        margin-top: 1em;
-    }
-}
+    background: #

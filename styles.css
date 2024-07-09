@@ -7,30 +7,11 @@ body {
     line-height: 1.6; /* Improved readability */
 }
 
-header {
-    background: transparent; /* Transparent background to avoid covering content */
-    color: white;
-    padding: 1em 0;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    z-index: 1000; /* Ensure header is above other content */
-    top: 0; /* Ensure it stays at the top */
-}
-
-header h1 {
-    background: #4CAF50; /* Green background for the fixed header */
-    padding: 0.5em 0; /* Padding inside the fixed header */
-    margin: 0; /* Remove default margin */
-}
-
 nav {
     background: #333;
     color: white;
     padding: 1em 0;
     text-align: center;
-    position: relative; /* Adjusted to accommodate the fixed header */
-    z-index: 1000; /* Ensure nav is above main content */
 }
 
 nav ul {
@@ -61,14 +42,14 @@ nav ul li a:hover {
 main {
     padding: 2em;
     max-width: 800px;
-    margin: 6em auto 2em; /* Adjusted margin to accommodate fixed header */
+    margin: 2em auto; /* Center main content */
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
 section {
-    display: none;
+    margin-bottom: 2em; /* Add space between sections */
 }
 
 h1 {
@@ -80,7 +61,4 @@ footer {
     padding: 1em 0;
     background: #333;
     color: white;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
 }

@@ -8,13 +8,20 @@ body {
 }
 
 header {
-    background: #4CAF50;
+    background: transparent; /* Transparent background to avoid covering content */
     color: white;
     padding: 1em 0;
     text-align: center;
     position: fixed;
     width: 100%;
     z-index: 1000; /* Ensure header is above other content */
+    top: 0; /* Ensure it stays at the top */
+}
+
+header h1 {
+    background: #4CAF50; /* Green background for the fixed header */
+    padding: 0.5em 0; /* Padding inside the fixed header */
+    margin: 0; /* Remove default margin */
 }
 
 nav {
@@ -22,6 +29,8 @@ nav {
     color: white;
     padding: 1em 0;
     text-align: center;
+    position: relative; /* Adjusted to accommodate the fixed header */
+    z-index: 1000; /* Ensure nav is above main content */
 }
 
 nav ul {

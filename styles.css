@@ -5,11 +5,18 @@ body {
     background-color: #f4f4f4;
 }
 
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
 nav {
     background-color: #333;
     color: #fff;
-    padding: 10px 0;
     text-align: center;
+    padding: 10px 0;
 }
 
 nav ul {
@@ -29,21 +36,25 @@ nav ul li a {
     font-weight: bold;
 }
 
-section {
-    padding: 20px;
-    background-color: #fff;
-    margin: 20px auto;
+main {
     max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    display: none;
 }
 
 section h1 {
     margin-top: 0;
 }
 
-@media (max-width: 600px) {
-    nav ul li {
-        display: block;
-        margin: 10px 0;
-    }
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
 }

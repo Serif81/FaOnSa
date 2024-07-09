@@ -20,10 +20,13 @@ nav {
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 nav ul li {
-    display: inline;
-    margin-right: 10px;
+    margin: 0.5em;
 }
 nav ul li a {
     text-decoration: none;
@@ -43,6 +46,8 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     margin-top: 2em;
+}
+section {
     display: none;
 }
 h1 {
@@ -56,4 +61,16 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    main {
+        padding: 1em;
+        margin-top: 1em;
+    }
 }

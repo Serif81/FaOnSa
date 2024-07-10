@@ -15,12 +15,13 @@ header {
     width: 100%;
     z-index: 1000; /* Ensure header is above other content */
     top: 0;
+    box-sizing: border-box;
 }
 
 nav {
-    background: #4CAF50;
+    background: #333;
     color: white;
-    padding: 1em;
+    padding: 1em 0;
     text-align: center;
     position: fixed;
     width: 100%;
@@ -45,7 +46,7 @@ nav ul li a {
     text-decoration: none;
     color: white;
     padding: 0.5em 1em;
-    background: #333;
+    background: #4CAF50;
     border-radius: 4px;
 }
 
@@ -56,10 +57,11 @@ nav ul li a:hover {
 main {
     padding: 2em;
     max-width: 800px;
-    margin: 140px auto 2em; /* Adjusted margin to accommodate fixed header and nav */
+    margin: 160px auto 2em; /* Adjusted margin to accommodate fixed header and nav */
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    box-sizing: border-box;
 }
 
 section {
@@ -88,5 +90,14 @@ footer {
 
     main {
         margin-top: 200px; /* Increase top margin for mobile view */
+    }
+
+    header h1 {
+        padding: 0.5em 0; /* Adjust padding for smaller header */
+    }
+
+    nav {
+        padding: 0.5em 0; /* Adjust padding for smaller nav */
+        top: 50px; /* Adjust top position for smaller header */
     }
 }

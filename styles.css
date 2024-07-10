@@ -11,17 +11,21 @@ header {
     color: white;
     padding: 1em 0;
     text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000; /* Ensure header is above other content */
+    top: 0;
 }
 
 nav {
-    background: #333;
+    background: #4CAF50;
     color: white;
     padding: 1em;
     text-align: center;
     position: fixed;
     width: 100%;
-    top: 4em; /* Adjust top to align with header height */
-    z-index: 1000;
+    top: 60px; /* Adjust top to align with header height */
+    z-index: 999; /* Ensure nav is above other content but below header */
 }
 
 nav ul {
@@ -41,7 +45,7 @@ nav ul li a {
     text-decoration: none;
     color: white;
     padding: 0.5em 1em;
-    background: #4CAF50;
+    background: #333;
     border-radius: 4px;
 }
 
@@ -52,7 +56,7 @@ nav ul li a:hover {
 main {
     padding: 2em;
     max-width: 800px;
-    margin: 8em auto 2em; /* Adjusted margin to accommodate fixed header and nav */
+    margin: 140px auto 2em; /* Adjusted margin to accommodate fixed header and nav */
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -74,5 +78,15 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
-    z-index: 1000;
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main {
+        margin-top: 200px; /* Increase top margin for mobile view */
+    }
 }

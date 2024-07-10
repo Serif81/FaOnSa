@@ -9,7 +9,7 @@ body {
 header {
     background: #4CAF50;
     color: white;
-    padding: 1em 0;
+    padding: 0.5em 0;  /* Reduced padding */
     text-align: center;
     position: fixed;
     width: 100%;
@@ -21,11 +21,11 @@ header {
 nav {
     background: #333;
     color: white;
-    padding: 1em 0;
+    padding: 0.5em 0;  /* Reduced padding */
     text-align: center;
     position: fixed;
     width: 100%;
-    top: 60px; /* Adjust top to align with header height */
+    top: 40px; /* Adjust top to align with header height */
     z-index: 999; /* Ensure nav is above other content but below header */
 }
 
@@ -57,7 +57,7 @@ nav ul li a:hover {
 main {
     padding: 2em;
     max-width: 800px;
-    margin: 160px auto 2em; /* Adjusted margin to accommodate fixed header and nav */
+    margin: 120px auto 2em; /* Adjusted margin to accommodate fixed header and nav */
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -89,7 +89,7 @@ footer {
     }
 
     main {
-        margin-top: 200px; /* Increase top margin for mobile view */
+        margin-top: 160px; /* Increase top margin for mobile view */
     }
 
     header h1 {
@@ -98,6 +98,6 @@ footer {
 
     nav {
         padding: 0.5em 0; /* Adjust padding for smaller nav */
-        top: 50px; /* Adjust top position for smaller header */
+        top: 40px; /* Adjust top position for smaller header */
     }
 }

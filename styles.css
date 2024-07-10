@@ -23,7 +23,10 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: white; /* Hier kannst du die Textfarbe der Links ändern */
+    color: white;
+    display: block; /* Fügt allen Links das Blockelement hinzu */
+    padding: 10px; /* Fügt Abstand um die Links hinzu */
+    transition: background-color 0.3s; /* Fügt einen Hover-Effekt hinzu */
 }
 
 main {

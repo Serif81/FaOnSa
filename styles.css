@@ -29,6 +29,10 @@ nav a {
     transition: background-color 0.3s; /* Fügt einen Hover-Effekt hinzu */
 }
 
+nav a:hover {
+    background-color: lightgray; /* Ändert die Hintergrundfarbe beim Hover-Effekt */
+}
+
 main {
     padding: 20px;
 }

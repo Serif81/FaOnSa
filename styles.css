@@ -4,7 +4,6 @@ body {
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
-    line-height: 1.6;
 }
 
 header {
@@ -21,8 +20,8 @@ nav {
     text-align: center;
     position: fixed;
     width: 100%;
+    top: 4em; /* Adjust top to align with header height */
     z-index: 1000;
-    top: 0;
 }
 
 nav ul {
@@ -53,7 +52,7 @@ nav ul li a:hover {
 main {
     padding: 2em;
     max-width: 800px;
-    margin: 6em auto 2em;
+    margin: 8em auto 2em; /* Adjusted margin to accommodate fixed header and nav */
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -72,4 +71,8 @@ footer {
     padding: 1em 0;
     background: #333;
     color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
 }

@@ -23,6 +23,7 @@ nav ul {
 
 nav a {
     text-decoration: none;
+    color: white; /* Hier kannst du die Textfarbe der Links ändern */
 }
 
 main {

@@ -1,11 +1,24 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+header {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+nav {
+    background-color: black;
 }
 
 nav ul {
     list-style-type: none;
     display: flex;
     justify-content: space-around;
+    padding: 10px 0;
 }
 
 nav a {
@@ -18,15 +31,17 @@ main {
 
 section {
     background-color: white;
-    color:black ;
-padding :20px ;
-margin-bottom :20px ;
+    color: black;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
-footer{
-background-color:black ;
-color:white ;
-text-align:center ;
-padding :10px ;
-
+footer {
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   background-color:black ;
+   color:white ;
+   text-align:center ;
+   padding :10px ;
 }

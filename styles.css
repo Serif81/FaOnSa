@@ -1,103 +1,32 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-}
-
-header {
-    background: #4CAF50;
-    color: white;
-    padding: 0.5em 0;  /* Reduced padding */
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    z-index: 1000; /* Ensure header is above other content */
-    top: 0;
-    box-sizing: border-box;
-}
-
-nav {
-    background: #333;
-    color: white;
-    padding: 0.5em 0;  /* Reduced padding */
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    top: 40px; /* Adjust top to align with header height */
-    z-index: 999; /* Ensure nav is above other content but below header */
 }
 
 nav ul {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-nav ul li {
-    margin: 0.5em;
-}
-
-nav ul li a {
+nav a {
     text-decoration: none;
-    color: white;
-    padding: 0.5em 1em;
-    background: #4CAF50;
-    border-radius: 4px;
-}
-
-nav ul li a:hover {
-    background: #45a049;
 }
 
 main {
-    padding: 2em;
-    max-width: 800px;
-    margin: 120px auto 2em; /* Adjusted margin to accommodate fixed header and nav */
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    box-sizing: border-box;
+    padding: 20px;
 }
 
 section {
-    margin-bottom: 2em;
+    background-color: white;
+    color:black ;
+padding :20px ;
+margin-bottom :20px ;
 }
 
-h1 {
-    color: #4CAF50;
-}
+footer{
+background-color:black ;
+color:white ;
+text-align:center ;
+padding :10px ;
 
-footer {
-    text-align: center;
-    padding: 1em 0;
-    background: #333;
-    color: white;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-@media (max-width: 600px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    main {
-        margin-top: 160px; /* Increase top margin for mobile view */
-    }
-
-    header h1 {
-        padding: 0.5em 0; /* Adjust padding for smaller header */
-    }
-
-    nav {
-        padding: 0.5em 0; /* Adjust padding for smaller nav */
-        top: 40px; /* Adjust top position for smaller header */
-    }
 }

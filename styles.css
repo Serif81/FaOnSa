@@ -70,8 +70,9 @@ footer {
    } 
 
    header h1, header h2, header h3 { 
-       margin-bottom: 10px; /* Abstand zwischen den Header-Elementen auf Smartphones */
-       line-height: 1.2; /* Erhöht den Zeilenabstand für bessere Lesbarkeit */
+       margin-bottom: 5px; /* Abstand zwischen den Header-Elementen auf Smartphones */
+       line-height: 1.4; /* Erhöht den Zeilenabstand für bessere Lesbarkeit */
+       word-wrap: break-word; /* Ermöglicht das Umbrechen von langen Wörtern */
    }
 }
 

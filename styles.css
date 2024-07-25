@@ -54,6 +54,11 @@ footer {
    padding :10px ;
 }
 
+/* nowrap Klasse hinzufügen */
+.nowrap {
+    white-space: nowrap; /* Verhindert den Zeilenumbruch */
+}
+
 /* Smartphone Ansicht */
 @media only screen and (max-width: 600px) {
     nav ul {

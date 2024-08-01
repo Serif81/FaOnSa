@@ -43,7 +43,6 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
 <body>
 <!-- Cookie Consent Banner -->
 <div id="cookieConsent">
-  <div id="closeCookieConsent">x</div>
   <p>Diese Website verwendet Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website erhalten.</p>
   <a href="#datenschutz" target="_blank">Mehr erfahren</a>
   <button id="acceptCookies">Akzeptieren</button>
@@ -237,11 +236,6 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
         console.log("Cookies abgelehnt");
     });
 
-    document.getElementById('closeCookieConsent').addEventListener('click', function() {
-        cookieConsent.style.display = 'none';
-        overlay.style.display = 'none';
-    });
-
     document.getElementById('settingsCookies').addEventListener('click', function() {
         settingsModal.style.display = 'block';
     });
@@ -264,8 +258,8 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
 
         // Schließe das Modal und das Overlay
         settingsModal.style.display = 'none';
-        cookieConsent.style.display = 'none'; 
-        overlay.style.display=  "none";
+        cookieConsent.style.display= "none"; 
+        overlay.style.display= "none";
 
         // Optional: Zeige eine Bestätigungsmeldung an oder führe andere Aktionen aus
         alert("Ihre Cookie-Einstellungen wurden gespeichert.");

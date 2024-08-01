@@ -145,9 +145,10 @@ footer {
 
 @media (max-width =768px) {  
      .modal {  
-         max-width: 95%;  
+         max-width: calc(100% - 40px);  
+         width: calc(100% - 40px);  
      }  
      .modal-content {  
-         width: 95%;  
+         width: calc(100% - 40px);  
      }  
 }  

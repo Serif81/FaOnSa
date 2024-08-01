@@ -137,8 +137,8 @@ footer {
 
 .close {  
      position:absolute ;
-     top :5px ;
-     right :5px ;
+     top :13px ;
+     right :13px ;
      font-size :24px ;
      cursor:pointer ;
 }  

@@ -71,80 +71,61 @@ footer {
 
 /* Media Queries für mobile Geräte */
 @media (max-width: 768px) {
-
-   nav ul li {
-        display:block; /* Ändere dies zu block für mobile Ansicht */
-        margin-bottom :10px; /* Abstand zwischen den Links in mobiler Ansicht*/
-   }
+   nav ul li { 
+       display:block; /* Ändere dies zu block für mobile Ansicht */ 
+       margin-bottom :10px; /* Abstand zwischen den Links in mobiler Ansicht*/ 
+   } 
 }
+
 /* Neuer CSS-Code für das Cookie-Banner und Modal */
 
-#cookieConsent {
-  background-color: rgba(20, 20, 20, 0.8);
-  min-height: auto; /* Setze die Höhe auf auto */
-  font-size: 18px; /* Vergrößere die Schriftgröße */
-  color: #ccc;
-  line-height: 1.5; /* Erhöhe den Zeilenabstand */
-  padding: 20px; /* Erhöhe das Padding für mehr Platz */
-  z-index: 9999;
-  position: fixed;
-  bottom: 0; /* Positioniere es am unteren Rand des Bildschirms */
-  left: 0;
-  width: 100%; /* Setze die Breite auf 100% */
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-  border-radius:5px;
-  text-align:center;
-}
+#cookieConsent { 
+   background-color: rgba(20, 20, 20, 0.8); 
+   min-height: auto; /* Setze die Höhe auf auto */ 
+   font-size: 18px; /* Vergrößere die Schriftgröße */ 
+   color: #ccc; 
+   line-height: 1.5; /* Erhöhe den Zeilenabstand */ 
+   padding: 20px; /* Erhöhe das Padding für mehr Platz */ 
+   z-index: 9999; 
+   position: fixed; 
+   bottom: 0; /* Positioniere es am unteren Rand des Bildschirms */ 
+   left: 0; 
+   width: 100%; /* Setze die Breite auf 100% */ 
+   box-shadow: 0px 0px 10px rgba(0,0,0,0.5); 
+   border-radius:5px; 
+   text-align:center; 
+} 
 
-#cookieConsent p {
-    margin-bottom:20px; /* Abstand unter dem Text */
-}
+#cookieConsent p { 
+   margin-bottom:20px; /* Abstand unter dem Text */ 
+} 
 
-#cookieConsent a {
-    color:#4B8EE7;
-}
+#cookieConsent a { color:#4B8EE7; } 
 
-#acceptCookies, #declineCookies, #settingsCookies {
-    background-color:#4B8EE7;
-    color:white;
-    border:none;
-    padding:10px;
-    cursor:pointer;
-    margin:10px; /* Erhöhe den Abstand zwischen den Buttons */
-}
+#acceptCookies, #declineCookies, #settingsCookies { 
+   background-color:#4B8EE7; color:white; border:none; padding:10px; cursor:pointer; margin:10px; /* Erhöhe den Abstand zwischen den Buttons */ 
+} 
 
-.modal {
-    display: none; /* Standardmäßig ausgeblendet */
-    position: fixed;
-    top:50%;
-    left:50%;
-    transform :translate(-50%, -50%);
-    background-color:white ;
-    padding:20px ; /* Konkreter Wert hinzugefügt */
-    box-shadow:rgba(0 ,0 ,0 ,0.1);
-    border-radius:10px ; /* Konkreter Wert hinzugefügt */
-    text-align:center ;
-    z-index :10000 ;
-}
+.modal { 
+   display:none; /* Standardmäßig ausgeblendet */ 
+   position:absolute ; top=50%; left=50%; transform :translate(-50%, -50%);  
+   background-color:white ; padding=20px ; box-shadow=rgba(0 ,0 ,0 ,0.1); border-radius=10px ; text-align:center ; z-index :10000 ; 
 
-.modal-content {
-    position: relative;
-}
+   max-width :600px ; /* Maximale Breite für größere Bildschirme */  
+   max-height :80vh ; /* Maximale Höhe für das Modal */  
+   overflow-y :auto ; /* Scrollen bei Überlauf in vertikaler Richtung */  
+}  
 
-.close {
-    position:absolute;
-    top:10px; 
-    right:10px; 
-    font-size:24px; 
-    cursor:pointer;
-}
+.modal-content {  
+     position :relative ;  
+     width :90%; /* Breite des Modals auf mobilen Geräten */  
+}  
 
-/* Media Query für mobile Geräte */
-@media (max-width:768px) {
-   #cookieConsent {
-      width:auto; /* Passe die Breite für mobile Geräte an */
-      min-height:auto; /* Passe die Höhe für mobile Geräte an */
-      font-size:16px; /* Verkleinere die Schriftgröße für mobile Geräte */
-      padding:15px; /* Verringere das Padding für mobile Geräte */
-   }
+.close {  
+     position:absolute ; top=10px ; right=10px ; font-size=24px ; cursor:pointer ;  
+}  
+
+/* Media Query für mobile Geräte */  
+@media (max-width=768px) {  
+     #cookieConsent { width:auto;}   
 }

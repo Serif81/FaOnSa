@@ -40,14 +40,14 @@
 <!-- Cookie Consent Banner -->
 <div id="cookieConsent">
     <p>Diese Website verwendet Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website erhalten.</p>
-    <a href="#datenschutzModal" id="moreInfo">Mehr erfahren</a>
+    <a href="#" id="moreInfo">Mehr erfahren</a>
     <button id="acceptCookies">Akzeptieren</button>
     <button id="declineCookies">Ablehnen</button>
     <button id="settingsCookies">Einstellungen</button>
 </div>
 
 <!-- Cookie Settings Modal -->
-<div id="cookieSettingsModal" class="modal" style="display:none;">
+<div id="cookieSettingsModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Cookie-Einstellungen</h2>
@@ -60,7 +60,7 @@
 </div>
 
 <!-- Datenschutz Modal -->
-<div id="#datenschutzModal" class="modal" style="display:none;">
+<div id="#datenschutzModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Datenschutz-Bereich</h2>
@@ -86,7 +86,7 @@
     </div>
 </div>
 
-<header>
+<header></header>
 
 <script>
 // Function to show a modal
@@ -102,7 +102,7 @@ function hideModal(modalId) {
 // Event listener for "Mehr erfahren"
 document.getElementById('moreInfo').addEventListener('click', function(event) {
     event.preventDefault(); // Prevent default anchor behavior
-    showModal('datenschutzModal');
+    showModal('#datenschutzModal');
 });
 
 // Event listeners for other buttons (optional)

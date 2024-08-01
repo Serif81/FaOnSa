@@ -41,6 +41,27 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
     </script>
 </head>
 <body>
+    <!-- Cookie Consent Banner -->
+<div id="cookieConsent">
+    <div id="closeCookieConsent">x</div>
+    Diese Website verwendet Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website erhalten.
+    <a href="#datenschutz" target="_blank">Mehr erfahren</a>
+    <button id="acceptCookies">Akzeptieren</button>
+    <button id="declineCookies">Ablehnen</button>
+    <button id="settingsCookies">Einstellungen</button>
+</div>
+
+<!-- Cookie Settings Modal -->
+<div id="cookieSettingsModal" style="display:none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Cookie-Einstellungen</h2>
+        <p>Hier können Sie Ihre Cookie-Einstellungen anpassen:</p>
+        <label><input type="checkbox" id="necessaryCookies" checked disabled> Notwendige Cookies (immer aktiv)</label><br>
+        <label><input type="checkbox" id="analyticsCookies"> Analytische Cookies</label><br>
+        <label><input type="checkbox" id="marketingCookies"> Marketing-Cookies</label><br>
+        <button id="saveSettings">Speichern</button>
+    </div>
     <header>
     <h1>Willkommen auf meiner Website</h1>
     <img src="Logo_FaOnSa.png" alt="Logo" style="height: 100px; vertical-align: middle;">

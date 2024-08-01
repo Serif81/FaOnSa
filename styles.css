@@ -1,5 +1,4 @@
 /* styles.css */
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -54,42 +53,97 @@ footer {
    background-color:black; 
    color:white; 
    text-align:center; 
-   padding :10px ; 
-}
+   padding :10px ; }
 
 /* nowrap Klasse hinzufügen */
-.nowrap { 
-   white-space: nowrap; /* Verhindert den Zeilenumbruch */ 
+.nowrap { white-space:
+nowrap ; /* Verhindert den Zeilenumbruch */ }
+
+/* Smartphone Ansicht */ @media only screen and (max-width:
+600 px ) { nav ul { flex-direction:
+column ; /* Ändert die Anordnung der Links in eine Spalte */ align-items:
+center ; /* Zentriert die Links in der Smartphone-Ansicht */ }
+
+header h1,
+header h2,
+header h3 { margin-bottom:
+5 px ; /* Abstand zwischen den Header-Elementen auf Smartphones */ line-height:
+1.4 ; /* Erhöht den Zeilenabstand für bessere Lesbarkeit */ word-wrap:
+break-word ; /* Ermöglicht das Umbrechen von langen Wörtern */ } }
+
+/* Website Ansicht */ @media only screen and (min-width:
+601 px ) { nav ul { flex-direction:
+row ; /* Ändert die Anordnung der Links in eine Reihe */ justify-content:
+space-around ; /* Verteilt die Links gleichmäßig in der Website-Ansicht */ }
+
+nav a { display:
+block ; /* Ändert das Anzeigeformat auf Blockelemente */ padding:
+10 px ; /* Fügt Abstand um die Links hinzu */ transition:
+background-color
+0.3 s ; /* Fügt einen Hover-Effekt hinzu */ }
+
+nav a:hover { background-color:
+lightgray ; /* Ändert die Hintergrundfarbe beim Hover-Effekt */ } }
+
+/* Neuer CSS-Code für das Cookie-Banner und Modal */
+#cookieConsent { background-color:
+rgba(20,
+20,
+20,
+0.8); min-height:
+26 px ;
+font-size:
+14 px ;
+color:#ccc;line-height:
+26 px ;
+padding:
+8 px
+0
+8 px
+30 px ;
+z-index:
+9999 ;
+position:
+fixed ;
+bottom:
+0 ;
+left:
+0 ;
+right:
+0 ;
 }
 
-/* Smartphone Ansicht */
-@media only screen and (max-width: 600px) { 
-   nav ul { 
-       flex-direction: column; /* Ändert die Anordnung der Links in eine Spalte */ 
-       align-items: center; /* Zentriert die Links in der Smartphone-Ansicht */ 
-   } 
-
-   header h1, header h2, header h3 { 
-       margin-bottom: 5px; /* Abstand zwischen den Header-Elementen auf Smartphones */
-       line-height: 1.4; /* Erhöht den Zeilenabstand für bessere Lesbarkeit */
-       word-wrap: break-word; /* Ermöglicht das Umbrechen von langen Wörtern */
-   }
+#cookieConsent a { color:#4B8EE7 ;
 }
 
-/* Website Ansicht */
-@media only screen and (min-width: 601px) { 
-   nav ul { 
-       flex-direction: row; /* Ändert die Anordnung der Links in eine Reihe */ 
-       justify-content: space-around; /* Verteilt die Links gleichmäßig in der Website-Ansicht */ 
-   } 
+#closeCookieConsent { float:right;display:inline-block;cursor:pointer;}
 
-   nav a { 
-       display: block; /* Ändert das Anzeigeformat auf Blockelemente */ 
-       padding: 10px; /* Fügt Abstand um die Links hinzu */ 
-       transition: background-color 0.3s; /* Fügt einen Hover-Effekt hinzu */ 
-   } 
+#acceptCookies,
+#declineCookies,
+#settingsCookies{background-color:#4B8EE7;color:white;border:none;padding:
+5 px
+10 px ; cursor : pointer ; }
 
-   nav a:hover { 
-       background-color: lightgray; /* Ändert die Hintergrundfarbe beim Hover-Effekt */ 
-   } 
-}
+#cookieSettingsModal{position :
+fixed ; z - index :
+10000 ; left :
+50 % ; top :
+50 % ; transform :
+translate (-50 %,-50 %); background - color :
+white ; padding :
+20 px ; box - shadow :
+0
+4
+8 rgba (0 ,
+0 ,
+0 ,
+0.1); }
+
+.modal-content{position :
+relative;}
+
+.close{position :
+absolute ; top :
+10 px ; right :
+10 px ; font - size :
+24 px ; cursor : pointer ; }

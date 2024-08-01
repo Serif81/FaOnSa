@@ -125,8 +125,7 @@ footer {
 
 #acceptCookies, #declineCookies, #settingsCookies{ 
       background-color:#4B8EE7;color:white;border:none;padding:
-      5px 10px ; cursor:pointer;margin:
-      5 px ;
+      5px 10px ; cursor:pointer;margin:5px;
 } 
 
 #cookieSettingsModal{ 
@@ -135,8 +134,8 @@ footer {
       10000 ; left :
       50% ; top :
       50% ; transform :
-      translate(-50% , -50% );background-color:white;padding:px;box-shadow:
-      rgba(0 ,0 ,0 ,.1);border-radius:px;text-align:center;width:max-width:px;} .modal-content{position:
+      translate(-50% , -50% );background-color:white;padding:20px ;box-shadow:
+      rgba(0 ,0 ,0 ,.1);border-radius:10px ;text-align:center;width:auto:px;} .modal-content{position:
 relative;} .close{position:absolute;top:
 10 px;right:
 10 px;font-size:

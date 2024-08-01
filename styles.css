@@ -143,8 +143,11 @@ footer {
      cursor:pointer ;
 }  
 
-/* Media Query für mobile Geräte */  
-
-@media (max-width=768px) {  
-      #cookieConsent { width:auto;}   
-}
+@media (max-width =768px) {  
+     .modal {  
+         max-width: 95%;  
+     }  
+     .modal-content {  
+         width: 95%;  
+     }  
+}  

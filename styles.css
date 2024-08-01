@@ -111,7 +111,6 @@ footer {
   box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
   border-radius:5px;
   text-align:center;
-  width:150%; /* Setze die Breite auf einen größeren Wert */
 }
 
 #cookieConsent p {
@@ -120,12 +119,6 @@ footer {
 
 #cookieConsent a {
     color:#4B8EE7;
-}
-
-#closeCookieConsent {
-    float:right;
-    display:inline-block;
-    cursor:pointer;
 }
 
 #acceptCookies, #declineCookies, #settingsCookies {
@@ -170,7 +163,5 @@ footer {
         min-height:auto; /* Passe die Höhe für mobile Geräte an */
         font-size:16px; /* Verkleinere die Schriftgröße für mobile Geräte */
         padding:15px; /* Verringere das Padding für mobile Geräte */
-        top:auto; bottom:0; left:auto; right:auto; transform:none; border-radius:none;
-        box-shadow:none;
      }
 }

@@ -25,13 +25,6 @@ nav ul {
 nav a {
     text-decoration: none;
     color: white;
-    display: block; /* Fügt allen Links das Blockelement hinzu */
-    padding: 10px; /* Fügt Abstand um die Links hinzu */
-    transition: background-color 0.3s; /* Fügt einen Hover-Effekt hinzu */
-}
-
-nav a:hover {
-    background-color: lightgray; /* Ändert die Hintergrundfarbe beim Hover-Effekt */
 }
 
 main {
@@ -103,14 +96,26 @@ padding:
 30 px ;
 z-index:
 9999 ;
-position:
+position :
 fixed ;
-bottom:
-0 ;
-left:
-0 ;
-right:
-0 ;
+top :
+50 % ;
+left :
+50 % ;
+transform :
+translate (-50 %,-50 %); box - shadow :
+0
+4 rgba (0 ,
+0 ,
+0 ,
+0.1); border-radius :
+5 px ;
+text-align :
+center ;
+width :
+80 % ;
+max-width :
+500 px ;
 }
 
 #cookieConsent a { color:#4B8EE7 ;
@@ -122,7 +127,8 @@ right:
 #declineCookies,
 #settingsCookies{background-color:#4B8EE7;color:white;border:none;padding:
 5 px
-10 px ; cursor : pointer ; }
+10 px ; cursor : pointer ; margin :
+5 px ; }
 
 #cookieSettingsModal{position :
 fixed ; z - index :
@@ -133,17 +139,19 @@ translate (-50 %,-50 %); background - color :
 white ; padding :
 20 px ; box - shadow :
 0
-4
-8 rgba (0 ,
+4 rgba (0 ,
 0 ,
 0 ,
-0.1); }
+0.1); border-radius :
+5 px ;
+text-align :
+center ;
+width :
+80 % ;
+max-width :
+500 px ;
+}
 
-.modal-content{position :
-relative;}
+.modal-content{position : relative;}
 
-.close{position :
-absolute ; top :
-10 px ; right :
-10 px ; font - size :
-24 px ; cursor : pointer ; }
+.close{position : absolute; top :10px; right :10px; font-size :24px; cursor:pointer;}

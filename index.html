@@ -44,7 +44,7 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
 <!-- Cookie Consent Banner -->
 <div id="cookieConsent">
   <div id="closeCookieConsent">x</div>
-  Diese Website verwendet Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website erhalten.
+  <p>Diese Website verwendet Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website erhalten.</p>
   <a href="#datenschutz" target="_blank">Mehr erfahren</a>
   <button id="acceptCookies">Akzeptieren</button>
   <button id="declineCookies">Ablehnen</button>
@@ -63,19 +63,6 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
     <button id="saveSettings">Speichern</button>
   </div>
 </div>
-
-<!-- Cookie Settings Modal -->
-<div id="cookieSettingsModal" style="display:none;">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Cookie-Einstellungen</h2>
-        <p>Hier können Sie Ihre Cookie-Einstellungen anpassen:</p>
-        <label><input type="checkbox" id="necessaryCookies" checked disabled> Notwendige Cookies (immer aktiv)</label><br>
-        <label><input type="checkbox" id="analyticsCookies"> Analytische Cookies</label><br>
-        <label><input type="checkbox" id="marketingCookies"> Marketing-Cookies</label><br>
-        <button id="saveSettings">Speichern</button>
-    </div>
-</div>    
     
 <header>
     <h1>Willkommen auf meiner Website</h1>
@@ -218,9 +205,23 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
     var cookieConsent = document.getElementById('cookieConsent');
+
+    // Overlay erstellen
     var overlay = document.createElement('div');
     overlay.id = 'overlay';
+
+    // Stil für Overlay hinzufügen
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+    overlay.style.zIndex = '9998'; // Unterhalb des Cookie-Banners
+
     document.body.appendChild(overlay);
+
+    var settingsModal = document.getElementById('cookieSettingsModal');
 
     document.getElementById('acceptCookies').addEventListener('click', function() {
         cookieConsent.style.display = 'none';
@@ -237,6 +238,14 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
     document.getElementById('closeCookieConsent').addEventListener('click', function() {
         cookieConsent.style.display = 'none';
         overlay.style.display = 'none';
+    });
+
+    document.getElementById('settingsCookies').addEventListener('click', function() {
+        settingsModal.style.display = 'block';
+    });
+
+    document.querySelector('#cookieSettingsModal .close').addEventListener('click', function() {
+        settingsModal.style.display = 'none';
     });
 });
 </script>

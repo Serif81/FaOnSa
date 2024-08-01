@@ -1,63 +1,72 @@
+/* Allgemeine Stile */
 body {
     font-family: Arial, sans-serif;
+    line-height: 1.6;
     margin: 0;
+    padding: 0;
 }
 
+/* Header-Stil */
 header {
-    background: black;
-    color: white;
+    background-color: #f4f4f4;
+    padding: 20px;
     text-align: center;
-    padding: 20px 0;
 }
 
-nav {
-    background-color: #4CAF50; /* Hintergrundfarbe für die Navigation */
+header h1 {
+    margin-top: 0;
 }
 
+/* Navigationsstil */
 nav ul {
     list-style-type: none;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
+    padding: 0;
 }
 
-nav a {
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
     text-decoration: none;
-    color: white;
-    display: block; /* Fügt allen Links das Blockelement hinzu */
-    padding: 10px; /* Fügt Abstand um die Links hinzu */
-    transition: background-color 0.3s; /* Fügt einen Hover-Effekt hinzu */
+    color: #333;
 }
 
-nav a:hover {
-    background-color: lightgray; /* Ändert die Hintergrundfarbe beim Hover-Effekt */
-}
-
+/* Hauptinhalt-Stil */
 main {
     padding: 20px;
 }
 
+/* Abschnittsstile */
 section {
-    background-color: white;
-    color: black;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Abstand zwischen den Abschnitten */
 }
 
-/* Footer-Stile */
+section:nth-child(odd) {
+    background-color: #f9f9f9; /* Unterschiedliche Hintergrundfarben für ungerade Abschnitte */
+}
+
+section:nth-child(even) {
+    background-color: #e9e9e9; /* Unterschiedliche Hintergrundfarben für gerade Abschnitte */
+}
+
+/* Trennlinien zwischen den Abschnitten */
+section + section::before {
+    content: "";
+    display: block;
+    height: 2px;
+    background-color: #ccc; /* Farbe der Trennlinie */
+    margin-bottom: 20px; /* Abstand unterhalb der Trennlinie */
+}
+
+/* Footer-Stil */
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color:black;
-    color:white;
-    text-align:center;
-    padding :10px ;
-}
-
-/* nowrap Klasse hinzufügen */
-.nowrap {
-    white-space: nowrap; /* Verhindert den Zeilenumbruch */
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
 }
 
 /* Smartphone Ansicht */

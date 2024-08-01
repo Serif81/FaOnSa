@@ -108,10 +108,18 @@ footer {
 
 .modal { 
    display:none; /* Standardmäßig ausgeblendet */ 
-   position:fixed; top=50%; left=50%; transform :translate(-50%, -50%);  
-   background-color:white ; padding=20px ; box-shadow=rgba(0 ,0 ,0 ,0.1); border-radius=10px ; text-align:center ; z-index :10000 ; 
+   position:fixed; /* Fixiert im Viewport */
+   top :50%; /* Positioniert es in der Mitte des Bildschirms */  
+   left :50%; /* Positioniert es in der Mitte des Bildschirms */  
+   transform :translate(-50%, -50%); /* Zentriert das Modal */  
+   background-color:white ;  
+   padding=20px ;  
+   box-shadow=rgba(0 ,0 ,0 ,0.1);  
+   border-radius=10px ;  
+   text-align:center ;  
+   z-index :10000 ;  
 
-   max-width :90%; ; /* Maximale Breite für größere Bildschirme */  
+   max-width :90%; /* Maximale Breite für größere Bildschirme */  
    max-height :80vh ; /* Maximale Höhe für das Modal */  
    overflow-y :auto ; /* Scrollen bei Überlauf in vertikaler Richtung */  
 }  

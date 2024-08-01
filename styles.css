@@ -98,7 +98,7 @@ footer {
 
 #cookieConsent { 
      background-color : rgba(20 ,20 ,20 ,.8 ); 
-     min-height :26px ; 
+     min-height :50% ; 
      font-size :14px ; 
      color :#ccc ; 
      line-height :26px ; 
@@ -111,7 +111,7 @@ footer {
      box-shadow :0 0 4px rgba(0 ,0 ,0 ,.1 );
      border-radius :5px ;
      text-align:center ;
-     width :80% ;
+     width :50% ;
      max-width :500px ;
 } 
 
@@ -137,6 +137,6 @@ footer {
       translate(-50% , -50% );background-color:white;padding:20px ;box-shadow:
       rgba(0 ,0 ,0 ,.1);border-radius:10px ;text-align:center;width:auto:px;} .modal-content{position:
 relative;} .close{position:absolute;top:
-10 px;right:
-10 px;font-size:
-24 px;cursor:pointer;}
+10px;right:
+10px;font-size:
+24px;cursor:pointer;}

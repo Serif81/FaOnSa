@@ -41,7 +41,7 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
     </script>
 </head>
 <body>
-    <!-- Cookie Consent Banner -->
+<!-- Cookie Consent Banner -->
 <div id="cookieConsent">
     <div id="closeCookieConsent">x</div>
     Diese Website verwendet Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website erhalten.
@@ -49,8 +49,8 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
     <button id="acceptCookies">Akzeptieren</button>
     <button id="declineCookies">Ablehnen</button>
     <button id="settingsCookies">Einstellungen</button>
-    </div>
 </div>
+
 <!-- Cookie Settings Modal -->
 <div id="cookieSettingsModal" style="display:none;">
     <div class="modal-content">
@@ -62,7 +62,9 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
         <label><input type="checkbox" id="marketingCookies"> Marketing-Cookies</label><br>
         <button id="saveSettings">Speichern</button>
     </div>
-    <header>
+</div>    
+    
+<header>
     <h1>Willkommen auf meiner Website</h1>
     <img src="Logo_FaOnSa.png" alt="Logo" style="height: 100px; vertical-align: middle;">
     <h2>Fachmann für Online-Kurse + SAP-Trainings</h2>
@@ -164,6 +166,7 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
         <strong>Berufsbezeichnung:</strong><br>
         Kaufmann im Groß- und Außenhandel (IHK)<br>
         verliehen in: Niederachsen
+        </p>
         <p>Geprüfter Wirtschaftsfachwirt (IHK)<br>
         verliehen in: Baden-Württemberg
     </p>
@@ -200,89 +203,27 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
 
     <!-- JavaScript -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var sections = document.querySelectorAll("section");
-            var navLinks = document.querySelectorAll("nav a");
+    document.addEventListener("DOMContentLoaded", function() {
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll("nav a");
 
-            function showSection(sectionId) {
-                sections.forEach(section => {
-                    section.style.display = section.id === sectionId ? "block" : "none";
-                });
-            }
-
-            navLinks.forEach(link => {
-                link.addEventListener("click", function(event) {
-                    event.preventDefault();
-                    var targetSectionId = this.getAttribute("href").substring(1);
-                    showSection(targetSectionId);
-                });
+        function showSection(sectionId) {
+            sections.forEach(section => {
+                section.style.display = section.id === sectionId ? "block" : "none";
             });
+        }
 
-            showSection("home");
+        navLinks.forEach(link => {
+            link.addEventListener("click", function(event) {
+                event.preventDefault();
+                const targetSectionId = this.getAttribute("href").substring(1);
+                showSection(targetSectionId);
+            });
         });
-    </script>
-<script>
-// Function to show the cookie settings modal
-function showCookieSettings() {
-document.getElementById('cookieSettingsModal').style.display = 'block';
-}
 
-// Function to hide the cookie settings modal
-function hideCookieSettings() {
-document.getElementById('cookieSettingsModal').style.display = 'none';
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-
-// Show cookie consent banner if not already accepted or declined
-if (!localStorage.getItem('cookiesAccepted') && !localStorage.getItem('cookiesDeclined')) {
-document.getElementById('cookieConsent').style.display = 'block';
-
-document.getElementById('acceptCookies').addEventListener('click', function() {
-localStorage.setItem('cookiesAccepted', 'true');
-document.getElementById('cookieConsent').style.display = 'none';
-});
-
-document.getElementById('declineCookies').addEventListener('click', function() {
-localStorage.setItem('cookiesDeclined', 'true');
-document.getElementById('cookieConsent').style.display = 'none';
-});
-
-document.getElementById('settingsCookies').addEventListener('click', function() {
-showCookieSettings();
-});
-
-document.getElementById('closeCookieConsent').addEventListener('click', function() {
-document.getElementById('cookieConsent').style.display = 'none';
-});
-}
-
-// Handle cookie settings modal actions
-var modal = document.getElementById("cookieSettingsModal");
-var span = document.querySelector(".close");
-
-span.onclick = function() {
-hideCookieSettings();
-}
-
-window.onclick = function(event) {
-if (event.target == modal) {
-hideCookieSettings();
-}
-}
-
-document.getElementById("saveSettings").onclick = function() {
-// Save user preferences for cookies
-var analyticsEnabled = document.getElementById("analyticsCookies").checked ? "true" : "false";
-var marketingEnabled = document.getElementById("marketingCookies").checked ? "true" : "false";
-
-localStorage.setItem("analyticsEnabled", analyticsEnabled);
-localStorage.setItem("marketingEnabled", marketingEnabled);
-
-hideCookieSettings();
-document.getElementById("cookieConsent").style.display = "none";
-};
-});
+        showSection("home");
+    });
 </script>
+
 </body>
 </html>

@@ -227,12 +227,14 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
         cookieConsent.style.display = 'none';
         overlay.style.display = 'none';
         // Hier kannst du auch Code hinzufügen, um die Zustimmung zu speichern
+        console.log("Cookies akzeptiert");
     });
 
     document.getElementById('declineCookies').addEventListener('click', function() {
         cookieConsent.style.display = 'none';
         overlay.style.display = 'none';
         // Hier kannst du auch Code hinzufügen, um die Ablehnung zu speichern
+        console.log("Cookies abgelehnt");
     });
 
     document.getElementById('closeCookieConsent').addEventListener('click', function() {
@@ -246,6 +248,27 @@ content="Biete umfassende Online-Kurse zur IHK-Fachkundeprüfung für Taxi- und 
 
     document.querySelector('#cookieSettingsModal .close').addEventListener('click', function() {
         settingsModal.style.display = 'none';
+    });
+
+    document.getElementById('saveSettings').addEventListener('click', function() {
+        var necessaryCookies = document.getElementById('necessaryCookies').checked;
+        var analyticsCookies = document.getElementById('analyticsCookies').checked;
+        var marketingCookies = document.getElementById('marketingCookies').checked;
+
+        // Speichere die Einstellungen (z.B. in localStorage oder sende sie an den Server)
+        console.log("Einstellungen gespeichert:", {
+            necessary: necessaryCookies,
+            analytics: analyticsCookies,
+            marketing: marketingCookies
+        });
+
+        // Schließe das Modal und das Overlay
+        settingsModal.style.display = 'none';
+        cookieConsent.style.display = 'none'; 
+        overlay.style.display=  "none";
+
+        // Optional: Zeige eine Bestätigungsmeldung an oder führe andere Aktionen aus
+        alert("Ihre Cookie-Einstellungen wurden gespeichert.");
     });
 });
 </script>

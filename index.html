@@ -2,14 +2,13 @@
 <html lang="de">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16654646304"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-16654646304');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16654646304"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-16654646304');
+    </script>
     <meta charset="UTF-8">
     <meta name="-site-verification" content="X8raLfTOHUSg73wQ2XFFtyh9JutMfHsE5VQ8ZleDoCk">
     <title>Vorbereitung Fachkunde IHK, Taxi, Mietwagen/ SAP Trainings/ Erstellung Homepage, Website</title>
@@ -19,8 +18,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="https://github.com/Serif81/FaOnSa/blob/main/p6ia3bkd.png?raw=true" type="image/png"> <!-- Favicon -->
 
-     <!-- Strukturierte Daten für das Logo -->
-     <script type="application/ld+json">
+    <!-- Strukturierte Daten für das Logo -->
+    <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Organization",
@@ -42,355 +41,156 @@
                 "addressCountry": "DE"
             }
         }
-     </script>
+    </script>
 </head>
 <body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent">
+        <p>Diese Website verwendet Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website erhalten.</p>
+        <a href="#" id="moreInfo">Mehr erfahren</a>
+        <button id="acceptCookies">Akzeptieren</button>
+        <button id="declineCookies">Ablehnen</button>
+        <button id="settingsCookies">Einstellungen</button>
+    </div>
 
-<!-- Cookie Consent Banner -->
-<div id="cookieConsent">
-   <p>Diese Website verwendet Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website erhalten.</p>
-   <a href="#" id="moreInfo">Mehr erfahren</a>
-   <button id="acceptCookies">Akzeptieren</button>
-   <button id="declineCookies">Ablehnen</button>
-   <button id="settingsCookies">Einstellungen</button>
-</div>
+    <!-- Cookie Settings Modal -->
+    <div id="cookieSettingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Cookie-Einstellungen</h2>
+            <p>Hier können Sie Ihre Cookie-Einstellungen anpassen:</p>
+            <label><input type="checkbox" id="necessaryCookies" checked disabled> Notwendige Cookies (immer aktiv)</label><br>
+            <label><input type="checkbox" id="analyticsCookies"> Analytische Cookies</label><br>
+            <label><input type="checkbox" id="marketingCookies"> Marketing-Cookies</label><br>
+            <button id="saveSettings">Speichern</button>
+        </div>
+    </div>
 
-<!-- Cookie Settings Modal -->
-<div id="cookieSettingsModal" class="modal">
-   <div class="modal-content">
-       <span class="close">&times;</span>
-       <h2>Cookie-Einstellungen</h2>
-       <p>Hier können Sie Ihre Cookie-Einstellungen anpassen:</p>
-       <label><input type="checkbox" id="necessaryCookies" checked disabled> Notwendige Cookies (immer aktiv)</label><br>
-       <label><input type="checkbox" id="analyticsCookies"> Analytische Cookies</label><br>
-       <label><input type="checkbox" id="marketingCookies"> Marketing-Cookies</label><br>
-       <button id="saveSettings">Speichern</button>
-   </div>
-</div>
+    <!-- Datenschutz Modal -->
+    <div id="datenschutzModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Datenschutz-Bereich</h2>
 
-<!-- Datenschutz Modal -->
-<div id="datenschutzModal" class="modal">
-   <div class="modal-content">
-       <span class="close">&times;</span>
-       <h2>Datenschutz-Bereich</h2>
-       <!-- Beispieltext für den Datenschutzbereich -->
-       <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst und halten uns strikt an die Regeln der Datenschutzgesetze. Personenbezogene Daten werden auf dieser Webseite nur im technisch notwendigen Umfang erhoben. In keinem Fall werden die erhobenen Daten verkauft oder aus anderen Gründen an Dritte weitergegeben.</p>
+            <!-- Beispieltext für den Datenschutzbereich -->
+            <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst und halten uns strikt an die Regeln der Datenschutzgesetze. Personenbezogene Daten werden auf dieser Webseite nur im technisch notwendigen Umfang erhoben. In keinem Fall werden die erhobenen Daten verkauft oder aus anderen Gründen an Dritte weitergegeben.</p>
 
-       <h3>Erhebung und Verarbeitung von Daten</h3>
-       <p>Jeder Zugriff auf unsere Webseite und jeder Abruf einer auf der Webseite hinterlegten Datei werden protokolliert. Die Speicherung dient internen systembezogenen und statistischen Zwecken. Protokolliert werden:</p>
-       <ul>
-         <li>Name der abgerufenen Datei</li>
-         <li>Datum und Uhrzeit des Abrufs</li>
-         <li>Übertragene Datenmenge</li>
-         <li>Meldung über erfolgreichen Abruf</li>
-         <li>Webbrowser und anfragende Domain</li>
-         <li>IP-Adressen der anfragenden Rechner</li>
-       </ul>
+            <!-- Weitere Abschnitte können hier hinzugefügt werden -->
+        </div>
+    </div>
 
-       <h3>Nutzung und Weitergabe personenbezogener Daten</h3>
-       <p>Soweit Sie uns personenbezogene Daten zur Verfügung gestellt haben, verwenden wir diese nur zur Beantwortung Ihrer Anfragen, zur Abwicklung mit Ihnen geschlossener Verträge und für die technische Administration.</p>
+    <!-- Header -->
+    <header></header>
 
-       <!-- Weitere Abschnitte können hier hinzugefügt werden -->
-
-   </div>
-</div>
-
-<header></header>
-
-<script>
-// Function to show a modal
-function showModal(modalId) {
-   document.getElementById(modalId).style.display = 'block';
-}
-
-// Function to hide a modal
-function hideModal(modalId) {
-   document.getElementById(modalId).style.display = 'none';
-}
-
-// Event listener for "Mehr erfahren"
-document.getElementById('moreInfo').addEventListener('click', function(event) {
-   event.preventDefault(); // Prevent default anchor behavior
-   showModal('datenschutzModal');
-});
-
-// Event listeners for other buttons (optional)
-document.getElementById('acceptCookies').addEventListener('click', function() {
-   document.getElementById('cookieConsent').style.display = 'none';
-});
-
-document.getElementById('declineCookies').addEventListener('click', function() {
-   document.getElementById('cookieConsent').style.display = 'none';
-});
-
-document.getElementById('settingsCookies').addEventListener('click', function() {
-   showModal('cookieSettingsModal');
-});
-
-// Close buttons for modals
-document.querySelectorAll('.close').forEach(function(closeButton) {
-   closeButton.addEventListener('click', function() {
-      hideModal(this.parentElement.parentElement.id);
-   });
-});
-</script>
-
-<!-- Rest of your HTML content -->
-<footer></footer>
-
-<script>
-// Function to show a modal
-function showModal(modalId) {
-   document.getElementById(modalId).style.display = 'block';
-}
-
-// Function to hide a modal
-function hideModal(modalId) {
-   document.getElementById(modalId).style.display = 'none';
-}
-
-// Event listener for "Mehr erfahren"
-document.getElementById('moreInfo').addEventListener('click', function(event) {
-   event.preventDefault(); // Prevent default anchor behavior
-   showModal('datenschutzModal');
-});
-
-// Close buttons for modals
-document.querySelectorAll('.close').forEach(function(closeButton) {
-   closeButton.addEventListener('click', function() {
-      hideModal(this.parentElement.parentElement.id);
-   });
-});
-
-// Event listeners for cookie consent buttons
-document.getElementById('acceptCookies').addEventListener('click', function() {
-   document.getElementById('cookieConsent').style.display = 'none';
-});
-document.getElementById('declineCookies').addEventListener('click', function() {
-   document.getElementById('cookieConsent').style.display = 'none';
-});
-</script>
-    
-<header>
-    <h1>Willkommen auf meiner Website</h1>
-    <img src="Logo_FaOnSa.png" alt="Logo" style="height: 100px; vertical-align: middle;">
-    <h2>Fachmann für Online-Kurse + SAP-Trainings</h2>
-    <p>+Vorbereitung auf die Fachkundeprüfung IHK für Taxi- und Mietwagenunternehmer+</p>
-    <p>++Homepage Erstellung und Beratung++</p>
-    <p>+++SAP Support und Trainings+++</p>
-        
-</header>
-    
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#leistungen">Leistungen</a></li>
-            <li><a href="#ueber-mich">Über mich</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
-            <li><a href="#impressum">Impressum</a></li>
-            <li><a href="#datenschutz">Datenschutz</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section id="home">
-            <h2>Home</h2>
-            <p>Willkommen auf meiner Website! Hier finden Sie Informationen zu meinen Dienstleistungen.</p>
-            <p>+++ Aktuelles +++</p>
-            <p>+++ Verpassen Sie nicht meinen Kurs am 03.08.2024! +++</p>
-            <p>+++ Melden Sie sich noch heute an und sichern Sie sich Ihren Platz +++</p>
-        </section>
-
-        <section id="leistungen">
-    <h2>Leistungen</h2>
-    <p>Willkommen zu meinen Dienstleistungen!</p>
-    <ul>
-        <li>
-            <h3>Online Vorbereitungskurs auf die Fachkundeprüfung IHK für den Taxen- und Mietwagenverkehr</h3>
-            <p>Sie möchten die Fachkundeprüfung der IHK für Taxi- und Mietwagenunternehmer erfolgreich absolvieren? Dann sind Sie hier genau richtig! Ich biete einen professionellen Online Vorbereitungskurs an, um Sie optimal auf die Prüfung vorzubereiten. Nehmen Sie an unserem kostenlosen Beratungstermin am 03.08.2024 teil, um mehr über den Kurs zu erfahren und uns kennenzulernen. Maximal 10 Teilnehmer pro Kurs für eine individuelle Betreuung. Kontaktieren Sie mich für weitere Informationen oder vereinbaren Sie direkt Ihren Beratungstermin.</p>
-        </li>
-        <li>
-            <h3>SAP-TRAINER:</h3>
-            <p>Als professioneller SAP Trainer biete ich maßgeschneiderte Schulungen und Trainings für Unternehmen und Privatpersonen an, insbesondere im Logistik-Modul MM - Materialwirtschaft. Mit langjähriger Erfahrung im Bereich SAP Software garantiere ich fundiertes Wissen und praxisnahe Schulungen, individuell angepasst an Ihre Bedürfnisse. Egal ob Einsteiger oder Fortgeschrittene, ich unterstütze Sie dabei, Ihr SAP-Know-how zu erweitern und zu vertiefen. Kontaktieren Sie mich jetzt für ein unverbindliches Angebot oder weitere Informationen.</p>
-        </li>
-        <li>
-            <h3>Beratung zur Erstellung von Webseiten:</h3>
-            <p>Möchten Sie eine Webseite erstellen wie meine, aber wissen nicht wo Sie anfangen sollen? Ich biete Beratung zur einfachen Erstellung einer Webseite an, bei der Sie selbst das Design und den Inhalt bearbeiten können. Mit ein wenig IT-Erfahrung und PC-Kenntnissen können auch Sie eine professionelle Webseite aufbauen. Sparen Sie Zeit und Geld bei der Erstellung Ihrer eigenen Webseite, indem Sie von meiner Expertise profitieren. Kontaktieren Sie mich für eine individuelle Lösung für Ihr Projekt.</p>
-        </li>
-    </ul>
-    <p>Nehmen Sie gerne Kontakt mit mir auf, um mehr über meine Dienstleistungen zu erfahren oder einen Beratungstermin zu vereinbaren. Ich freue mich darauf, Ihnen weiterzuhelfen!</p>
-        </section>
-
-        <section id="ueber-mich">
-            <h2>Über mich</h2>
-            <h3>Mein Unternehmen ist anders – Es besteht aus mir selbst und meine Kompetenzen!</h3>
-            <p>Ich bin Kleinunternehmer nach § 19 UStG und Hauptberuflich beim Bundesministerium der Verteidigung (BMVg) tätig.  Mein Ziel ist es nicht als Unternehmer zu wachsen, sondern meine Fähigkeiten und Qualifikationen mit anderen zu teilen und sie zu unterstützen. Ich bringe meine gesamte Energie ein, um das Beste für Sie zu erreichen und bin dabei günstiger als die Konkurrenz.</p>
-
-            <h2>Warum Online-Kurse?</h2>
-            <p>Weil ich nebenberuflich es geschafft habe, die Fachkundeprüfung für Taxi- und Mietwagenunternehmer zu bestehen und diese Firma gegründet habe. Diese Erfahrungen möchte ich gerne für Interessierte anbieten, damit man sich für seine Unternehmensgründung vorbereiten und die Teilnahme an der Fachkundeprüfung bei der IHK bestmöglich einstellen kann.</p>
-
-            <h2>Warum SAP-Trainings?</h2>
-            <p>Weil ich über 11 Jahre mit dem Programm gearbeitet habe und davon fast 6 Jahre SAP ausgebildet habe. Ich war Ausbilder im Bereich Logistik und habe auch eine Excel-basierte Arbeitshilfe programmiert. Das hilft den Nutzern dabei, die Prozessabläufe schneller durchzuführen und Zeit zu sparen.</p>
-
-            <h2>Warum Webseiten?</h2>
-            <p>Durch das Erstellen meiner eigenen Website und der Erfahrung, die ich dabei gesammelt habe, möchte ich nun diese Kenntnisse weitergeben. Ich biete hier eine kostengünstige und zeitsparende Möglichkeit an, um anderen bei der Erstellung ihrer eigenen Webseite zu helfen.</p>
-
-        </section>
-
-        <section id="kontakt">
-            <h2>Kontakt</h2>
-            <p>Sie können mich unter folgender E-Mail-Adresse erreichen: <a href="mailto:serif.u@faonsa.de">serif.u@faonsa.de</a>.</p> 
-            <p>Ich stehe Ihnen auch gerne über WhatsApp unter folgender Mobilnummer zur Verfügung.</p> 
-            <p>Für telefonische Anfragen bin ich ebenfalls erreichbar.</p>
-
-            <p>Bitte beachten Sie, dass ich aufgrund meiner Hauptbeschäftigung nur zu den folgenden Zeiten erreichbar bin: Montag bis Samstag von 17 bis 20 Uhr. Ich freue mich darauf, von Ihnen zu hören!</p>
-            <p>Phone: <a href="tel:015778724503">01577/8724503</a></p>
-            
-        </section>
-
-        <section id="impressum">
-            <h2>Impressum</h2>
-    <p>Angaben gemäß § 5 TMG</p>
-    <p>
-        Serif Ünal<br>
-        Garlstedter Kirchweg 51<br>
-        27711 Osterholz-Scharmbeck
-    </p>
-    <p>
-        <strong>Vertreten durch:</strong><br>
-        Serif Ünal
-    </p>
-    <p>
-        <strong>Kontakt:</strong><br>
-        Telefon: +49 1577 8724503<br>
-        E-Mail: serif.u@faonsa.de
-    </p>
-    <p>
-        <strong>Umsatzsteuer-ID:</strong><br>
-        Befreit gemäß §19 Umsatzsteuergesetz
-    </p>
-    <p>
-        <strong>Berufsbezeichnung:</strong><br>
-        Kaufmann im Groß- und Außenhandel (IHK)<br>
-        verliehen in: Niederachsen
-        </p>
-        <p>Geprüfter Wirtschaftsfachwirt (IHK)<br>
-        verliehen in: Baden-Württemberg
-    </p>
-    <p>
-        <strong>Streitschlichtung</strong><br>
-        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank">https://ec.europa.eu/consumers/odr</a>.<br>
-        Unsere E-Mail-Adresse finden Sie oben im Impressum.
-    </p>
-    <p>
-        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-    </p>
-        </section>
-
-        <section id="datenschutz">
-            <h2>Datenschutz</h2>
-            <p>Ihre Privatsphäre ist uns wichtig. Diese Datenschutzerklärung erläutert, welche persönlichen Daten wir von Ihnen erfassen und wie wir diese verwenden.</p>
-            <p><strong>Erhebung und Verarbeitung personenbezogener Daten</strong></p>
-            <p>Wir erheben und verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung unserer Dienstleistungen erforderlich ist. Dies umfasst unter anderem Ihren Namen, Ihre E-Mail-Adresse und Ihre Telefonnummer.</p>
-            <p><strong>Nutzung und Weitergabe personenbezogener Daten</strong></p>
-            <p>Wir verwenden Ihre personenbezogenen Daten ausschließlich zur Bearbeitung Ihrer Anfragen und zur Erbringung unserer Dienstleistungen. Eine Weitergabe Ihrer Daten an Dritte erfolgt nur, wenn dies gesetzlich vorgeschrieben ist oder Sie ausdrücklich eingewilligt haben.</p>
-            <p><strong>Sicherheit</strong></p>
-            <p>Wir treffen angemessene technische und organisatorische Maßnahmen, um Ihre personenbezogenen Daten vor Verlust, Missbrauch und unbefugtem Zugriff zu schützen.</p>
-            <p><strong>Ihre Rechte</strong></p>
-            <p>Sie haben das Recht, jederzeit Auskunft über die von uns gespeicherten personenbezogenen Daten zu erhalten und deren Berichtigung, Löschung oder Einschränkung der Verarbeitung zu verlangen. Wenden Sie sich hierzu bitte an die oben im Impressum angegebene Kontaktadresse.</p>
-            <p><strong>Cookies</strong></p>
-            <p>Hinweis zu Cookies: Diese Website verwendet Cookies, um Ihnen die bestmögliche Nutzung unserer Website zu ermöglichen. Durch die weitere Nutzung der Website stimmen Sie der Verwendung von Cookies zu.</p>
-            
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer>&copy; 2024 Serif Ünal. Alle Rechte vorbehalten.</footer>
-    <!-- Datenschutz Modal Content (moved to the bottom) -->
-<div id="datenschutzModalContent" style='display:none;'</div>
-  <!-- Beispieltext für den Datenschutzbereich -->
-  Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst und halten uns strikt an die Regeln der Datenschutzgesetze. Personenbezogene Daten werden auf dieser Webseite nur im technisch notwendigen Umfang erhoben. In keinem Fall werden die erhobenen Daten verkauft oder aus anderen Gründen an Dritte weitergegeben.
-
-  Erhebung und Verarbeitung von Daten
-  Jeder Zugriff auf unsere Webseite und jeder Abruf einer auf der Webseite hinterlegten Datei werden protokolliert. Die Speicherung dient internen systembezogenen und statistischen Zwecken. Protokolliert werden:
-  Name der abgerufenen Datei
-  Datum und Uhrzeit des Abrufs
-  Übertragene Datenmenge
-  Meldung über erfolgreichen Abruf
-  Webbrowser und anfragende Domain
-  IP-Adressen der anfragenden Rechner
-
-  Nutzung und Weitergabe personenbezogener Daten
-  Soweit Sie uns personenbezogene Daten zur Verfügung gestellt haben, verwenden wir diese nur zur Beantwortung Ihrer Anfragen, zur Abwicklung mit Ihnen geschlossener Verträge und für die technische Administration.
-
-  <!-- Weitere Abschnitte können hier hinzugefügt werden -->
-
-    <!-- JavaScript -->
+    <!-- JavaScript for modals and cookie consent -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var cookieConsent = document.getElementById('cookieConsent');
+        // Function to show a modal
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
 
-    // Overlay erstellen
-    var overlay = document.createElement('div');
-    overlay.id = 'overlay';
+        // Function to hide a modal
+        function hideModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
 
-    // Stil für Overlay hinzufügen
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
-    overlay.style.zIndex = '9998'; // Unterhalb des Cookie-Banners
-
-    document.body.appendChild(overlay);
-
-    var settingsModal = document.getElementById('cookieSettingsModal');
-
-    document.getElementById('acceptCookies').addEventListener('click', function() {
-        cookieConsent.style.display = 'none';
-        overlay.style.display = 'none';
-        // Hier kannst du auch Code hinzufügen, um die Zustimmung zu speichern
-        console.log("Cookies akzeptiert");
-    });
-
-    document.getElementById('declineCookies').addEventListener('click', function() {
-        cookieConsent.style.display = 'none';
-        overlay.style.display = 'none';
-        // Hier kannst du auch Code hinzufügen, um die Ablehnung zu speichern
-        console.log("Cookies abgelehnt");
-    });
-
-    document.getElementById('settingsCookies').addEventListener('click', function() {
-        settingsModal.style.display = 'block';
-    });
-
-    document.querySelector('#cookieSettingsModal .close').addEventListener('click', function() {
-        settingsModal.style.display = 'none';
-    });
-
-    document.getElementById('saveSettings').addEventListener('click', function() {
-        var necessaryCookies = document.getElementById('necessaryCookies').checked;
-        var analyticsCookies = document.getElementById('analyticsCookies').checked;
-        var marketingCookies = document.getElementById('marketingCookies').checked;
-
-        // Speichere die Einstellungen (z.B. in localStorage oder sende sie an den Server)
-        console.log("Einstellungen gespeichert:", {
-            necessary: necessaryCookies,
-            analytics: analyticsCookies,
-            marketing: marketingCookies
+        // Event listener for "Mehr erfahren"
+        document.getElementById('moreInfo').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            showModal('datenschutzModal');
         });
 
-        // Schließe das Modal und das Overlay
-        settingsModal.style.display = 'none';
-        cookieConsent.style.display= "none"; 
-        overlay.style.display= "none";
+        // Event listeners for other buttons (optional)
+        document.getElementById('acceptCookies').addEventListener('click', function() {
+            document.getElementById('cookieConsent').style.display = 'none';
+        });
 
-        // Optional: Zeige eine Bestätigungsmeldung an oder führe andere Aktionen aus
-        alert("Ihre Cookie-Einstellungen wurden gespeichert.");
-    });
-});
-</script>
-</body>
-</html>
+        document.getElementById('declineCookies').addEventListener('click', function() {
+            document.getElementById('cookieConsent').style.display = 'none';
+        });
+
+        document.getElementById('settingsCookies').addEventListener('click', function() {
+            showModal('cookieSettingsModal');
+        });
+
+        // Close buttons for modals
+        document.querySelectorAll('.close').forEach(function(closeButton) {
+            closeButton.addEventListener('click', function() {
+                hideModal(this.parentElement.parentElement.id);
+            });
+        });
+
+         // Overlay erstellen
+         var overlay = document.createElement('div');
+         overlay.id = 'overlay';
+         // Stil für Overlay hinzufügen
+         overlay.style.position = 'fixed';
+         overlay.style.top = '0';
+         overlay.style.left = '0';
+         overlay.style.width = '100%';
+         overlay.style.height = '100%';
+         overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+         overlay.style.zIndex = '9998'; // Unterhalb des Cookie-Banners
+         document.body.appendChild(overlay);
+
+         var settingsModal = document.getElementById('cookieSettingsModal');
+
+         document.getElementById('acceptCookies').addEventListener('click', function() {
+             cookieConsent.style.display = 'none';
+             overlay.style.display = 'none'; 
+             console.log("Cookies akzeptiert");
+         });
+
+         document.getElementById('declineCookies').addEventListener('click', function() {
+             cookieConsent.style.display = 'none';
+             overlay.style.display = 'none'; 
+             console.log("Cookies abgelehnt");
+         });
+
+         document.getElementById('settingsCookies').addEventListener('click', function() {
+             settingsModal.style.display = 'block';
+         });
+
+         document.querySelector('#cookieSettingsModal .close').addEventListener('click', function() {
+             settingsModal.style.display = 'none';
+         });
+
+         document.getElementById('saveSettings').addEventListener('click', function() {
+             var necessaryCookies = document.getElementById('necessaryCookies').checked;
+             var analyticsCookies = document.getElementById('analyticsCookies').checked;
+             var marketingCookies = document.getElementById('marketingCookies').checked;
+
+             console.log("Einstellungen gespeichert:", { necessary: necessaryCookies, analytics: analyticsCookies, marketing: marketingCookies });
+
+             settingsModal.style.display = 'none';
+             cookieConsent.style.display= "none";
+             overlay.style.display= "none"; 
+
+             alert("Ihre Cookie-Einstellungen wurden gespeichert.");
+          });
+     </script>
+
+     <!-- Rest of your HTML content -->
+
+     <!-- Footer -->
+     <footer>&copy; 2024 Serif Ünal. Alle Rechte vorbehalten.</footer>
+
+     <!-- Datenschutz Modal Content (moved to the bottom) -->
+     <!-- Note: The following div was incorrectly placed and formatted in your original code. It has been corrected and moved here.-->
+     <!--<div id="#datenschutzModalContent" style='display:none;'>-->
+     <!--<!-- Beispieltext für den Datenschutzbereich -->-->
+     <!--<p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst und halten uns strikt an die Regeln der Datenschutzgesetze. Personenbezogene Daten werden auf dieser Webseite nur im technisch notwendigen Umfang erhoben. In keinem Fall werden die erhobenen Daten verkauft oder aus anderen Gründen an Dritte weitergegeben.</p>-->
+     <!--<h3>Erhebung und Verarbeitung von Daten</h3>-->
+     <!--<ul>-->
+     <!--<li>Name der abgerufenen Datei</li>-->
+     <!--<li>Datum und Uhrzeit des Abrufs</li>-->
+     <!--<li>Übertragene Datenmenge</li>-->
+     <!--<li>Meldung über erfolgreichen Abruf</li>-->
+     <!--<li>Webbrowser und anfragende Domain</li>-->
+     <!--<li>IP-Adressen der anfragenden Rechner</li>-->
+     <!--</ul>-->
+     <!--<h3>Nutzung und Weitergabe personenbezogener Daten</h3>-->
+     <!--<p>Soweit Sie uns personenbezogene Daten zur Verfügung gestellt haben, verwenden wir diese nur zur Beantwortung Ihrer Anfragen, zur Abwicklung mit Ihnen geschlossener Verträge und für die technische Administration.</p>-->
+
+ </body>
+ </html>

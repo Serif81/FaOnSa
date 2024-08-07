@@ -78,7 +78,6 @@ footer {
 }
 
 /* Neuer CSS-Code für das Cookie-Banner und Modal */
-
 #cookieConsent {
     background-color: rgba(20, 20, 20, 0.8);
     min-height: auto; /* Setze die Höhe auf auto */
@@ -93,62 +92,78 @@ footer {
     width: 100%; /* Setze die Breite auf 100% */
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
     border-radius :5px ;
-   text-align:center ;
+    text-align:center ;
 }
 
 #cookieConsent p { 
-   margin-bottom :20px ; /* Abstand unter dem Text */ 
+    margin-bottom :20px ; 
+    /* Abstand unter dem Text */ 
 } 
 
 #cookieConsent a { 
-   color:#4B8EE7 ; 
+    color:#4B8EE7 ; 
 } 
 
 #acceptCookies, #declineCookies, #settingsCookies { 
-   background-color:#4B8EE7 ; 
-   color:white ; 
-   border:none ; 
-   padding :10px ; 
-   cursor:pointer ; 
-   margin :10px ; /* Erhöhe den Abstand zwischen den Buttons */ 
+    background-color:#4B8EE7 ; 
+    color:white ; 
+    border:none ; 
+    padding :10px ; 
+    cursor:pointer ; 
+    margin :10px ; 
+    /* Erhöhe den Abstand zwischen den Buttons */ 
 } 
 
 .modal { 
-   display:none ; /* Standardmäßig ausgeblendet */ 
-   position :fixed ; /* Fixiert im Viewport */ 
-   top :50% ; /* Positioniert es in der Mitte des Bildschirms */ 
-   left :50% ; /* Positioniert es in der Mitte des Bildschirms */ 
-   transform :translate(-50%, -50%) ; /* Zentriert das Modal */ 
-   background-color:white ; 
-   padding :20px ;  
-   box-shadow :rgba(0 ,0 ,0 ,0.1);  
-   border-radius :10px ;  
-   text-align:center ;  
-   z-index :10000 ;  
-   max-width :95%; /* Maximale Breite für größere Bildschirme */  
-   max-height :80vh ; /* Maximale Höhe für das Modal */  
-   overflow-y:auto ; /* Scrollen bei Überlauf in vertikaler Richtung */  
-} 
+    display:none ; 
+    /* Standardmäßig ausgeblendet */ 
+    position :fixed ; 
+    /* Fixiert im Viewport */ top :50% ; 
+    /* Positioniert es in der Mitte des Bildschirms */ left :50% ; transform :translate(-50%, -50%) ; 
+    /* Zentriert das Modal */ background-color:white ; padding :20px ; box-shadow :rgba(0 ,0 ,0 ,0.1); border-radius :10px ; text-align:center ; z-index :10000 ; max-width :95%; 
+    /* Maximale Breite für größere Bildschirme */ max-height :80vh ;
+    /* Maximale Höhe für das Modal */ overflow-y:auto ;
+    /* Scrollen bei Überlauf in vertikaler Richtung */ } .modal-content { position :relative ;
+    width :90%;
+    /* Breite des Modals auf mobilen Geräten */ } .close { position:absolute ;
+    top :13px ;
+    right :13px ;
+    font-size :24px ;
+    cursor:pointer ;
+} @media (max-width :
+768 px) {.modal { max-width:
+    calc(100 % -40 px);
+    width:
+    calc(100 % -40 px);
+}
+.modal-content { width:
+    calc(100 % -40 px);
+}
+}
 
-.modal-content {  
-     position :relative ;
-     width :90%; /* Breite des Modals auf mobilen Geräten */  
-}  
+/* Neuer CSS-Code für das responsive Logo */
+/* Standardgröße für Desktops */
 
-.close {  
-     position:absolute ;
-     top :13px ;
-     right :13px ;
-     font-size :24px ;
-     cursor:pointer ;
-}  
+.responsive-logo { height:
+    100 px;
 
-@media (max-width :768px) {  
-     .modal {  
-         max-width: calc(100% - 40px);  
-         width: calc(100% - 40px);  
-     }  
-     .modal-content {  
-         width: calc(100% - 40px);  
-     }  
-}  
+width:
+    auto;
+
+}
+/* Größeres Logo für größere Bildschirme */
+
+@media(min-width:
+768 px) {.responsive-logo { height:
+    150 px;
+
+}
+}
+/* Kleineres Logo für Smartphones */
+
+@media(max-width:
+480 px) {.responsive-logo { height:
+    80 px;
+
+}
+}

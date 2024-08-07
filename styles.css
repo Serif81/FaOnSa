@@ -144,20 +144,20 @@ footer {
 /* Neuer CSS-Code für das responsive Logo */
 /* Standardgröße für Desktops */
 .responsive-logo {
-    max-width: 20%; /* Setze die maximale Breite auf 20% der Bildschirmbreite */
+    max-width: 30%; /* Setze die maximale Breite auf 20% der Bildschirmbreite */
     height: auto; /* Behalte das Seitenverhältnis bei */
 }
 
 /* Größeres Logo für größere Bildschirme */
 @media (min-width: 768px) {
     .responsive-logo {
-        max-width: 15%; /* Setze die maximale Breite auf 15% der Bildschirmbreite */
+        max-width: 22,5%; /* Setze die maximale Breite auf 15% der Bildschirmbreite */
     }
 }
 
 /* Kleineres Logo für Smartphones */
 @media (max-width: 480px) {
     .responsive-logo {
-        max-width: 30%; /* Setze die maximale Breite auf 30% der Bildschirmbreite */
+        max-width: 45%; /* Setze die maximale Breite auf 30% der Bildschirmbreite */
     }
 }

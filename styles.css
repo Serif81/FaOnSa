@@ -158,6 +158,6 @@ footer {
 /* Kleineres Logo für Smartphones */
 @media (max-width: 480px) {
     .responsive-logo {
-        max-width: 45%; /* Setze die maximale Breite auf 30% der Bildschirmbreite */
+        max-width: 65%; /* Setze die maximale Breite auf 30% der Bildschirmbreite */
     }
 }

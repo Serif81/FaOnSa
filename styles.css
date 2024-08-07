@@ -72,8 +72,8 @@ footer {
 /* Media Queries für mobile Geräte */
 @media (max-width: 768px) {
     nav ul li {
-        display:block; /* Ändere dies zu block für mobile Ansicht */
-        margin-bottom :10px; /* Abstand zwischen den Links in mobiler Ansicht*/
+        display: block; /* Ändere dies zu block für mobile Ansicht */
+        margin-bottom: 10px; /* Abstand zwischen den Links in mobiler Ansicht */
     }
 }
 
@@ -91,73 +91,84 @@ footer {
     left: 0;
     width: 100%; /* Setze die Breite auf 100% */
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-    border-radius :5px ;
-    text-align:center ;
+    border-radius: 5px;
+    text-align: center;
 }
 
-#cookieConsent p { 
-    margin-bottom :20px ; 
-    /* Abstand unter dem Text */ 
-} 
-
-#cookieConsent a { 
-    color:#4B8EE7 ; 
-} 
-
-#acceptCookies, #declineCookies, #settingsCookies { 
-    background-color:#4B8EE7 ; 
-    color:white ; 
-    border:none ; 
-    padding :10px ; 
-    cursor:pointer ; 
-    margin :10px ; 
-    /* Erhöhe den Abstand zwischen den Buttons */ 
-} 
-
-.modal { 
-    display:none ; 
-    /* Standardmäßig ausgeblendet */ 
-    position :fixed ; 
-    /* Fixiert im Viewport */ top :50% ; 
-    /* Positioniert es in der Mitte des Bildschirms */ left :50% ; transform :translate(-50%, -50%) ; 
-    /* Zentriert das Modal */ background-color:white ; padding :20px ; box-shadow :rgba(0 ,0 ,0 ,0.1); border-radius :10px ; text-align:center ; z-index :10000 ; max-width :95%; 
-    /* Maximale Breite für größere Bildschirme */ max-height :80vh ;
-    /* Maximale Höhe für das Modal */ overflow-y:auto ;
-    /* Scrollen bei Überlauf in vertikaler Richtung */ } .modal-content { position :relative ;
-    width :90%;
-    /* Breite des Modals auf mobilen Geräten */ } .close { position:absolute ;
-    top :13px ;
-    right :13px ;
-    font-size :24px ;
-    cursor:pointer ;
-} @media (max-width :
-768 px) {.modal { max-width:
-    calc(100 % -40 px);
-    width:
-    calc(100 % -40 px);
+#cookieConsent p {
+    margin-bottom: 20px; /* Abstand unter dem Text */
 }
-.modal-content { width:
-    calc(100 % -40 px);
+
+#cookieConsent a {
+    color: #4B8EE7;
 }
+
+#acceptCookies, #declineCookies, #settingsCookies {
+    background-color: #4B8EE7;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin: 10px; /* Erhöhe den Abstand zwischen den Buttons */
+}
+
+.modal {
+    display: none; /* Standardmäßig ausgeblendet */
+    position: fixed; /* Fixiert im Viewport */
+    top: 50%; /* Positioniert es in der Mitte des Bildschirms */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Zentriert das Modal */
+    background-color: white;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    z-index: 10000;
+    max-width: 95%; /* Maximale Breite für größere Bildschirme */
+    max-height: 80vh; /* Maximale Höhe für das Modal */
+    overflow-y: auto; /* Scrollen bei Überlauf in vertikaler Richtung */
+}
+
+.modal-content {
+    position: relative;
+    width: 90%; /* Breite des Modals auf mobilen Geräten */
+}
+
+.close {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        max-width: calc(100% - 40px);
+        width: calc(100% - 40px);
+    }
+    .modal-content {
+        width: calc(100% - 40px);
+    }
 }
 
 /* Neuer CSS-Code für das responsive Logo */
 /* Standardgröße für Desktops */
 .responsive-logo {
-    max-width: 30%; /* Setze die maximale Breite auf 20% der Bildschirmbreite */
+    max-width: 30%; /* Setze die maximale Breite auf 30% der Bildschirmbreite */
     height: auto; /* Behalte das Seitenverhältnis bei */
 }
 
 /* Größeres Logo für größere Bildschirme */
 @media (min-width: 768px) {
     .responsive-logo {
-        max-width: 22,5%; /* Setze die maximale Breite auf 15% der Bildschirmbreite */
+        max-width: 22.5%; /* Setze die maximale Breite auf 22.5% der Bildschirmbreite */
     }
 }
 
 /* Kleineres Logo für Smartphones */
 @media (max-width: 480px) {
     .responsive-logo {
-        max-width: 65%; /* Setze die maximale Breite auf 30% der Bildschirmbreite */
+        max-width: 65%; /* Setze die maximale Breite auf 65% der Bildschirmbreite */
     }
 }

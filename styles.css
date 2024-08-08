@@ -95,19 +95,25 @@ footer {
 
     /* WICHTIGE ÄNDERUNG: Flexbox und Textausrichtung für Mobilgeräte */
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
+    
 }
 
 #cookieConsent p {
-    margin-bottom: 20px;
-    text-indent: -50px;
+    margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
 }
 
 #cookieConsent a {
     color: #4B8EE7;
+}
+
+.button-container {
+    display: flex; /* Verwende Flexbox für die Buttons */
+    justify-content: center; /* Zentriert die Buttons */
+    width: 100%; /* Nimmt die gesamte Breite ein */
 }
 
 #acceptCookies, #declineCookies, #settingsCookies {

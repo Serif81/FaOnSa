@@ -24,8 +24,8 @@ nav ul {
 }
 
 nav ul li {
-    display: inline-block; /* Ändere dies zu block für mobile Ansicht */
-    margin-right: 10px; /* Abstand zwischen den Links */
+    display: inline-block;
+    margin-right: 10px;
 }
 
 nav ul li a {
@@ -41,15 +41,15 @@ main {
 /* Abschnittsstile */
 section {
     padding: 20px;
-    margin-bottom: 20px; /* Abstand zwischen den Abschnitten */
+    margin-bottom: 20px;
 }
 
 section:nth-of-type(odd) {
-    background-color: #f9f9f9; /* Unterschiedliche Hintergrundfarben für ungerade Abschnitte */
+    background-color: #f9f9f9;
 }
 
 section:nth-of-type(even) {
-    background-color: #e9e9e9; /* Unterschiedliche Hintergrundfarben für gerade Abschnitte */
+    background-color: #e9e9e9;
 }
 
 /* Trennlinien zwischen den Abschnitten */
@@ -57,8 +57,8 @@ section + section::before {
     content: "";
     display: block;
     height: 2px;
-    background-color: #ccc; /* Farbe der Trennlinie */
-    margin-bottom: 20px; /* Abstand unterhalb der Trennlinie */
+    background-color: #ccc;
+    margin-bottom: 20px;
 }
 
 /* Footer-Stil */
@@ -72,31 +72,37 @@ footer {
 /* Media Queries für mobile Geräte */
 @media (max-width: 768px) {
     nav ul li {
-        display: block; /* Ändere dies zu block für mobile Ansicht */
-        margin-bottom: 10px; /* Abstand zwischen den Links in mobiler Ansicht */
+        display: block;
+        margin-bottom: 10px;
     }
 }
 
 /* Neuer CSS-Code für das Cookie-Banner und Modal */
 #cookieConsent {
     background-color: rgba(20, 20, 20, 0.8);
-    min-height: auto; /* Setze die Höhe auf auto */
-    font-size: 18px; /* Vergrößere die Schriftgröße */
+    min-height: auto;
+    font-size: 18px;
     color: #ccc;
-    line-height: 1.5; /* Erhöhe den Zeilenabstand */
-    padding: 20px; /* Erhöhe das Padding für mehr Platz */
+    line-height: 1.5;
+    padding: 20px;
     z-index: 9999;
     position: fixed;
-    bottom: 0; /* Positioniere es am unteren Rand des Bildschirms */
+    bottom: 0;
     left: 0;
-    width: 100%; /* Setze die Breite auf 100% */
+    width: 100%;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
     border-radius: 5px;
+
+    /* WICHTIGE ÄNDERUNG: Flexbox und Textausrichtung für Mobilgeräte */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     text-align: center;
 }
 
 #cookieConsent p {
-    margin-bottom: 20px; /* Abstand unter dem Text */
+    margin-bottom: 20px;
 }
 
 #cookieConsent a {
@@ -109,29 +115,29 @@ footer {
     border: none;
     padding: 10px;
     cursor: pointer;
-    margin: 10px; /* Erhöhe den Abstand zwischen den Buttons */
+    margin: 10px;
 }
 
 .modal {
-    display: none; /* Standardmäßig ausgeblendet */
-    position: fixed; /* Fixiert im Viewport */
-    top: 50%; /* Positioniert es in der Mitte des Bildschirms */
+    display: none;
+    position: fixed;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Zentriert das Modal */
+    transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     text-align: center;
     z-index: 10000;
-    max-width: 95%; /* Maximale Breite für größere Bildschirme */
-    max-height: 80vh; /* Maximale Höhe für das Modal */
-    overflow-y: auto; /* Scrollen bei Überlauf in vertikaler Richtung */
+    max-width: 95%;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .modal-content {
     position: relative;
-    width: 90%; /* Breite des Modals auf mobilen Geräten */
+    width: 90%;
 }
 
 .close {
@@ -153,22 +159,19 @@ footer {
 }
 
 /* Neuer CSS-Code für das responsive Logo */
-/* Standardgröße für Desktops */
 .responsive-logo {
-    max-width: 30%; /* Setze die maximale Breite auf 30% der Bildschirmbreite */
-    height: auto; /* Behalte das Seitenverhältnis bei */
+    max-width: 30%;
+    height: auto;
 }
 
-/* Größeres Logo für größere Bildschirme */
 @media (min-width: 768px) {
     .responsive-logo {
-        max-width: 22.5%; /* Setze die maximale Breite auf 22.5% der Bildschirmbreite */
+        max-width: 22.5%;
     }
 }
 
-/* Kleineres Logo für Smartphones */
 @media (max-width: 480px) {
     .responsive-logo {
-        max-width: 65%; /* Setze die maximale Breite auf 65% der Bildschirmbreite */
+        max-width: 65%;
     }
 }

@@ -192,9 +192,9 @@
     <header>
     <h1>Willkommen auf meiner Website</h1>
     <img src="Logo_FaOnSa_2.png" alt="Logo" class="responsive-logo">
-    <p>+Vorbereitung auf die Fachkundeprüfung IHK für Taxi- und Mietwagenunternehmer+</p>
-    <p>++Homepage Erstellung und Beratung++</p>
-    <p>+++SAP Support und Trainings+++</p>
+    <p>+ Vorbereitung auf die Fachkundeprüfung IHK für Taxi- und Mietwagenunternehmer +</p>
+    <p>++ Homepage Erstellung und Beratung ++</p>
+    <p>+++ SAP Support und Trainings +++</p>
         
 </header>
     
@@ -236,7 +236,43 @@
         </li>
     </ul>
     <p>Nehmen Sie gerne Kontakt mit mir auf, um mehr über meine Dienstleistungen zu erfahren oder einen Beratungstermin zu vereinbaren. Ich freue mich darauf, Ihnen weiterzuhelfen!</p>
-        </section>
+     <!-- Button zum Anzeigen der Preisliste -->
+    <button id="show-price-list">Preisliste anzeigen</button>   
+
+<!-- Preisliste, standardmäßig verborgen -->
+<div id="price-list" style="display: none;">
+    <h3>Preisliste</h3>
+    <ul>
+        <li><strong>Online-Kurs (Dauer pro Kurs: 1h): 35 €</strong></li>
+        In meinen Online-Kursen biete ich Ihnen die Möglichkeit, Wissen bequem von zu Hause aus zu erwerben und direkt anzuwenden.
+        
+        <li><strong>WhatsApp-Support (Laufzeit: 3 Monate): 20 €</strong></li>
+        Mein WhatsApp-Support bietet Ihnen schnelle Hilfe und Antworten auf Ihre Fragen während der Laufzeit.
+        
+        <li><strong>Handout in Ordner: 25 €</strong></li>
+        Sie erhalten ein umfassendes Handout, das alle wichtigen Gesetze zusammenfasst und 600 Fragen zum lernen zur Verfügung stehen.
+        <p></p>
+        <li><strong>Fertige Homepage (Kopie meiner Website): 99 €</strong></li>
+        Erhalten Sie eine komplette Kopie meiner Website, die Sie als Vorlage für Ihre eigene Nutzung verwenden können.
+        
+        <li><strong>Eigene Homepage Erstellung und Beratung: 150 €</strong></li>
+        Ich helfen Ihnen bei der Erstellung Ihrer eigenen Homepage und biete individuelle Beratung für Ihre Bedürfnisse.
+        
+        <li><strong>Pflege und Wartung der Homepage (Laufzeit 1 Jahr): 50 €</strong></li>
+        Meine Dienstleistung zur Pflege und Wartung Ihrer Homepage stellt sicher, dass alles reibungslos läuft und stets aktuell bleibt.
+        <p></p>
+        <li><strong>Automatisierungslösungen für SAP mit Excel-Makros:</strong> Preis auf Anfrage</li>
+        Ich bieten maßgeschneiderte Automatisierungslösungen, die Ihre SAP-Prozesse effizienter gestalten.
+        
+        <li><strong>Online Support für gewerbliche SAP-Nutzer:</strong> Preis auf Anfrage</li>
+        Profitieren Sie von meinen spezialisierten Online-Support, der auf die Bedürfnisse gewerblicher SAP-Nutzer abgestimmt ist.</p>
+        <!-- Weitere Leistungen hier -->
+    </ul>
+    
+<button class="close-price-list">Schließen</button>
+
+</div>
+</section>
 
         <section id="ueber-mich">
             <h2>Über mich</h2>
@@ -302,6 +338,7 @@
     <p>
         Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
     </p>
+    <button class="close-button">Schließen</button>
         </section>
 
         <section id="datenschutz">
@@ -317,7 +354,8 @@
             <p>Sie haben das Recht, jederzeit Auskunft über die von uns gespeicherten personenbezogenen Daten zu erhalten und deren Berichtigung, Löschung oder Einschränkung der Verarbeitung zu verlangen. Wenden Sie sich hierzu bitte an die oben im Impressum angegebene Kontaktadresse.</p>
             <p><strong>Cookies</strong></p>
             <p>Hinweis zu Cookies: Diese Website verwendet Cookies, um Ihnen die bestmögliche Nutzung unserer Website zu ermöglichen. Durch die weitere Nutzung der Website stimmen Sie der Verwendung von Cookies zu.</p>
-            
+            <button class="close-button">Schließen</button>
+
         </section>
 
     </main>
@@ -340,5 +378,73 @@
       <!--<h3>Nutzung und Weitergabe personenbezogener Daten</h3>-->
       <!--<p>Soweit Sie uns personenbezogene Daten zur Verfügung gestellt haben, verwenden wir diese nur zur Beantwortung Ihrer Anfragen, zur Abwicklung mit Ihnen geschlossener Verträge und für die technische Administration.</p>-->
  
+      <script>
+        // Funktion zum Ausblenden der Abschnitte
+        function hideSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.style.display = 'none'; // Ausblenden
+            }
+        }
+    
+        // Funktion zum Ein- und Ausblenden der Abschnitte
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+                if (section.style.display === 'block') {
+                    // Scrollen zum Abschnitt, wenn er angezeigt wird
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+    
+        // Funktion zum Anzeigen und Schließen der Preisliste
+        function togglePriceList() {
+            const priceList = document.getElementById('price-list');
+            priceList.style.display = (priceList.style.display === 'none') ? 'block' : 'none';
+            if (priceList.style.display === 'block') {
+                priceList.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    
+        // Beim Laden der Seite die Abschnitte ausblenden
+        document.addEventListener("DOMContentLoaded", function() {
+            hideSection('impressum');
+            hideSection('datenschutz');
+            hideSection('price-list'); // Preisliste ausblenden
+        });
+    
+        // Event Listener für die Navigation
+        document.querySelectorAll('nav ul li a').forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                const targetId = this.getAttribute('href').substring(1); // ID des Ziels
+                if (targetId === 'impressum' || targetId === 'datenschutz') {
+                    event.preventDefault(); // Standardverhalten des Links verhindern
+                    toggleSection(targetId); // Ein- und Ausblenden
+                }
+            });
+        });
+    
+        // Event Listener für Schließen-Buttons
+        document.querySelectorAll('.close-button').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const section = this.parentElement;
+                section.style.display = 'none'; // Schließen des Abschnitts
+            });
+        });
+    
+        // Event Listener für Preisliste anzeigen
+        document.getElementById('show-price-list').addEventListener('click', function() {
+            togglePriceList();
+        });
+    
+        // Event Listener für Schließen-Button der Preisliste
+        document.querySelector('.close-price-list').addEventListener('click', function() {
+            const priceList = document.getElementById('price-list');
+            priceList.style.display = 'none'; // Schließen der Preisliste
+        });
+    </script>
+
 </body>
  </html>

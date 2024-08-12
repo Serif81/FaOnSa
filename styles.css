@@ -97,7 +97,6 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
 
 #cookieConsent p {
@@ -180,5 +179,112 @@ footer {
 @media (max-width: 480px) {
     .responsive-logo {
         max-width: 65%;
+    }
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* CSS für Kontaktinformationen */
+.contact-info {
+    font-size: 1rem;
+    color: #0038a8; /* Einheitliche Farbe */
+    text-decoration: none;
+}
+.contact-info:hover {
+    text-decoration: underline;
+}
+
+/* CSS für Textabsätze */
+.text-paragraph {
+    font-size: 1rem;
+    color: #333; /* Standardtextfarbe */
+}
+
+.lead {
+    font-size: 1.25rem; /* Größere Schriftgröße für Hervorhebung */
+    font-weight: bold; /* Fett für Hervorhebung */
+    color: #333; /* gleiche Farbe wie der Text */
+}
+
+/* CSS für primäre Buttons */
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Stil für die Schließen- und Preisliste-Buttons */
+.close-button,
+#show-price-list,
+.close-price-list { /* Füge die Klasse close-price-list hinzu */
+    background-color: #0038a8; /* Königsblau */
+    color: white; /* Textfarbe */
+    padding: 10px 15px; /* Innenabstand */
+    border: none; /* Kein Rand */
+    border-radius: 5px; /* Abgerundete Ecken */
+    font-size: 1rem; /* Schriftgröße */
+    cursor: pointer; /* Zeiger bei Hover */
+    transition: background-color 0.3s ease; /* Übergangseffekt */
+}
+
+.close-button:hover,
+#show-price-list:hover,
+.close-price-list:hover { /* Füge die Hover-Style-Regel hinzu */
+    background-color: #0056b3; /* Dunklerer Blauton bei Hover */
+}
+
+/* Navigation Style */
+nav {
+    background-color: #e0e0e0; /* Dunklerer Hintergrund für bessere Sichtbarkeit */
+    padding: 10px 0; /* Vertikales Padding für mehr Platz */
+    border-bottom: 2px solid #aaa; /* Dunklere untere Linie für visuelle Trennung */
+}
+
+nav ul {
+    list-style-type: none; /* Entfernen der Aufzählungszeichen */
+    margin: 0; /* Entfernen von Standard-Margin */
+    padding: 0; /* Entfernen von Standard-Padding */
+    display: flex; /* Flexbox für horizontale Anordnung */
+    justify-content: center; /* Zentrierung der Navigation */
+    flex-wrap: wrap; /* Zeilenumbruch auf kleineren Bildschirmen */
+}
+
+nav li {
+    margin: 0 15px; /* Abstand zwischen den Links */
+}
+
+nav a {
+    text-decoration: none; /* Unterstreichung entfernen */
+    color: #222222; /* Dunklerer Farbton für die Schriftfarbe der Links */
+    font-size: 18px; /* Schriftgröße für Desktop */
+    padding: 10px 15px; /* Innenabstand für Klickfläche */
+    transition: background-color 0.3s, color 0.3s; /* Sanfte Übergänge für Hover-Effekte */
+}
+
+/* Hintergrundfarbe und Schriftfarbe beim Hover */
+nav a:hover {
+    background-color: #aaaaaa; /* Dunkleres Hellgrau beim Hover */
+    color: #000000; /* Schwarz beim Hover */
+    border-radius: 5px; /* Abgerundete Ecken */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    nav a {
+        font-size: 16px; /* Kleinere Schriftgröße für mobile Geräte */
+        padding: 8px 10px; /* Weniger Innenabstand für mobile Geräte */
     }
 }

@@ -8,8 +8,8 @@
 </head>
 <body>
     <header>
-        <h1>Willkommen bei meiner Web-App!</h1>
-        <img src="pfad/zum/deinem/logo.png" alt="Mein Logo" style="max-width: 100%; height: auto;">
+        <h1>Willkommen bei meiner Web-App für Fahrdienstleistungen!</h1>
+        <img src="Logo_FaOnSa_2.png" alt="Logo von FaOnSa" class="responsive-logo">
     </header>
     <main>
         <h2><u>Fahrtenübersicht</u></h2>
@@ -18,11 +18,11 @@
             <form id="rideSelection">
                 <div class="ride">
                     <label for="fromCity1">Von Stadt:</label>
-                    <input type="text" id="fromCity1" value="Frankfurt" readonly>
+                    <input type="text" id="fromCity1" value="Frankfurt" readonly><br>
                     <label for="toCity1">Nach Stadt:</label>
-                    <input type="text" id="toCity1" value="Bremen" readonly>
+                    <input type="text" id="toCity1" value="Bremen" readonly><br>
                     <label for="date1">Datum:</label>
-                    <input type="text" id="date1" value="01.09.2024" readonly>
+                    <input type="text" id="date1" value="01.09.2024" readonly><br>
                     <label for="time1">Uhrzeit:</label>
                     <select id="time1" onchange="updateButton()">
                         <option value="">Bitte wählen</option>
@@ -48,15 +48,15 @@
                     <option value="Hanau">Hanau</option>
                     <option value="Bad Soden">Bad Soden</option>
                     <option value="Bad Vilbel">Bad Vilbel</option>
-                </select>
+                </select><br>
                 <label for="terminal">Nach Flughafen:</label>
                 <select id="terminal">
                     <option value="">Bitte wählen</option>
                     <option value="Terminal 1">Terminal 1</option>
                     <option value="Terminal 2">Terminal 2</option>
-                </select>
+                </select><br>
                 <label for="airportDate">Datum:</label>
-                <input type="text" id="airportDate" value="07.09.2024" readonly>
+                <input type="text" id="airportDate" value="07.09.2024" readonly><br>
                 <label for="airportTime">Uhrzeit:</label>
                 <select id="airportTime" onchange="updateAirportButton()">
                     <option value="">Bitte wählen</option>
@@ -70,15 +70,15 @@
         </section>
 
         <section id="specialRides" style="border: 1px solid #000; padding: 10px; margin-top: 20px;">
-            <h2><u>Sonderfahrten</u> (Langstreckenfahrten für Privat- und Gewerbekunden)</h2>
-            <p>Bitte beachten Sie: Diese Buchung dient ausschließlich für Langstreckenfahrten und ist nicht für den Taxi-Service gedacht.</p>
+            <h2><u>Anfragen für Sonderfahrten nach/ab Frankfurt</u> (Langstreckenfahrten für Privat- und Gewerbekunden)</h2>
+            <p>Bitte beachten Sie: Diese Anfrage dient ausschließlich für Langstreckenfahrten und ist nicht für den City-Service gedacht! </p>
             <form id="specialRidesForm">
                 <label for="specialFromCity">Von Stadt:</label>
                 <input type="text" id="specialFromCity" placeholder="Bitte Stadt eingeben">
                 <label for="specialToCity">Nach Stadt:</label>
                 <input type="text" id="specialToCity" placeholder="Bitte Stadt eingeben">
                 <label for="specialDate">Datum:</label>
-                <input type="text" id="specialDate" value="08.09.2024" readonly>
+                <input type="text" id="specialDate" placeholder="Bitte Datum eingeben">
                 <label for="specialTime">Uhrzeit:</label>
                 <select id="specialTime" onchange="updateSpecialButton()">
                     <option value="">Bitte wählen</option>
@@ -86,6 +86,14 @@
                     <option value="11:00">11:00</option>
                     <option value="12:00">12:00</option>
                     <option value="13:00">13:00</option>
+                    <option value="13:00">14:00</option>
+                    <option value="13:00">15:00</option>
+                    <option value="13:00">16:00</option>
+                    <option value="13:00">17:00</option>
+                    <option value="13:00">18:00</option>
+                    <option value="13:00">19:00</option>
+                    <option value="13:00">20:00</option>
+
                 </select>
                 <button type="button" class="confirm-button" disabled onclick="confirmSpecialRides()">Bestätigen</button>
             </form>

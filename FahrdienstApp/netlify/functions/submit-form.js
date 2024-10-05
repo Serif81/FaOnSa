@@ -1,9 +1,17 @@
+// netlify/functions/submit-form.js
+
 exports.handler = async (event) => {
     try {
-        const data = JSON.parse(event.body); // Daten aus dem Formular empfangen
+        // Hier wird angenommen, dass die Daten als 'application/x-www-form-urlencoded' gesendet werden
+        const data = new URLSearchParams(event.body); // Daten aus dem Formular empfangen
+
+        const vorname = data.get('vorname'); // Hol die Werte der Formulardaten
+        const nachname = data.get('nachname');
+        const telefonnummer = data.get('telefonnummer');
+        const email = data.get('email');
 
         // Hier kannst du die Logik für die Verarbeitung der Daten hinzufügen
-        console.log(data); // Debugging: gib die empfangenen Daten in der Konsole aus
+        console.log({ vorname, nachname, telefonnummer, email }); // Debugging: gib die empfangenen Daten in der Konsole aus
 
         return {
             statusCode: 200,

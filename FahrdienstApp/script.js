@@ -116,17 +116,14 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
    // Anfrage absenden
-   document.getElementById("submitRequestButton").addEventListener("click", function(event) {
+document.getElementById("submitRequestButton").addEventListener("click", function(event) {
     event.preventDefault();
     const form = document.querySelector("#contact form");
     const formData = new FormData(form);
 
     fetch('https://chipper-chimera-a341b1.netlify.app/.netlify/functions/submit-form', {
         method: form.method,
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
+        body: formData, // Sende die Formulardaten
     })
     .then(response => {
         if (response.ok) {

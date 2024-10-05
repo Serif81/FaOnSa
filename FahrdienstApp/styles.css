@@ -10,7 +10,9 @@ header {
     background-color: #4c6b3b; /* Olivgrün für den Header */
     color: white;
     padding: 20px;
-    text-align: center;
+    display: flex; /* Aktiviert Flexbox */
+    flex-direction: column; /* Elemente in einer Spalte anordnen */
+    align-items: center; /* Horizontale Zentrierung */
 }
 
 h2 {
@@ -49,20 +51,34 @@ footer {
     margin-top: 20px;
 }
 
-.logo {
-    max-width: 100%; /* Das Logo nimmt maximal die volle Breite seines Containers ein */
-    height: auto; /* Beibehaltung des Seitenverhältnisses */
-    display: block; /* Entfernt eventuelle Lücken unter dem Bild */
-    margin: 0 auto; /* Zentriert das Logo */
+.logo-container {
+    width: 60%;  /* Der Container soll die gesamte Breite ausfüllen */
+    max-width: 60%;  /* Container nicht breiter als die Seite */
+    text-align: center;  /* Inhalt des Containers zentrieren */
 }
-@media (max-width: 768px) {
+
+.logo {
+    max-width: 60%;  /* Das Logo darf nicht größer als der Container sein */
+    height: auto;  /* Automatische Höhe für Proportionalität */
+    display: block;  /* Blockelement, um Margins anzuwenden */
+    margin: 0 auto;  /* Zentrierung des Logos */
+}
+
+/* Spezielle Anpassung für kleinere Bildschirme */
+@media (max-width: 480px) {
     .logo {
-        max-width: 80%; /* Auf kleineren Bildschirmen soll das Logo 80% der Breite einnehmen */
+        max-width: 80%;  /* Auf sehr kleinen Bildschirmen 80% der Breite */
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 481px) and (max-width: 768px) {
     .logo {
-        max-width: 50%; /* Auf größeren Bildschirmen ist es kleiner */
+        max-width: 60%;  /* Auf mittleren Bildschirmen 60% der Breite */
+    }
+}
+
+@media (min-width: 769px) {
+    .logo {
+        max-width: 40%;  /* Auf größeren Bildschirmen 40% der Breite */
     }
 }

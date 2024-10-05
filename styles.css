@@ -288,3 +288,17 @@ nav a:hover {
         padding: 8px 10px; /* Weniger Innenabstand für mobile Geräte */
     }
 }
+.web-app-button {
+    background-color: #4c6b3b; /* Olivgrün für den Button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    text-decoration: none; /* Entfernt die Unterstreichung */
+    display: inline-block; /* Macht den Link wie einen Button */
+    cursor: pointer; /* Zeigt, dass der Link klickbar ist */
+}
+
+.web-app-button:hover {
+    background-color: #3a4f2b; /* Dunkleres Olivgrün beim Hover */
+}

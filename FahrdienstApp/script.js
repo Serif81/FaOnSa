@@ -113,11 +113,34 @@ document.addEventListener("DOMContentLoaded", function() {
         contactSection.style.display = "none"; 
         summarySection.style.display = "block"; // Zusammenfassung anzeigen
     });
+});
 
-    // Anfrage absenden
-    document.getElementById("submitRequestButton").addEventListener("click", function() {
-        // Hier kannst du die Anfrage verarbeiten (z.B. an einen Server senden)
-        alert("Ihre Anfrage wurde gesendet!"); // Zum Testen eine einfache Bestätigung
-        // Optional: Du kannst auch das Kontaktformular zurücksetzen oder zur Startseite umleiten
+   // Anfrage absenden
+document.getElementById("submitRequestButton").addEventListener("click", function(event) {
+    event.preventDefault(); // Verhindert das Standardverhalten des Buttons
+    const form = document.querySelector("#contact form");
+    
+    // Erstelle das Datenobjekt
+    let data = {}; // Leeres Datenobjekt, du kannst hier Formularwerte hinzufügen, falls nötig.
+
+    // Sende das Formular an Netlify
+    fetch('https://chipper-chimera-a341b1.netlify.app/', {
+        method: form.method,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json' // Wichtig für das Senden von JSON-Daten
+        },
+        body: JSON.stringify(data) // Konvertiere `data` in einen JSON-String
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Ihre Anfrage wurde erfolgreich gesendet!"); // Bestätigung
+            form.reset(); // Formular zurücksetzen, falls gewünscht
+        } else {
+            alert("Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.");
+        }
+    })
+    .catch(error => {
+        alert("Fehler beim Senden der Anfrage: " + error);
     });
 });

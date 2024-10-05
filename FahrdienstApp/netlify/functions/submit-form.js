@@ -1,5 +1,3 @@
-// netlify/functions/submit-form.js
-
 exports.handler = async (event) => {
     try {
         const data = JSON.parse(event.body); // Daten aus dem Formular empfangen
@@ -19,6 +17,3 @@ exports.handler = async (event) => {
         };
     }
 };
-// Das ist neu 
-// Dies ist ein Kommentar, den ich hinzugefügt habe
-console.log("Hallo, Welt!");

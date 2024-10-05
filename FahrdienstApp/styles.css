@@ -48,3 +48,21 @@ footer {
     text-align: center;
     margin-top: 20px;
 }
+
+.logo {
+    max-width: 100%; /* Das Logo nimmt maximal die volle Breite seines Containers ein */
+    height: auto; /* Beibehaltung des Seitenverhältnisses */
+    display: block; /* Entfernt eventuelle Lücken unter dem Bild */
+    margin: 0 auto; /* Zentriert das Logo */
+}
+@media (max-width: 768px) {
+    .logo {
+        max-width: 80%; /* Auf kleineren Bildschirmen soll das Logo 80% der Breite einnehmen */
+    }
+}
+
+@media (min-width: 1024px) {
+    .logo {
+        max-width: 50%; /* Auf größeren Bildschirmen ist es kleiner */
+    }
+}

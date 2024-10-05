@@ -19,3 +19,6 @@ exports.handler = async (event) => {
         };
     }
 };
+// Das ist neu 
+// Dies ist ein Kommentar, den ich hinzugefügt habe
+console.log("Hallo, Welt!");

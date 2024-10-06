@@ -117,13 +117,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
    // Anfrage absenden
 document.getElementById("submitRequestButton").addEventListener("click", function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Verhindert das Standardverhalten des Buttons
     const form = document.querySelector("#contact form");
-    const formData = new FormData(form);
+    const formData = new FormData(form); // Erstellt ein FormData-Objekt aus dem Formular
 
-    fetch('https://chipper-chimera-a341b1.netlify.app/.netlify/functions/submit-form', {
-        method: form.method,
-        body: formData, // Sende die Formulardaten
+    fetch('/.netlify/functions/submit-form', {
+        method: 'POST',
+        body: formData, // Sendet das FormData-Objekt
+        headers: {
+            'Accept': 'application/json'
+        }
     })
     .then(response => {
         if (response.ok) {

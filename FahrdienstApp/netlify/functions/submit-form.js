@@ -5,7 +5,8 @@ exports.handler = async (event) => {
         // Hier wird angenommen, dass die Daten als 'application/x-www-form-urlencoded' gesendet werden
         const data = new URLSearchParams(event.body); // Daten aus dem Formular empfangen
 
-        const vorname = data.get('vorname'); // Hol die Werte der Formulardaten
+        // Hol die Werte der Formulardaten
+        const vorname = data.get('vorname');
         const nachname = data.get('nachname');
         const telefonnummer = data.get('telefonnummer');
         const email = data.get('email');

@@ -1,6 +1,5 @@
 [build]
-  publish = "FahrdienstApp"         # Ordner für statische Dateien
-  functions = "netlify/functions"   # Ordner für Funktionen
+  functions = "functions" # Verzeichnis, in dem sich deine Funktionen befinden
 
 [dev]
-  port = 8888                       # Port für die lokale Entwicklung
+  functions = "functions" # Verzeichnis für lokale Entwicklung

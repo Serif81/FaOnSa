@@ -121,7 +121,7 @@ document.getElementById("submitRequestButton").addEventListener("click", functio
     const form = document.querySelector("#contact form");
     const formData = new FormData(form); // Erstellt ein FormData-Objekt aus dem Formular
 
-    fetch('/.netlify/functions/submit-form', {
+    fetch('/netlify/functions/submit-form', {
         method: 'POST',
         body: formData, // Sendet das FormData-Objekt
         headers: {

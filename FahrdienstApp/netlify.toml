@@ -1,5 +1,5 @@
 [build]
-  functions = "functions" # Verzeichnis, in dem sich deine Funktionen befinden
+  functions = ".netlify/functions" # Verzeichnis, in dem sich deine Funktionen befinden
 
 [dev]
-  functions = "functions" # Verzeichnis für lokale Entwicklung
+  functions = ".netlify/functions" # Verzeichnis für lokale Entwicklung

@@ -1,0 +1,6 @@
+[build]
+  publish = "FahrdienstApp"         # Ordner für statische Dateien
+  functions = "netlify/functions"   # Ordner für Funktionen
+
+[dev]
+  port = 8888                       # Port für die lokale Entwicklung

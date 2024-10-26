@@ -44,6 +44,10 @@ section {
     margin-bottom: 20px;
 }
 
+section p {
+    padding-left: 10px; /* zusätzlicher linker Abstand für Text in <section> */
+}
+
 section:nth-of-type(odd) {
     background-color: #f9f9f9;
 }
@@ -301,4 +305,10 @@ nav a:hover {
 
 .web-app-button:hover {
     background-color: #3a4f2b; /* Dunkleres Olivgrün beim Hover */
+}
+
+@media (max-width: 768px) {
+    li p {
+        padding-left: 20px; /* oder margin-left */
+    }
 }

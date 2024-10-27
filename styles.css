@@ -2,50 +2,50 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 /* Header-Stil */
 header {
     background-color: #f4f4f4;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
 }
 
 header h1 {
-    margin-top: 0;
+    margin-top: 0px;
 }
 
 /* Navigationsstil */
 nav ul {
-    list-style-type: none;
-    padding: 0;
+    list-style-type: inside;
+    padding: 5px;
 }
 
 nav ul li {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 nav ul li a {
-    text-decoration: none;
+    text-decoration: inside;
     color: #333;
 }
 
 /* Hauptinhalt-Stil */
 main {
-    padding: 20px;
+    padding: 5px;
 }
 
 /* Abschnittsstile */
 section {
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 5px;
+    margin-bottom: 5px;
 }
 
 section p {
-    padding-left: 10px; /* zusätzlicher linker Abstand für Text in <section> */
+    padding-left: 5px; /* zusätzlicher linker Abstand für Text in <section> */
 }
 
 section:nth-of-type(odd) {
@@ -70,13 +70,13 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 10px;
 }
 
 /* Media Queries für mobile Geräte */
 @media (max-width: 768px) {
     nav ul li {
-        display: block;
+        display: center;
         margin-bottom: 10px;
     }
 }
@@ -135,7 +135,7 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px;
+    padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     text-align: center;
@@ -190,7 +190,7 @@ footer {
     font-size: 2rem;
     font-weight: bold;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 /* CSS für Kontaktinformationen */
@@ -253,28 +253,28 @@ footer {
 /* Navigation Style */
 nav {
     background-color: #e0e0e0; /* Dunklerer Hintergrund für bessere Sichtbarkeit */
-    padding: 10px 0; /* Vertikales Padding für mehr Platz */
+    padding: 10px; /* Vertikales Padding für mehr Platz */
     border-bottom: 2px solid #aaa; /* Dunklere untere Linie für visuelle Trennung */
 }
 
 nav ul {
-    list-style-type: none; /* Entfernen der Aufzählungszeichen */
-    margin: 0; /* Entfernen von Standard-Margin */
-    padding: 0; /* Entfernen von Standard-Padding */
+    list-style-type: inside; /* Entfernen der Aufzählungszeichen */
+    margin: 0px; /* Entfernen von Standard-Margin */
+    padding: 0px; /* Entfernen von Standard-Padding */
     display: flex; /* Flexbox für horizontale Anordnung */
     justify-content: center; /* Zentrierung der Navigation */
     flex-wrap: wrap; /* Zeilenumbruch auf kleineren Bildschirmen */
 }
 
 nav li {
-    margin: 0 15px; /* Abstand zwischen den Links */
+    margin: 5px; /* Abstand zwischen den Links */
 }
 
 nav a {
     text-decoration: none; /* Unterstreichung entfernen */
     color: #222222; /* Dunklerer Farbton für die Schriftfarbe der Links */
     font-size: 18px; /* Schriftgröße für Desktop */
-    padding: 10px 15px; /* Innenabstand für Klickfläche */
+    padding: 10px 10px; /* Innenabstand für Klickfläche */
     transition: background-color 0.3s, color 0.3s; /* Sanfte Übergänge für Hover-Effekte */
 }
 
@@ -309,6 +309,6 @@ nav a:hover {
 
 @media (max-width: 768px) {
     li p {
-        padding-left: 20px; /* oder margin-left */
+        padding-left: 0px; /* oder margin-left */
     }
 }

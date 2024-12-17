@@ -312,3 +312,39 @@ nav a:hover {
         padding-left: 0px; /* oder margin-left */
     }
 }
+
+/* Container für Links */
+.links-container {
+    display: flex; /* Sorgt dafür, dass die Links nebeneinander stehen */
+    flex-wrap: wrap; /* Bei kleinen Bildschirmen umbrechen die Links */
+    justify-content: center; /* Zentriert die Links horizontal */
+    margin: 2rem 0; /* Abstand nach oben und unten */
+}
+
+.link-card {
+    background: #c1ff33; /* Hintergrund der Karten */
+    border-radius: 8px; /* Abgerundete Ecken */
+    margin: 1rem; /* Abstand zwischen den Karten */
+    padding: 1.5rem; /* Innenabstand */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sanfter Schatten */
+    width: 250px; /* Breite der Karten */
+    text-align: center; /* Zentriert den Text */
+    transition: transform 0.3s; /* Animation beim Hover */
+}
+
+.link-card i {
+    font-size: 2rem; /* Größe der Icons */
+    color: #0078d7; /* Blaue Farbe für die Icons */
+    margin-bottom: 1rem; /* Abstand zwischen Icon und Text */
+}
+
+.link-card a {
+    text-decoration: none; /* Entfernt die Unterstreichung der Links */
+    color: #333; /* Farbe des Link-Textes */
+    font-weight: bold; /* Fett gedruckt */
+}
+
+.link-card:hover {
+    transform: translateY(-10px); /* Die Karte bewegt sich leicht nach oben */
+    background-color: #e9ecef; /* Hintergrund wird etwas heller */
+}

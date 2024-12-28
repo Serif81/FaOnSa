@@ -348,3 +348,23 @@ nav a:hover {
     transform: translateY(-10px); /* Die Karte bewegt sich leicht nach oben */
     background-color: #e9ecef; /* Hintergrund wird etwas heller */
 }
+
+.promo-banner {
+    display: block;
+    background-color: #ff6f61;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .promo-banner:hover {
+    background-color: #ff4f3f;
+  }
+  

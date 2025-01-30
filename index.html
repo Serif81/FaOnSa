@@ -424,6 +424,44 @@
             <img src="1230-Beratungsvideo(1)-Cover.jpg" alt="YouTube" width="250" height="auto">
             </div>
         </section>
+
+            <div class="container">
+                <h2 class="centered-heading">Kundenbewertungen</h2> <!-- Mit Klasse für Zentrierung -->
+            
+                <div class="carousel">
+                    <div class="carousel-content">
+                        <!-- Bewertungen -->
+                        <div class="review" id="review1">
+                            <h3>Shilan W. (aus Köln)</h3>
+                            <p>Alter: 34 | Kurs: November - Januar</p>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p class="review-text">"Super Kurs! Hat mir sehr geholfen!"</p> <!-- Review Text hinzugefügt -->
+                        </div>
+                        <div class="review" id="review2">
+                            <h3>Paulo N. (aus Dortmund)</h3>
+                            <p>Alter: 34 | Kurs: Dezember - Januar</p>
+                            <div class="stars">⭐⭐⭐⭐</div>
+                            <p class="review-text">"Tolle Erfahrung, sehr hilfreich!"</p> <!-- Review Text hinzugefügt -->
+                        </div>
+                        <div class="review" id="review3">
+                            <h3>Faslul K. (aus Darmstadt)</h3>
+                            <p>Alter: 35 | Kurs: November - Januar</p>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p class="review-text">"Kann den Kurs nur empfehlen. Sehr gute Inhalte!"</p> <!-- Review Text hinzugefügt -->
+                        </div>
+                    </div>
+                
+                    <!-- Navigation für das Karussell -->
+                    <label class="arrow left" for="prev">&#8249;</label>
+                    <label class="arrow right" for="next">&#8250;</label>
+                
+                    <!-- Radio Buttons für Navigation -->
+                    <input type="radio" id="prev" name="carousel" class="prev">
+                    <input type="radio" id="next" name="carousel" class="next">
+                </div>
+            </div>
+            
+
             <p>Profitieren Sie von meiner Erfahrung und meinem Engagement, um Ihre Fachkundeprüfung erfolgreich zu bestehen! Kontaktieren Sie mich jetzt für weitere Informationen und zur Anmeldung.</p>
 
             <p>Teilnehmerzahl begrenzt:<br>
@@ -746,5 +784,35 @@
         });
     </script>
 
+<script>
+    // Funktion zum Wechseln der Bewertungen
+    const prevButton = document.querySelector('#prev');
+    const nextButton = document.querySelector('#next');
+    const reviews = document.querySelectorAll('.review');
+    let currentIndex = 0;
+  
+    function showReview(index) {
+      // Alle Bewertungen ausblenden
+      reviews.forEach(review => review.style.display = 'none');
+      // Die aktuelle Bewertung anzeigen
+      reviews[index].style.display = 'block';
+    }
+  
+    // Zeigt die erste Bewertung an
+    showReview(currentIndex);
+  
+    // Event-Listener für den vorherigen Button
+    prevButton.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + reviews.length) % reviews.length; // sorgt dafür, dass es wieder zum letzten geht
+      showReview(currentIndex);
+    });
+  
+    // Event-Listener für den nächsten Button
+    nextButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % reviews.length; // sorgt dafür, dass es wieder zum ersten geht
+      showReview(currentIndex);
+    });
+  </script>
+  
 </body>
  </html>

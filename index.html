@@ -42,7 +42,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Werbebanner</title>
     <link rel="stylesheet" href="styles.css"> <!-- Hier wird die externe CSS-Datei verlinkt -->
-
+    <title>Bewertungen</title>
+    <style>
+        .review {
+            display: none;
+        }
+    </style>
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -423,54 +428,49 @@
             <a href="https://youtu.be/OJih610bSM0" target="_blank"><u>Beratungsvideo auf YouTube<br><b>📺 Jetzt ansehen und mehr erfahren 🎥</b></u></a>
             <img src="1230-Beratungsvideo(1)-Cover.jpg" alt="YouTube" width="250" height="auto">
             </div>
-        </section>
-
-            <div class="container">
-                <h2 class="centered-heading">Kundenbewertungen</h2> <!-- Mit Klasse für Zentrierung -->
+        </section>         
+        
+        <div class="container">
+            <h2 class="centered-heading">Erfolgsgeschichten: Meine Kursteilnehmer und ihr Feedback!</h2>
             
-                <div class="carousel">
-                    <div class="carousel-content">
-                        <!-- Bewertungen -->
-                        <div class="review" id="review1">
-                            <h3>Shilan W. (aus Köln)</h3>
-                            <p>Alter: 34 | Kurs: November - Januar</p>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="review-text">"Super Kurs! Hat mir sehr geholfen!"</p> <!-- Review Text hinzugefügt -->
-                        </div>
-                        <div class="review" id="review2">
-                            <h3>Paulo N. (aus Dortmund)</h3>
-                            <p>Alter: 34 | Kurs: Dezember - Januar</p>
-                            <div class="stars">⭐⭐⭐⭐</div>
-                            <p class="review-text">"Tolle Erfahrung, sehr hilfreich!"</p> <!-- Review Text hinzugefügt -->
-                        </div>
-                        <div class="review" id="review3">
-                            <h3>Faslul K. (aus Darmstadt)</h3>
-                            <p>Alter: 35 | Kurs: November - Januar</p>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="review-text">"Kann den Kurs nur empfehlen. Sehr gute Inhalte!"</p> <!-- Review Text hinzugefügt -->
-                        </div>
+            <div class="carousel">
+                <div class="carousel-content">
+                    <!-- Bewertungen -->
+                    <div class="review" id="review1">
+                        <h3>Shilan W. (aus Köln)</h3>
+                        <p>Alter: 34 | Vorbereitungskurs auf die Fachkunderpüfung: November - Januar</p>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Super Kurs! Hat mir sehr geholfen!"</p>
                     </div>
-                
-                    <!-- Navigation für das Karussell -->
-                    <label class="arrow left" for="prev">&#8249;</label>
-                    <label class="arrow right" for="next">&#8250;</label>
-                
-                    <!-- Radio Buttons für Navigation -->
-                    <input type="radio" id="prev" name="carousel" class="prev">
-                    <input type="radio" id="next" name="carousel" class="next">
+                    <div class="review" id="review2">
+                        <h3>Hier könnte Ihr Name stehen (aus Stadt)</h3>
+                        <p>Alter: 00 | Kurs: Monat - Monat</p>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Bewerten Sie mich!"</p>
+                    </div>
+                    <div class="review" id="review3">
+                        <h3>Hier könnte Ihr Name stehen (aus Stadt)</h3>
+                        <p>Alter: 00 | Kurs: Monat - Monat</p>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Bewerten Sie mich!"</p>
+                    </div>
+                </div>
+
+                <!-- Navigationspfeile -->
+                <button id="prev" class="circle-nav left">&#8249;</button> <!-- Linker Pfeil -->
+                <button id="next" class="circle-nav right">&#8250;</button> <!-- Rechter Pfeil -->
                 </div>
             </div>
-            
 
-            <p>Profitieren Sie von meiner Erfahrung und meinem Engagement, um Ihre Fachkundeprüfung erfolgreich zu bestehen! Kontaktieren Sie mich jetzt für weitere Informationen und zur Anmeldung.</p>
+        <p>Profitieren Sie von meiner Erfahrung und meinem Engagement, um Ihre Fachkundeprüfung erfolgreich zu bestehen! Kontaktieren Sie mich jetzt für weitere Informationen und zur Anmeldung.</p>
 
-            <p>Teilnehmerzahl begrenzt:<br>
-            Maximal <b>5 Teilnehmer pro Kurs</b>, um eine individuelle Betreuung zu gewährleisten.</p>
+        <p>Teilnehmerzahl begrenzt:<br>
+        Maximal <b>5 Teilnehmer pro Kurs</b>, um eine individuelle Betreuung zu gewährleisten.</p>
 
-            <p><b>Systemvoraussetzungen:</b><br>
-            Für die Teilnahme am Kurs benötigen Sie einen <b>PC, Laptop, Tablet</b> (nicht älter als 5 Jahre) und <b>Grundkenntnisse</b> mit deren Handhabung sowie eine stabile Internetverbindung und den Zugang zu <b>Google Meet</b>.</p>
+        <p><b>Systemvoraussetzungen:</b><br>
+        Für die Teilnahme am Kurs benötigen Sie einen <b>PC, Laptop, Tablet</b> (nicht älter als 5 Jahre) und <b>Grundkenntnisse</b> mit deren Handhabung sowie eine stabile Internetverbindung und den Zugang zu <b>Google Meet</b>.</p>
 
-            <p><b>Kontakt</b> per Mail, Mobiltelefon oder auch gerne per WhatsApp.</p>
+        <p><b>Kontakt</b> per Mail, Mobiltelefon oder auch gerne per WhatsApp.</p>
         
         </li>
         <li>
@@ -783,36 +783,34 @@
             priceList.style.display = 'none'; // Schließen der Preisliste
         });
     </script>
-
 <script>
     // Funktion zum Wechseln der Bewertungen
     const prevButton = document.querySelector('#prev');
     const nextButton = document.querySelector('#next');
     const reviews = document.querySelectorAll('.review');
     let currentIndex = 0;
-  
+
     function showReview(index) {
-      // Alle Bewertungen ausblenden
-      reviews.forEach(review => review.style.display = 'none');
-      // Die aktuelle Bewertung anzeigen
-      reviews[index].style.display = 'block';
+        // Alle Bewertungen ausblenden
+        reviews.forEach(review => review.style.display = 'none');
+        // Die aktuelle Bewertung anzeigen
+        reviews[index].style.display = 'block';
     }
-  
+
     // Zeigt die erste Bewertung an
     showReview(currentIndex);
-  
+
     // Event-Listener für den vorherigen Button
     prevButton.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + reviews.length) % reviews.length; // sorgt dafür, dass es wieder zum letzten geht
-      showReview(currentIndex);
+        currentIndex = (currentIndex - 1 + reviews.length) % reviews.length; // sorgt dafür, dass es wieder zum letzten geht
+        showReview(currentIndex);
     });
-  
+
     // Event-Listener für den nächsten Button
     nextButton.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % reviews.length; // sorgt dafür, dass es wieder zum ersten geht
-      showReview(currentIndex);
+        currentIndex = (currentIndex + 1) % reviews.length; // sorgt dafür, dass es wieder zum ersten geht
+        showReview(currentIndex);
     });
-  </script>
-  
+</script>  
 </body>
  </html>

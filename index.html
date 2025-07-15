@@ -41,20 +41,33 @@
     <meta name="msapplication-config" content="https://serif81.github.io/FaOnSa/browserconfig.xml">
     <!-- Strukturierte Daten für das Logo -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <title>Werbebanner</title>
     <link rel="stylesheet" href="styles.css"> <!-- Hier wird die externe CSS-Datei verlinkt -->
-    <title>Bewertungen</title>
     <style>
         .review {
             display: none;
         }
     </style>
+
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "FaOnSa",
-            "url": "https://www.FaOnSa.de",
+            "url": "https://www.faonsa.de",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://www.faonsa.de/?s={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "FaOnSa",
+            "url": "https://www.faonsa.de",
             "logo": "https://github.com/Serif81/FaOnSa/blob/main/Logo_FaOnSa.png?raw=true",
             "contactPoint": {
                 "@type": "ContactPoint",

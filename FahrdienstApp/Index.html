@@ -7,15 +7,192 @@
     <title>FaOnSa Reisen & Transfers</title>
 </head>
 <body>
+
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent">
+        <p>Diese Website verwendet Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website erhalten.</p>
+        <a href="#" id="moreInfo">Mehr erfahren</a>
+        <button id="acceptCookies">Akzeptieren</button>
+        <button id="declineCookies">Ablehnen</button>
+        <button id="settingsCookies">Einstellungen</button>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookieSettingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Cookie-Einstellungen</h2>
+            <p>Hier können Sie Ihre Cookie-Einstellungen anpassen:</p>
+            <label><input type="checkbox" id="necessaryCookies" checked disabled> Notwendige Cookies (immer aktiv)</label><br>
+            <label><input type="checkbox" id="analyticsCookies"> Analytische Cookies</label><br>
+            <label><input type="checkbox" id="marketingCookies"> Marketing-Cookies</label><br>
+            <button id="saveSettings">Speichern</button>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div id="datenschutzModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Datenschutz-Bereich</h2>
+
+            <!-- Beispieltext für den Datenschutzbereich -->
+            <p>Wir legen großen Wert auf den Schutz Ihrer persönlichen Daten und halten uns strikt an die geltenden Datenschutzgesetze. Personenbezogene Daten werden auf dieser Webseite nur im technisch notwendigen Umfang erhoben. Ihre Daten werden weder verkauft noch zu anderen Zwecken an Dritte weitergegeben, es sei denn, dies ist gesetzlich vorgeschrieben oder Sie haben ausdrücklich eingewilligt.</p>
+            
+            <p>Im Rahmen der Nutzung von Google Ads können bestimmte Daten an Google Inc. weitergegeben werden. Diese Weitergabe erfolgt ausschließlich zur Durchführung und Optimierung unserer Werbemaßnahmen.</p>
+
+            <h2>Nutzung von Google Ads</h2>
+
+            <p>Diese Webseite nutzt Google Ads, einen Online-Werbedienst der Google Inc. Im Rahmen von Google Ads verwenden wir sogenannte Conversion-Tracking-Cookies. Wenn Sie auf eine von Google geschaltete Anzeige klicken, wird ein Cookie für das Conversion-Tracking auf Ihrem Endgerät abgelegt. Diese Cookies verlieren nach 30 Tagen ihre Gültigkeit und dienen nicht der persönlichen Identifizierung. Besuchen Sie bestimmte Seiten unserer Webseite und das Cookie ist noch nicht abgelaufen, können wir und Google erkennen, dass jemand auf die Anzeige geklickt hat und zu unserer Seite weitergeleitet wurde.</p>
+
+            <p>Die mithilfe des Conversion-Cookies eingeholten Informationen dienen dazu, Conversion-Statistiken für Google Ads-Kunden zu erstellen, die sich für Conversion-Tracking entschieden haben. Wir erfahren die Gesamtanzahl der Nutzer, die auf unsere Anzeige geklickt haben und zu einer mit einem Conversion-Tracking-Tag versehenen Seite weitergeleitet wurden. Wir erhalten jedoch keine Informationen, mit denen sich Nutzer persönlich identifizieren lassen.</p>
+
+            <p>Wenn Sie nicht am Tracking teilnehmen möchten, können Sie dieser Nutzung widersprechen, indem Sie das Cookie des Google Conversion-Trackings über Ihre Internet-Browser-Nutzereinstellungen leicht deaktivieren. Sie werden dann nicht in die Conversion-Tracking-Statistiken aufgenommen.</p>
+
+            <p>Weitere Informationen zum Datenschutz bei Google finden Sie in der <a href="https://policies.google.com/privacy" target="_blank">Datenschutzerklärung von Google</a>.</p>
+
+            <h2>Werbelinks von Digistore24</h2>
+
+            <p>Im Rahmen unserer Webseite verwenden wir auch **Werbelinks** von **Digistore24**, einem Online-Marktplatz für digitale Produkte. Wenn Sie auf einen dieser Links klicken und einen Kauf abschließen, wird ein Cookie auf Ihrem Endgerät abgelegt. Dieses Cookie dient dazu, den Verkauf zu verfolgen und uns eine Provision zuzuweisen. Die Daten, die über das Cookie erfasst werden, können bis zu **180 Tage gespeichert** werden, um den Erfolg der Werbung und die korrekte Abrechnung sicherzustellen.</p>
+
+            <p>Digistore24 speichert diese Daten zur Verfolgung der Transaktionen und zur Provisionsermittlung. Diese Daten umfassen in der Regel Informationen darüber, ob und wann der Nutzer einen Kauf abgeschlossen hat, damit wir die für uns zustehende Provision erhalten können. Die erfassten Daten dienen jedoch ausschließlich der Abwicklung der Transaktionen und sind nicht dazu gedacht, persönliche Daten zu sammeln oder für andere Zwecke verwendet zu werden.</p>
+
+            <p>Weitere Informationen zum Datenschutz von Digistore24 finden Sie in deren <a href="https://www.digistore24.com/privacy-policy" target="_blank">Datenschutzerklärung</a>.</p>
+
+            <h2>Hosting über Netlify</h2>
+
+            <p>Unsere Website wird bei Netlify, Inc., 2325 3rd Street, Suite 215, San Francisco, CA 94107, USA gehostet. Netlify verarbeitet technische Daten (z. B. IP-Adresse, Browserinformationen, Zugriffszeitpunkte), um die Bereitstellung und Sicherheit unserer Website zu gewährleisten. Netlify ist nach dem EU-U.S. Data Privacy Framework zertifiziert, wodurch ein angemessenes Datenschutzniveau gemäß Art. 45 DSGVO gewährleistet ist. Mit Netlify besteht zudem ein Auftragsverarbeitungsvertrag (DPA) nach Art. 28 DSGVO. Weitere Informationen finden Sie in der Datenschutzerklärung von Netlify: https://www.netlify.com/privacy/</p>
+            
+            <h2>Kontaktformular und E-Mail-Kommunikation</h2>
+
+            <p>Wenn Sie uns über das Kontaktformular Anfragen zukommen lassen, werden die von Ihnen eingegebenen Daten (z. B. Name, E-Mail-Adresse, Adresse, Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage und ggf. zur Abwicklung eines Vertrags verarbeitet (Art. 6 Abs. 1 lit. b DSGVO). Die Daten werden per E-Mail an unser Postfach bei IONOS SE, Elgendorfer Str. 57, 56410 Montabaur übermittelt. IONOS betreibt seine Server ausschließlich in Deutschland und erfüllt die Anforderungen der DSGVO. Mit IONOS besteht ebenfalls ein Auftragsverarbeitungsvertrag.</p>
+            
+            <h2>Ihre Rechte</h2>
+
+            <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der Datenverarbeitung. Außerdem haben Sie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.</p>
+
+            <h2>Kontakt</h2>
+
+            <p>Bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer personenbezogenen Daten sowie bei Auskünften, Berichtigung, Sperrung oder Löschung von Daten wenden Sie sich bitte an:</p>
+            <p>[Serif Ünal]<br>
+            <a href="mailto:serif.u@faonsa.de">serif.u@faonsa.de</a><br>
+            [01577/8724503]</p>
+        </div>
+    </div>
+
+<!-- Impressum Modal -->
+<div id="impressumModal" class="modal" style="display:none">
+  <div class="modal-content">
+    <span class="close" aria-label="Schließen">&times;</span>
+    <h2>Impressum</h2>
+
+    <p><strong>FaOnSa – Fahrdienstleistungen</strong><br>
+    Serif Ünal<br>
+    Emsdettener Str. 10<br>
+    48268 Greven, Deutschland</p>
+
+    <p>Telefon: 01577 / 8724503<br>
+    E-Mail: <a href="mailto:serif.u@faonsa.de">serif.u@faonsa.de</a></p>
+
+    <p>Vertretungsberechtigt: Serif Ünal</p>
+    <!-- Falls vorhanden:
+         Handelsregister, Registernummer, Registergericht
+         USt-IdNr.: DE… -->
+    
+    <h3>Haftungshinweise</h3>
+    <p>Inhalte wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir keine Gewähr.</p>
+
+    <h3>EU-Streitschlichtung</h3>
+    <p>Plattform der EU-Kommission zur Online-Streitbeilegung (OS): 
+      <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>
+    </p>
+  </div>
+</div>
+
+
+    <!-- Cookie/Datenschutz – identisch zur Website -->
+<script>
+  // Modal helper
+  function showModal(modalId){ document.getElementById(modalId).style.display='block'; }
+  function hideModal(modalId){ document.getElementById(modalId).style.display='none'; }
+
+  // "Mehr erfahren" → Datenschutz-Modal
+  document.getElementById('moreInfo').addEventListener('click', function(event){
+    event.preventDefault();
+    showModal('datenschutzModal');
+  });
+
+  // Overlay anlegen (unter dem Banner)
+  var overlay = document.createElement('div');
+  overlay.id = 'overlay';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+  overlay.style.zIndex = '9998';
+  document.body.appendChild(overlay);
+
+  var settingsModal = document.getElementById('cookieSettingsModal');
+  var cookieConsent = document.getElementById('cookieConsent');
+
+  document.getElementById('acceptCookies').addEventListener('click', function(){
+    cookieConsent.style.display = 'none';
+    overlay.style.display = 'none';
+    console.log("Cookies akzeptiert");
+    if (typeof gtag === 'function') {
+      gtag('consent','update', { ad_storage:'granted', analytics_storage:'granted' });
+    }
+  });
+
+  document.getElementById('declineCookies').addEventListener('click', function(){
+    cookieConsent.style.display = 'none';
+    overlay.style.display = 'none';
+    console.log("Cookies abgelehnt");
+    if (typeof gtag === 'function') {
+      gtag('consent','update', { ad_storage:'denied', analytics_storage:'denied' });
+    }
+  });
+
+  document.getElementById('settingsCookies').addEventListener('click', function(){
+    settingsModal.style.display = 'block';
+  });
+
+  document.getElementById('saveSettings').addEventListener('click', function(){
+    var analyticsCookies = document.getElementById('analyticsCookies').checked;
+    var marketingCookies = document.getElementById('marketingCookies').checked;
+
+    if (typeof gtag === 'function') {
+      gtag('consent','update', {
+        ad_storage:        marketingCookies ? 'granted' : 'denied',
+        analytics_storage: analyticsCookies ? 'granted' : 'denied'
+      });
+    }
+
+    settingsModal.style.display = 'none';
+    cookieConsent.style.display  = 'none';
+    overlay.style.display        = 'none';
+  });
+
+  // Close-Buttons in den Modals
+  document.querySelectorAll('.close').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      hideModal(this.parentElement.parentElement.id);
+    });
+  });
+
+  // Overlay beim Laden anzeigen
+  overlay.style.display = 'block';
+</script>
+
     <header>
-        <h1>Willkommen bei meiner Web-App für Fahrdienstleistungen!<br>
-        <p></p>
-        Die Konzession ist beantragt und ich werde voraussichtlich ab dem 01.01.2026 starten können.<br>
-         <p></p>
-        ES SIND MOMENTAN KEINE BUCHUNGEN MÖGLICH! <br>
-         <p></p>
-        Bitte um Verständnis !<br>
-        TEST-PHASE</h1>
+        <h1><p>Willkommen bei meiner Web-App für Fahrdienstleistungen!<br></p>
+        <p>Die Konzession ist beantragt und ich werde voraussichtlich ab dem 01.01.2026 starten können.<br></p>
+        <p>ES SIND MOMENTAN KEINE BUCHUNGEN MÖGLICH! <br></p>
+        <p>Bitte um Verständnis !<br></p>
+        <p>TEST-PHASE</p></h1>
         <div class="logo-container">
             <img src="faonsa_Logo_3.png" alt="Logo von FaOnSa" class="logo">
         </div>
@@ -23,64 +200,201 @@
     <main>
 
         <p></p>
-        <img src="faonsa_Passat.png" alt="Shirt" width="315" height="auto">
+        <img src="faonsa_Passat.png" alt="Passat" width="300" height="auto">
         <p></p>
         <h2><u>Fahrtenübersicht</u></h2>
         <section id="services" style="border: 1px solid #000; padding: 10px; margin-top: 20px;">
+            <img src="faonsa_Strecke_F_M.png" alt="Strecke" width="250" height="auto">
             <h3>Meine nächste mögliche Fahrt bitte auswählen:</h3>
-            <form id="rideSelection">
-                <div class="ride">
-                    <label for="fromCity1">Von Stadt:</label>
-                    <input type="text" id="fromCity1" value="Frankfurt" readonly><br>
-                    <label for="toCity1">Nach Stadt:</label>
-                    <input type="text" id="toCity1" value="München" readonly><br>
-                    <label for="date1">Datum:</label>
-                    <input type="text" id="date1" value="01.03.9999" readonly><br>
-                    <label for="time1">Uhrzeit:</label>
-                    <select id="time1" onchange="updateButton()">
-                        <option value="">Bitte wählen</option>
-                        <option value="12:00">12:00</option>
-                        <option value="13:00">13:00</option>
-                        <option value="14:00">14:00</option>
-                        <option value="15:00">15:00</option>
-                    </select>
-                    <button type="button" class="confirm-button" id="confirmRideButton" disabled onclick="confirmRide()">Bestätigen</button>
-                </div>
-            </form>
+            <!-- Hinfahrt -->
+  <form id="rideSelection">
+    <div class="ride">
+      <h4><u>Hinfahrt</u></h4>
+      <label for="fromCity1">Von Stadt:</label>
+      <input type="text" id="fromCity1" value="München" readonly><br>
+      <label for="toCity1">Nach Stadt:</label>
+      <input type="text" id="toCity1" value="Frankfurt" readonly><br>
+      <label for="date1">Datum:</label>
+<select id="date1">
+  <option value="">Bitte wählen</option>
+  <option value="9999-03-01">01.03.9999</option>
+  <option value="9999-03-02">02.03.9999</option>
+  <option value="9999-03-03">03.03.9999</option>
+  <option value="9999-03-04">04.03.9999</option>
+</select><br>
+
+      <label for="time1">Uhrzeit:</label>
+      <select id="time1" onchange="updateButton()">
+        <option value="">Bitte wählen</option>
+        <option value="14:00">14:00</option>
+        <option value="15:00">15:00</option>
+        <option value="15:00">16:00</option>
+        <option value="15:00">17:00</option>
+        <option value="15:00">18:00</option>
+      </select>
+      <button type="button" class="confirm-button" id="confirmRideButton" disabled onclick="confirmRide()">Bestätigen</button>
+    </div>
+  </form>
+
+  <!-- Rückfahrt -->
+  <form id="rideSelectionReturn" style="margin-top:20px;">
+    <div class="ride">
+      <h4><u>Rückfahrt</u></h4>
+      <label for="fromCity2">Von Stadt:</label>
+      <input type="text" id="fromCity2" value="Frankfurt" readonly><br>
+      <label for="toCity2">Nach Stadt:</label>
+      <input type="text" id="toCity2" value="München" readonly><br>
+      <label for="date2">Datum:</label>
+<select id="date2">
+  <option value="">Bitte wählen</option>
+  <option value="9999-03-01">01.03.9999</option>
+  <option value="9999-03-02">02.03.9999</option>
+  <option value="9999-03-03">03.03.9999</option>
+  <option value="9999-03-04">04.03.9999</option>
+</select><br>
+      <label for="time2">Uhrzeit:</label>
+      <select id="time2" onchange="simulateMainUpdate(this)">
+        <option value="">Bitte wählen</option>
+        <option value="12:00">10:00</option>
+        <option value="12:00">11:00</option>
+        <option value="12:00">12:00</option>
+        <option value="13:00">13:00</option>
+        <option value="14:00">14:00</option>
+        <option value="15:00">15:00</option>
+      </select>
+      <button type="button" class="confirm-button" id="confirmRideButtonReturn" disabled onclick="confirmRide()">Bestätigen</button>
+    </div>
+  </form>
         </section>
         
-        <section id="airportTransfer" style="border: 1px solid #000; padding: 10px; margin-top: 20px;">
-            <h2><u>Flughafentransfer</u></h2>
-            <form id="airportTransferForm">
-                <label for="transferFromCity">Von Stadt:</label>
-                <select id="transferFromCity">
-                    <option value="">Bitte wählen</option>
-                    <option value="Frankfurt">Frankfurt</option>
-                    <option value="Darmstadt">Darmstadt</option>
-                    <option value="Offenbach">Offenbach</option>
-                    <option value="Hanau">Hanau</option>
-                    <option value="Bad Soden">Bad Soden</option>
-                    <option value="Bad Vilbel">Bad Vilbel</option>
-                </select><br>
-                <label for="terminal">Nach Flughafen:</label>
-                <select id="terminal">
-                    <option value="">Bitte wählen</option>
-                    <option value="Terminal 1">Terminal 1</option>
-                    <option value="Terminal 2">Terminal 2</option>
-                </select><br>
-                <label for="airportDate">Datum:</label>
-                <input type="text" id="airportDate" value="01.03.9999" readonly><br>
-                <label for="airportTime">Uhrzeit:</label>
-                <select id="airportTime" onchange="updateAirportButton()">
-                    <option value="">Bitte wählen</option>
-                    <option value="10:00">10:00</option>
-                    <option value="11:00">11:00</option>
+  <section id="airportTransfer" style="border: 1px solid #000; padding: 10px; margin-top: 20px;">
+  <h2><u>Flughafentransfer</u></h2>
+  <img src="faonsa_Umkreis_F.png" alt="Fahrgebiet" width="250" height="auto">
+
+  <form id="airportTransferForm">
+    <label><strong>Richtung auswählen:</strong></label><br>
+    <input type="radio" id="toAirport" name="direction" value="to" checked onchange="toggleAirportDirection()"> 
+    <label for="toAirport">Zum Flughafen</label>
+    <input type="radio" id="fromAirport" name="direction" value="from" onchange="toggleAirportDirection()"> 
+    <label for="fromAirport">Vom Flughafen</label><br><br>
+
+    <!-- Zum Flughafen -->
+    <div id="toAirportFields">
+      <label for="transferFromCity">Von Stadt:</label>
+      <select id="transferFromCity">
+        <option value="">Bitte wählen</option>
+        <option value="Bad Homburg">Bad Homburg</option>
+        <option value="Darmstadt">Darmstadt</option>
+        <option value="Dreieich">Dreieich</option>
+        <option value="Eschborn">Eschborn</option>
+        <option value="Frankfurt">Frankfurt</option>
+        <option value="Hanau">Hanau</option>
+        <option value="Langen">Langen</option>
+        <option value="Neu-Isenburg">Neu-Isenburg</option>
+        <option value="Oberursel">Oberursel</option>
+        <option value="Offenbach">Offenbach</option>
+        <option value="Rodgau">Rodgau</option>
+        <option value="Rüsselsheim">Rüsselsheim</option>
+      </select><br>
+
+      <label for="terminal">Nach Flughafen:</label>
+      <select id="terminal">
+        <option value="">Bitte wählen</option>
+        <option value="Terminal 1">Terminal 1</option>
+        <option value="Terminal 2">Terminal 2</option>
+      </select><br>
+
+      <label for="airportDate">Datum:</label>
+      <select id="airportDate">
+        <option value="">Bitte wählen</option>
+        <option value="9999-03-01">01.03.9999</option>
+        <option value="9999-03-02">02.03.9999</option>
+        <option value="9999-03-03">03.03.9999</option>
+        <option value="9999-03-04">04.03.9999</option>
+      </select><br>
+
+      <label for="airportTime">Uhrzeit:</label>
+      <select id="airportTime" onchange="updateAirportButton()">
+        <option value="">Bitte wählen</option>
+        <option value="08:00">08:00</option>
+        <option value="09:00">09:00</option>
+        <option value="10:00">10:00</option>          
+        <option value="11:00">11:00</option>
                     <option value="12:00">12:00</option>
                     <option value="13:00">13:00</option>
-                </select>
-                <button type="button" class="confirm-button" disabled onclick="confirmAirportTransfer()">Bestätigen</button>
-            </form>
-        </section>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+      </select>
+    </div>
+
+    <!-- Vom Flughafen -->
+    <div id="fromAirportFields" style="display:none;">
+      <label for="fromTerminal">Von Flughafen:</label>
+      <select id="fromTerminal">
+        <option value="">Bitte wählen</option>
+        <option value="Terminal 1">Terminal 1</option>
+        <option value="Terminal 2">Terminal 2</option>
+      </select><br>
+
+      <label for="toCity">Nach Stadt:</label>
+      <select id="toCity">
+        <option value="">Bitte wählen</option>
+        <option value="Bad Homburg">Bad Homburg</option>
+        <option value="Darmstadt">Darmstadt</option>
+        <option value="Dreieich">Dreieich</option>
+        <option value="Eschborn">Eschborn</option>
+        <option value="Frankfurt">Frankfurt</option>
+        <option value="Hanau">Hanau</option>
+        <option value="Langen">Langen</option>
+        <option value="Neu-Isenburg">Neu-Isenburg</option>
+        <option value="Oberursel">Oberursel</option>
+        <option value="Offenbach">Offenbach</option>
+        <option value="Rodgau">Rodgau</option>
+        <option value="Rüsselsheim">Rüsselsheim</option>
+      </select><br>
+
+      <label for="airportDateFrom">Datum:</label>
+      <select id="airportDateFrom">
+        <option value="">Bitte wählen</option>
+        <option value="9999-03-01">01.03.9999</option>
+        <option value="9999-03-02">02.03.9999</option>
+        <option value="9999-03-03">03.03.9999</option>
+        <option value="9999-03-04">04.03.9999</option>
+      </select><br>
+
+      <label for="airportTimeFrom">Uhrzeit:</label>
+      <select id="airportTimeFrom" onchange="updateAirportButton()">
+        <option value="">Bitte wählen</option>
+        <option value="08:00">08:00</option>
+        <option value="09:00">09:00</option>
+        <option value="10:00">10:00</option>          
+        <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+      </select>
+    </div>
+
+    <button type="button" class="confirm-button" disabled onclick="confirmAirportTransfer()">Bestätigen</button>
+  </form>
+</section>
+      
+
 
         <section id="specialRides" style="border: 1px solid #000; padding: 10px; margin-top: 20px;">
             <h2><u>Anfragen für Sonderfahrten nach/ab Frankfurt</u> (Langstreckenfahrten für Privat- und Gewerbekunden)</h2>
@@ -99,13 +413,13 @@
                     <option value="11:00">11:00</option>
                     <option value="12:00">12:00</option>
                     <option value="13:00">13:00</option>
-                    <option value="13:00">14:00</option>
-                    <option value="13:00">15:00</option>
-                    <option value="13:00">16:00</option>
-                    <option value="13:00">17:00</option>
-                    <option value="13:00">18:00</option>
-                    <option value="13:00">19:00</option>
-                    <option value="13:00">20:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
 
                 </select>
                 <button type="button" class="confirm-button" disabled onclick="confirmSpecialRides()">Bestätigen</button>
@@ -200,7 +514,11 @@
     </main>
     <footer>
         <p>&copy; 2025 Serif Ünal</p>
-    </footer>
+    <button type="button" id="btnImpressum">Impressum</button>
+  <button type="button" id="btnDatenschutz">Datenschutz</button>
+  <button type="button" id="btnKontakt">Kontakt</button>
+  <a href="https://www.faonsa.de" target="_blank" rel="noopener" class="web-app-button" style="margin-left:8px">Mehr über mich</a>
+</footer>
     <script src="script.js"></script>
     <script>
         function updateButton() {
@@ -263,5 +581,72 @@
             document.getElementById("nextStepButton").disabled = false;
         });
     </script>
+
+    <!-- HIER Block C) einfügen -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var bImp  = document.getElementById('btnImpressum');
+  var bDS   = document.getElementById('btnDatenschutz');
+  var bKon  = document.getElementById('btnKontakt');
+
+  var mImp  = document.getElementById('impressumModal');
+  var mDS   = document.getElementById('datenschutzModal');
+
+  bImp?.addEventListener('click', function(){ mImp.style.display = 'block'; });
+  bDS?.addEventListener('click',  function(){ mDS.style.display  = 'block'; });
+
+  bKon?.addEventListener('click', function(){
+    var contact = document.getElementById('contact');
+    if (contact) {
+      contact.style.display = 'block';
+      contact.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  mImp?.querySelector('.close')?.addEventListener('click', function(){
+    mImp.style.display = 'none';
+  });
+
+  [mImp, mDS].forEach(function(modal){
+    modal?.addEventListener('click', function(e){
+      if (e.target === modal) modal.style.display = 'none';
+    });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){
+      if (mImp) mImp.style.display = 'none';
+      if (mDS)  mDS.style.display  = 'none';
+    }
+  });
+});
+</script>
+
+<script>
+function simulateMainUpdate(sel) {
+  const confirmBtnReturn = document.getElementById('confirmRideButtonReturn');
+  confirmBtnReturn.disabled = (sel.value === "");
+}
+</script>
+<script>
+function toggleAirportDirection() {
+  const toFields = document.getElementById("toAirportFields");
+  const fromFields = document.getElementById("fromAirportFields");
+  const toSelected = document.getElementById("toAirport").checked;
+  toFields.style.display = toSelected ? "block" : "none";
+  fromFields.style.display = toSelected ? "none" : "block";
+}
+
+function updateAirportButton() {
+  const toSelected = document.getElementById("toAirport").checked;
+  const timeSelect = toSelected 
+    ? document.getElementById("airportTime") 
+    : document.getElementById("airportTimeFrom");
+
+  const confirmButton = document.querySelector("#airportTransferForm .confirm-button");
+  confirmButton.disabled = (timeSelect.value === "");
+}
+</script>
+
 </body>
 </html>

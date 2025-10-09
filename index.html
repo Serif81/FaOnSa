@@ -2,14 +2,30 @@
 <html lang="de">
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16654646304"></script>
-    <link rel="sitemap" type="application/xml" href="https://serif81.github.io/FaOnSa/sitemap.xml" />
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'AW-16654646304');
-    </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16654646304"></script>
+<link rel="sitemap" type="application/xml" href="https://serif81.github.io/FaOnSa/sitemap.xml" />
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-16654646304');
+
+  // Conversion-Tracking für Kontakt-Klicks (E-Mail, Telefon, WhatsApp)
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof url !== 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+      'send_to': 'AW-16654646304/yjDBCPLo6KkbEKD4xoU-',
+      'value': 1.0,
+      'currency': 'EUR',
+      'event_callback': callback
+    });
+    return false;
+  }
+</script>
     <meta charset="UTF-8">
     <meta name="-site-verification" content="X8raLfTOHUSg73wQ2XFFtyh9JutMfHsE5VQ8ZleDoCk">
     <title>Taxi-Unternehmerschein IHK: Online-Trainings & Live-Trainings</title>
@@ -872,16 +888,36 @@ Für die Teilnahme benötigen Sie einen <b>PC, Laptop, Tablet</b> (nicht älter 
 
         </section>
 
-        <section id="kontakt">
-            <h2 class="section-title"><u>Kontakt zu FaOnSa</u></h2>
-            <p>Sie können mich unter folgender E-Mail-Adresse erreichen: <a href="mailto:faonsa-kurse@web.de">faonsa-kurse@web.de</a>.</p> 
-            <p>Ich stehe Ihnen auch gerne über WhatsApp unter folgender Mobilnummer zur Verfügung.</p> 
-            <p>Für telefonische Anfragen bin ich ebenfalls erreichbar.</p>
+       <section id="kontakt">
+  <h2 class="section-title"><u>Kontakt zu FaOnSa</u></h2>
 
-            <p>Bitte beachten Sie, dass ich aufgrund meiner Hauptbeschäftigung nur zu den folgenden Zeiten erreichbar bin: Montag bis Samstag von 17 bis 20 Uhr. Ich freue mich darauf, von Ihnen zu hören!</p>
-            <a href="tel:+4915778724503" class="contact-info">Telefon: +49 (0)1577 8724503</a>
-            
-        </section>
+  <p>Sie können mich unter folgender E-Mail-Adresse erreichen:
+    <a href="mailto:faonsa-kurse@web.de"
+       onclick="return gtag_report_conversion('mailto:faonsa-kurse@web.de');">
+       faonsa-kurse@web.de
+    </a>.
+  </p>
+
+  <p>Ich stehe Ihnen auch gerne über WhatsApp unter folgender Mobilnummer zur Verfügung:
+    <a href="https://wa.me/4915778724503"
+       onclick="return gtag_report_conversion('https://wa.me/4915778724503');">
+       WhatsApp schreiben
+    </a>.
+  </p>
+
+  <p>Für telefonische Anfragen bin ich ebenfalls erreichbar unter:
+    <a href="tel:+4915778724503"
+       class="contact-info"
+       onclick="return gtag_report_conversion('tel:+4915778724503');">
+       +49 (0)1577 8724503
+    </a>
+  </p>
+
+  <p>Bitte beachten Sie, dass ich aufgrund meiner Hauptbeschäftigung nur zu den folgenden Zeiten erreichbar bin:
+    Montag bis Samstag von 17 bis 20 Uhr.
+    Ich freue mich darauf, von Ihnen zu hören!
+  </p>
+</section>
 
         <section id="impressum">
             <h2 class="section-title">Impressum</h2>

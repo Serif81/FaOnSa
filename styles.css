@@ -468,3 +468,24 @@ nav a:hover {
         padding: 15px;
     }
 }
+
+/* Kontakt-Button-Stil */
+.kontakt-button {
+  display: inline-block;
+  background-color: #007bff; /* Blau */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.kontakt-button:hover {
+  background-color: #0056b3; /* Dunkleres Blau beim Hover */
+}
+
+/* Weiches Scrollen */
+html {
+  scroll-behavior: smooth;
+}

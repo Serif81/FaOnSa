@@ -9,22 +9,6 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'AW-16654646304');
-
-  // Conversion-Tracking für Kontakt-Klicks (E-Mail, Telefon, WhatsApp)
-  function gtag_report_conversion(url) {
-    var callback = function () {
-      if (typeof url !== 'undefined') {
-        window.location = url;
-      }
-    };
-    gtag('event', 'conversion', {
-      'send_to': 'AW-16654646304/40tBCKzFuqobEKD4xoU-',
-      'value': 1.0,
-      'currency': 'EUR',
-      'event_callback': callback
-    });
-    return false;
-  }
 </script>
 <!-- Hier kommt der neue Mailto-Tracker -->
   <script>

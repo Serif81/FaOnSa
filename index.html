@@ -26,6 +26,34 @@
     return false;
   }
 </script>
+<!-- Hier kommt der neue Mailto-Tracker -->
+  <script>
+    (function() {
+      var SEND_TO = 'AW-16654646304/40tBCKzFuqobEKD4xoU-';
+
+      function fireEmailConversion(href) {
+        var fired = false;
+        function go(){ if(href) window.location.href = href; }
+
+        if (typeof gtag === 'function') {
+          gtag('event', 'conversion', {
+            'send_to': SEND_TO,
+            'event_callback': function(){ fired = true; go(); }
+          });
+          setTimeout(function(){ if(!fired) go(); }, 1200); // Fallback
+        } else {
+          go(); // gtag nicht geladen -> trotzdem Mail öffnen
+        }
+      }
+
+      document.addEventListener('click', function(e) {
+        var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
+        if (!a) return;
+        e.preventDefault();
+        fireEmailConversion(a.getAttribute('href'));
+      }, true);
+    })();
+  </script>
     <meta charset="UTF-8">
     <meta name="-site-verification" content="X8raLfTOHUSg73wQ2XFFtyh9JutMfHsE5VQ8ZleDoCk">
     <title>Taxi-Unternehmerschein IHK: Online-Trainings & Live-Trainings</title>

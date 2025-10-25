@@ -489,3 +489,47 @@ nav a:hover {
 html {
   scroll-behavior: smooth;
 }
+.live-trainings {
+  background: #f9fafc;
+  border: 2px solid #ececec;
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 700px;
+  margin: 30px auto;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  font-family: "Segoe UI", sans-serif;
+}
+.live-trainings h2 {
+  text-align: center;
+  color: #1a1a1a;
+  font-size: 1.8em;
+}
+.termine-box {
+  margin-top: 20px;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  border-left: 5px solid #0078D7;
+}
+.termine-box h3 {
+  color: #0078D7;
+  font-size: 1.4em;
+  margin-bottom: 15px;
+}
+.termine-liste {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.termine-liste li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 1.1em;
+}
+.termine-liste li span {
+  font-weight: bold;
+  color: #333;
+}
+.termine-liste li:last-child {
+  border-bottom: none;
+}

@@ -489,47 +489,87 @@ nav a:hover {
 html {
   scroll-behavior: smooth;
 }
-.live-trainings {
-  background: #f9fafc;
-  border: 2px solid #ececec;
-  border-radius: 12px;
-  padding: 25px;
-  max-width: 700px;
-  margin: 30px auto;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-  font-family: "Segoe UI", sans-serif;
-}
-.live-trainings h2 {
-  text-align: center;
-  color: #1a1a1a;
-  font-size: 1.8em;
-}
-.termine-box {
-  margin-top: 20px;
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
+/* Termin-Box: linksbündig, nicht zentriert */
+#home .termine-box{
+  box-sizing: border-box;
+  width: 100%;           /* nutzt die Breite deiner Content-Spalte */
+  max-width: 760px;      /* optional: Box nicht zu breit machen */
+  margin: 16px 0 24px 0; /* <<< linksbündig: KEIN auto */
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid #e6e6e6;
   border-left: 5px solid #0078D7;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,.05);
 }
-.termine-box h3 {
+
+#home .termine-box h3{
+  margin: 0 0 12px;
+  font-size: 1.25rem;
   color: #0078D7;
-  font-size: 1.4em;
-  margin-bottom: 15px;
 }
-.termine-liste {
+
+/* Liste ohne Punkte */
+#home .termine-liste{
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;    /* Handy: 1 Spalte */
+  row-gap: 14px;
 }
-.termine-liste li {
+
+/* Desktop/Tablet: 2 Spalten */
+@media (min-width: 900px){
+  #home .termine-liste{
+    grid-template-columns: 1fr 1fr;
+    column-gap: 48px;
+  }
+}
+
+/* Einzelne Zeile */
+#home .termine-liste li{
+  display: flex;
+  align-items: center;
+  gap: 12px;
   padding: 8px 0;
-  border-bottom: 1px solid #e6e6e6;
-  font-size: 1.1em;
+  border-bottom: 1px solid #efefef;
 }
-.termine-liste li span {
-  font-weight: bold;
-  color: #333;
+#home .termine-liste li:nth-child(odd){ border-color: #f3f3f6; } /* ganz leicht variieren */
+#home .termine-liste li:last-child{ border-bottom: none; }
+
+/* Datum als Badge (Rahmen + Farbe) */
+#home .termine-liste li > span{
+  display: inline-block;
+  min-width: 130px;
+  text-align: center;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  background: #eef5ff;        /* hellblau */
+  color: #0b5bd3;
+  border: 1px solid #cfe1ff;
 }
-.termine-liste li:last-child {
-  border-bottom: none;
+
+/* zweite Farbe für die rechte Spalte / jeden 2. Eintrag */
+#home .termine-liste li:nth-child(even) > span{
+  background: #f3f8ee;        /* hellgrün */
+  color: #2f7a1f;
+  border-color: #d4e7c9;
+}
+/* Farben nach Jahr */
+#home .termine-liste li > span.jahr2025 {
+  background: #f3f8ee;   /* hellgrün */
+  color: #2f7a1f;
+  border: 1px solid #d4e7c9;
+}
+
+#home .termine-liste li > span.jahr2026 {
+  background: #eef5ff;   /* hellblau */
+  color: #0b5bd3;
+  border: 1px solid #cfe1ff;
+}
+.spacer {
+  margin-top: 20px; /* oder 2rem, je nach Design */
 }

@@ -592,4 +592,19 @@ html {
   font-size: 1.25rem !important;
   color: #0078D7 !important;
 }
+/* === Scroll-Reveal Animation === */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Abstand zwischen Bildern */
+img {
+  margin: 10px;
+}
 

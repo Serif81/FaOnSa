@@ -12,7 +12,16 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'AW-16654646304');
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'ad_personalization': 'denied',
+    'ad_user_data': 'denied'
+  });
+  gtag('config', 'AW-16654646304', {
+  'allow_ad_personalization_signals': false,
+  'anonymize_ip': true
+});
 </script>
 <!-- Hier kommt der neue Mailto-Tracker -->
   <script>
@@ -48,7 +57,6 @@
     <meta name="description" content="Online-Training zur IHK-Fachkundeprüfung Taxi/Mietwagen, SAP-Trainings & Homepage-Erstellung – praxisnah, flexibel & live. Jetzt starten mit FaOnSa!">
     <meta name="keywords" content="Vorbereitung, Fachkundeprüfung, Unternehmerschein, IHK, Taxi, Mietwagen, SAP, Training, Schulung, Homepage, Website">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="https://serif81.github.io/FaOnSa/p6ia3bkd.png" type="image/png"> <!-- Favicon -->
     <link rel="icon" href="https://serif81.github.io/FaOnSa/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="57x57" href="https://serif81.github.io/FaOnSa/favicon/apple-icon-57x57.png">
@@ -185,6 +193,9 @@
         <button id="declineCookies">Ablehnen</button>
         <button id="settingsCookies">Einstellungen</button>
     </div>
+<script>
+  
+</script>
 
     <!-- Cookie Settings Modal -->
     <div id="cookieSettingsModal" class="modal">

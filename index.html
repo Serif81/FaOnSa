@@ -1429,17 +1429,18 @@ function gtag_report_conversion(url) {
     if (typeof gtag === 'function') {
       gtag('event', 'conversion', {
         'send_to': SEND_TO,
+        // bevorzugter Transport – stabiler beim Wegnavigieren
+        'transport_type': 'beacon',
         'event_callback': go
       });
-      // Fallback, falls callback nicht kommt
-      setTimeout(go, 800);
+      // Fallback etwas länger lassen
+      setTimeout(go, 1500);
     } else {
       go();
     }
   } catch(e) {
     go();
   }
-  // Navigation bis zum Callback/Fallback verzögern
   return false;
 }
 </script>

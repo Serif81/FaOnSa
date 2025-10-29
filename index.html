@@ -1411,5 +1411,35 @@ overflow: visible;">
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
 </script>
+<script>
+function gtag_report_conversion(url) {
+  var SEND_TO = 'AW-16654646304/40tBCKzFuqobEKD4xoU-';
+  var navigated = false;
+
+  function go() {
+    if (!navigated && url) {
+      navigated = true;
+      window.location = url;
+    }
+  }
+
+  try {
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': SEND_TO,
+        'event_callback': go
+      });
+      // Fallback, falls callback nicht kommt
+      setTimeout(go, 800);
+    } else {
+      go();
+    }
+  } catch(e) {
+    go();
+  }
+  // Navigation bis zum Callback/Fallback verzögern
+  return false;
+}
+</script>
 </body>
  </html>

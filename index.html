@@ -65,8 +65,8 @@
 <meta name="robots" content="index, follow">
 
 <!-- Bessere, keyword-klarere Title/Description -->
-<title>Taxi-Unternehmerschein Online Kurs (IHK) – Prüfungsvorbereitung Taxi & Mietwagen | FaOnSa</title>
-<meta name="description" content="Online-Kurs & Live-Training zur IHK-Fachkunde Taxi/Mietwagen: kompaktes Lernmaterial, kleine Gruppen, persönliche Begleitung. Jetzt für den Taxi-Unternehmerschein vorbereiten.">
+<title>Taxi-Unternehmerschein IHK – Live-Training & Website-Erstellung | FaOnSa</title>
+<meta name="description" content="FaOnSa bietet praxisnahe Live-Trainings / Kurse zur IHK-Fachkunde Taxi & Mietwagen – persönlich begleitet und flexibel online. Zusätzlich: Website-Beratung & Erstellung für Fahrschulen, Unternehmer und Gründer.">
 
 <!-- Social Previews -->
 <meta property="og:type" content="website">
@@ -1433,35 +1433,43 @@ overflow: visible;">
   window.addEventListener('load', revealOnScroll);
 </script>
 <script>
-function gtag_report_conversion(url) {
+(function() {
   var SEND_TO = 'AW-16654646304/40tBCKzFuqobEKD4xoU-';
-  var navigated = false;
 
-  function go() {
-    if (!navigated && url) {
-      navigated = true;
-      window.location = url;
+  function fireEmailConversion(href) {
+    var navigated = false;
+    function go() {
+      if (!navigated && href) {
+        navigated = true;
+        window.location.href = href;
+      }
     }
-  }
 
-  try {
-    if (typeof gtag === 'function') {
-      gtag('event', 'conversion', {
-        'send_to': SEND_TO,
-        // bevorzugter Transport – stabiler beim Wegnavigieren
-        'transport_type': 'beacon',
-        'event_callback': go
-      });
-      // Fallback etwas länger lassen
-      setTimeout(go, 1500);
-    } else {
+    try {
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': SEND_TO,
+          'transport_type': 'beacon',
+          'event_callback': go
+        });
+        setTimeout(go, 1500);
+      } else {
+        go();
+      }
+    } catch(e) {
+      console.error('Mailto-Tracking-Fehler:', e);
       go();
     }
-  } catch(e) {
-    go();
   }
-  return false;
-}
+
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest && e.target.closest('a[href^="mailto:"]');
+    if (link) {
+      e.preventDefault();
+      fireEmailConversion(link.getAttribute('href'));
+    }
+  }, true);
+})();
 </script>
 </body>
  </html>

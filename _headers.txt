@@ -1,3 +1,0 @@
-/*
-  Content-Security-Policy: default-src 'self' https: 'unsafe-inline' 'unsafe-eval' data: blob:;
-  frame-ancestors 'self';

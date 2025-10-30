@@ -1403,44 +1403,20 @@ overflow: visible;">
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
 </script>
+<!-- Google Ads: Mailto-Conversion -->
 <script>
-(function() {
+function gtag_report_conversion(url) {
   var SEND_TO = 'AW-16654646304/40tBCKzFuqobEKD4xoU-';
-
-  function fireEmailConversion(href) {
-    var navigated = false;
-    function go() {
-      if (!navigated && href) {
-        navigated = true;
-        window.location.href = href;
-      }
-    }
-
-    try {
-      if (typeof gtag === 'function') {
-        gtag('event', 'conversion', {
-          'send_to': SEND_TO,
-          'transport_type': 'beacon',
-          'event_callback': go
-        });
-        setTimeout(go, 1500);
-      } else {
-        go();
-      }
-    } catch(e) {
-      console.error('Mailto-Tracking-Fehler:', e);
-      go();
-    }
-  }
-
-  document.addEventListener('click', function(e) {
-    var link = e.target.closest && e.target.closest('a[href^="mailto:"]');
-    if (link) {
-      e.preventDefault();
-      fireEmailConversion(link.getAttribute('href'));
-    }
-  }, true);
-})();
+  var navigated = false;
+  function go(){ if(!navigated && url){ navigated = true; window.location = url; } }
+  try {
+    if (typeof gtag === 'function') {
+      gtag('event','conversion',{send_to:SEND_TO, transport_type:'beacon', event_callback:go});
+      setTimeout(go, 1500);
+    } else { go(); }
+  } catch(e){ go(); }
+  return false;
+}
 </script>
 </body>
  </html>

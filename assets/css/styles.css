@@ -169,22 +169,22 @@ footer {
 }
 
 /* Neuer CSS-Code für das responsive Logo */
-.responsive-logo {
-    max-width: 30%;
-    height: auto;
+/* Einheitliche Logo-Größe auf ALLEN Seiten */
+.responsive-logo{
+  max-width: 220px;   /* nimm 220 oder deinen Wunschwert */
+  height: auto;
+  display: block;
+  margin: 12px auto;
 }
 
-@media (min-width: 768px) {
-    .responsive-logo {
-        max-width: 22.5%;
-    }
+/* optional feinjustieren auf kleinen Screens */
+@media (max-width: 768px){
+  .responsive-logo{ max-width: 180px; }
+}
+@media (max-width: 480px){
+  .responsive-logo{ max-width: 160px; }
 }
 
-@media (max-width: 480px) {
-    .responsive-logo {
-        max-width: 65%;
-    }
-}
 
 .section-title {
     font-size: 2rem;
@@ -489,12 +489,15 @@ nav a:hover {
 html {
   scroll-behavior: smooth;
 }
-/* Termin-Box: linksbündig, nicht zentriert */
-#home .termine-box{
+/* ==========================================
+   📅 Termine-Box (global, für alle Seiten)
+   ========================================== */
+
+.termine-box {
   box-sizing: border-box;
-  width: 100%;           /* nutzt die Breite deiner Content-Spalte */
-  max-width: 760px;      /* optional: Box nicht zu breit machen */
-  margin: 16px 0 24px 0; /* <<< linksbündig: KEIN auto */
+  width: 100%;
+  max-width: 760px;             /* Box-Breite an Content-Spalte angepasst */
+  margin: 16px 0 24px 0;        /* linksbündig, kein auto */
   padding: 16px 20px;
   background: #fff;
   border: 1px solid #e6e6e6;
@@ -503,43 +506,54 @@ html {
   box-shadow: 0 3px 10px rgba(0,0,0,.05);
 }
 
-#home .termine-box h3{
+.termine-box h3 {
   margin: 0 0 12px;
   font-size: 1.25rem;
   color: #0078D7;
+  text-align: left;
 }
 
-/* Liste ohne Punkte */
-#home .termine-liste{
+/* ================================
+   Liste ohne Punkte, Grid-Layout
+   ================================ */
+.termine-liste {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr;    /* Handy: 1 Spalte */
+  grid-template-columns: 1fr;   /* Handy: 1 Spalte */
   row-gap: 14px;
 }
 
 /* Desktop/Tablet: 2 Spalten */
-@media (min-width: 900px){
-  #home .termine-liste{
+@media (min-width: 900px) {
+  .termine-liste {
     grid-template-columns: 1fr 1fr;
     column-gap: 48px;
   }
 }
 
-/* Einzelne Zeile */
-#home .termine-liste li{
+/* ================================
+   Einzelne Listeneinträge
+   ================================ */
+.termine-liste li {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 8px 0;
   border-bottom: 1px solid #efefef;
 }
-#home .termine-liste li:nth-child(odd){ border-color: #f3f3f6; } /* ganz leicht variieren */
-#home .termine-liste li:last-child{ border-bottom: none; }
+.termine-liste li:nth-child(odd) {
+  border-color: #f3f3f6;
+}
+.termine-liste li:last-child {
+  border-bottom: none;
+}
 
-/* Datum als Badge (Rahmen + Farbe) */
-#home .termine-liste li > span{
+/* ================================
+   Datum-Badge
+   ================================ */
+.termine-liste li > span {
   display: inline-block;
   min-width: 130px;
   text-align: center;
@@ -552,45 +566,29 @@ html {
   border: 1px solid #cfe1ff;
 }
 
-/* zweite Farbe für die rechte Spalte / jeden 2. Eintrag */
-#home .termine-liste li:nth-child(even) > span{
+/* Zweite Farbe für die rechte Spalte / jeden 2. Eintrag */
+.termine-liste li:nth-child(even) > span {
   background: #f3f8ee;        /* hellgrün */
   color: #2f7a1f;
   border-color: #d4e7c9;
 }
+
 /* Farben nach Jahr */
-#home .termine-liste li > span.jahr2025 {
-  background: #f3f8ee;   /* hellgrün */
+.termine-liste li > span.jahr2025 {
+  background: #f3f8ee;        /* hellgrün */
   color: #2f7a1f;
   border: 1px solid #d4e7c9;
 }
 
-#home .termine-liste li > span.jahr2026 {
-  background: #eef5ff;   /* hellblau */
+.termine-liste li > span.jahr2026 {
+  background: #eef5ff;        /* hellblau */
   color: #0b5bd3;
   border: 1px solid #cfe1ff;
 }
-.spacer {
-  margin-top: 20px; /* oder 2rem, je nach Design */
-}
-/* Fachkundeprüfung-Box global an Terminbox-Stil anpassen */
-.termine-box {
-  box-sizing: border-box !important;
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin: 16px auto 24px auto !important;
-  padding: 16px 20px !important;
-  background: #fff !important;
-  border: 1px solid #e6e6e6 !important;
-  border-left: 5px solid #0078D7 !important;
-  border-radius: 12px !important;
-  box-shadow: 0 3px 10px rgba(0,0,0,.05) !important;
-}
 
-.termine-box h3 {
-  margin: 0 0 12px !important;
-  font-size: 1.25rem !important;
-  color: #0078D7 !important;
+/* Abstand nach unten */
+.spacer {
+  margin-top: 20px;
 }
 /* === Scroll-Reveal Animation === */
 .reveal {
@@ -635,4 +633,130 @@ img {
   .faonsa-checklist-copy {
     padding: 0 .5rem;
   }
+}
+/* === Zurück-nach-oben Button === */
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+.kurs-taxi-button {
+  display: inline-block;
+  background-color: #4caf50;       /* Grün */
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.kurs-taxi-button:hover {
+  background-color: #388e3c;       /* dunkleres Grün beim Hover */
+  transform: translateY(-2px);
+}
+
+/* ==== Kontaktbereich – dezenter, weniger Orange ==== */
+.kontakt-section{
+  background: #fff;                 /* statt gelblich */
+  border-top: 4px solid #1e88e5;    /* kühles Blau statt Orange */
+  border-radius: 14px;
+  padding: 36px 20px;
+  margin-top: 60px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+  text-align: center;
+}
+
+.kontakt-section h2{
+  color: #1e88e5;                   /* Überschrift in Blau */
+  font-size: 1.9rem;
+  margin: 0 0 8px;
+}
+
+.kontakt-text{
+  color: #374151;
+  font-size: 1.05rem;
+  margin-bottom: 22px;
+}
+
+/* Karten für E-Mail / WhatsApp / Telefon */
+.kontakt-box{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.kontakt-box p{
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;        /* deutlich sichtbarer Rahmen */
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.kontakt-box p:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,.08);
+  border-color: #cfd8e3;            /* leichte Betonung beim Hover */
+}
+
+.kontakt-link{
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration: none;
+  word-break: break-word;
+}
+.kontakt-link:hover{ text-decoration: underline; }
+
+.kontakt-hinweis{
+  margin-top: 26px;
+  font-size: .95rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* optional: schöner WhatsApp-Button */
+.whatsapp-btn{
+  display:inline-block;
+  background:#22c55e;
+  color:#fff;
+  font-weight:700;
+  padding:10px 16px;
+  border-radius: 10px;
+  text-decoration:none;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  transition: background .15s ease, transform .15s ease;
+}
+.whatsapp-btn:hover{
+  background:#16a34a;
+  transform: translateY(-1px);
+}
+
+@media (max-width:600px){
+  .kontakt-section{ padding:28px 12px; }
+}
+
+.subnote {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #555;
 }

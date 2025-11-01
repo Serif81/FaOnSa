@@ -3,19 +3,22 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0px;
-    padding: 0 1.5rem;
+    padding: 0 0 0 1.5rem;
 }
 
-/* Header-Stil */
 header {
-    background-color: #f4f4f4;
-    padding: 10px;
-    text-align: center;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 10px 0 10px 1.5rem; /* oben, rechts, unten, links */
+  text-align: left;            /* optional – falls Text mittig war */
+  box-sizing: border-box;
 }
 
 header h1 {
-    margin-top: 0px;
+  margin: 0;
+  padding: 0;
 }
+
 
 /* Navigationsstil 
 nav ul {

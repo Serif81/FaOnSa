@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://faonsa-airport-transfers.netlify.app/sitemap.xml

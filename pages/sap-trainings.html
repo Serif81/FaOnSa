@@ -16,22 +16,34 @@
     </div>
   </header>
 
-  <!-- identische Navigation wie auf den anderen Unterseiten -->
-  <nav>
-    <ul>
-      <li><a href="../index.html#home">Startseite</a></li>
-      <li><a href="./kurs-taxi-unternehmerschein.html">Taxi-Unternehmerschein</a></li>
-      <li><a href="./website-erstellung.html">Website-Erstellung</a></li>
-      <li><a href="./sap-trainings.html">SAP-Trainings</a></li>
-      <li><a href="https://faonsa-fahrdienst.netlify.app">Fahrdienst</a></li>
-      <li><a href="../index.html#leistungen">Leistungen</a></li>
-      <li><a href="../index.html#kontakt">Kontakt</a></li>
-      <li><a href="../index.html#ueber-mich">Über mich</a></li>
-      <li><a href="./impressum.html">Impressum</a></li>
-      <li><a href="./datenschutz.html">Datenschutz</a></li>
-      <li><a href="https://www.etsy.com/de/shop/FaOnSaMerch" target="_blank" rel="noopener">Etsy</a></li>
-    </ul>
-  </nav>
+      <!-- ===== NAVIGATION: Reiter + Drawer ===== -->
+<button class="tabnav" aria-expanded="false" aria-controls="nav-drawer">
+  <span class="tabnav__label">Navigation</span>
+</button>
+
+<div class="nav-overlay" hidden></div>
+
+<aside id="nav-drawer" class="nav-drawer" aria-label="Seitennavigation" tabindex="-1">
+  <div class="nav-drawer__header">
+    <strong>Menü</strong>
+    <button class="nav-close" aria-label="Menü schließen">✕</button>
+  </div>
+
+  <nav class="nav-list">
+  <a href="../index.html#home"                 class="nav-link">Startseite</a>
+  <a href="../index.html#leistungen"           class="nav-link">Leistungen</a>
+  <a href="./kurs-taxi-unternehmerschein.html" class="nav-link">Online-Trainings</a>
+  <a href="./website-erstellung.html"          class="nav-link">Website-Erstellung</a>
+  <a href="./sap-trainings.html"               class="nav-link">SAP-Trainings</a>
+  <a href="https://faonsa-fahrdienst.netlify.app" class="nav-link" target="_blank" rel="noopener">Fahrdienst</a>
+  <a href="../index.html#kontakt"              class="nav-link">Kontakt</a>
+  <a href="../index.html#ueber-mich"           class="nav-link">Über mich</a>
+  <a href="./impressum.html"                   class="nav-link">Impressum</a>
+  <a href="./datenschutz.html"                 class="nav-link">Datenschutz</a>
+  <a href="https://www.etsy.com/de/shop/FaOnSaMerch" class="nav-link" target="_blank" rel="noopener">Etsy</a>
+</nav>
+</aside>
+<!-- ===== /NAVIGATION ===== -->
 
   <main class="page-wrap">
     <h1><u>SAP-Trainings (MM / Logistik)</u></h1>
@@ -88,6 +100,47 @@
   <footer>
     <div class="page-wrap">© 2025 FaOnSa – Serif Ünal</div>
   </footer>
+<script>
+(function(){
+  const tab = document.querySelector('.tabnav');       // der blaue Reiter
+  const drawer = document.getElementById('nav-drawer'); // das Seitenmenü
+  const closeBtn = document.querySelector('.nav-close'); // das X im Menü
+  const overlay = document.querySelector('.nav-overlay'); // Hintergrund-Dunkelung
 
+  // Aktiven Menüpunkt markieren
+  const path = location.pathname.replace(/\/+$/,'') || '/';
+  document.querySelectorAll('.nav-link').forEach(a=>{
+    const href = (a.getAttribute('href')||'').replace(/\/+$/,'') || '/';
+    if (href === path || (href !== '/' && path.startsWith(href))) a.classList.add('is-active');
+  });
+
+  // Öffnen
+  const open = () => {
+    drawer.classList.add('is-open');
+    overlay.hidden = false;
+    tab.setAttribute('aria-expanded','true');
+    drawer.focus({preventScroll:true});
+    document.body.style.overflow='hidden'; // Scroll lock
+  };
+
+  // Schließen
+  const close = () => {
+    drawer.classList.remove('is-open');
+    overlay.hidden = true;
+    tab.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  };
+
+  // Klick-Ereignisse
+  tab.addEventListener('click', ()=> drawer.classList.contains('is-open') ? close() : open());
+  closeBtn?.addEventListener('click', close);
+  overlay?.addEventListener('click', close);
+
+  // ESC-Taste schließt das Menü
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) close();
+  });
+})();
+</script>
 </body>
 </html>

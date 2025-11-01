@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0px;
-    padding: 0px;
+    padding: 0 1.5rem;
 }
 
 /* Header-Stil */
@@ -759,4 +759,159 @@ img {
   margin-top: 8px;
   font-size: 0.95rem;
   color: #555;
+}
+/* ===== Drawer-Navigation (Variante C) ===== */
+:root{
+  --brand:#007bff;        /* Akzent wie "Nach oben" */
+  --brand-hover:#0056b3;  /* Hover wie "Nach oben" */
+  --text-light:#ffffff;   /* weiße Schrift */
+  --ink:#111827;          /* dunkler Text (Links im Drawer) */
+  --muted:#6b7280;
+  --bg:#ffffff;
+  --line:#e5e7eb;
+  --hover:#f3f4f6;
+  --active:#e5f0fb;
+  --shadow:0 10px 30px rgba(0,0,0,.15);
+  --speed:.25s;
+}
+/* ================================
+   LINKER REITER – NAVIGATION
+   ================================ */
+
+/* Der Reiter selbst (Button) */
+.tabnav{
+  position:fixed;
+  left:0;
+  top:45%;
+  transform:translateY(-50%);
+  background:var(--brand);
+  color:var(--text-light);
+  border:0;
+  cursor:pointer;
+  padding:.7rem .4rem;
+  border-top-right-radius:.6rem;
+  border-bottom-right-radius:.6rem;
+  box-shadow:var(--shadow);
+  z-index:1100;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:filter var(--speed);
+}
+
+.tabnav:hover,
+.tabnav:focus-visible{
+  background:var(--brand-hover);
+  filter:none;            /* damit die Hover-Farbe unverfälscht ist */
+}
+
+/* Label im Reiter – senkrechte Buchstaben */
+.tabnav__label{
+  display:inline-block;
+  writing-mode:vertical-rl;     /* Text läuft von oben nach unten */
+  text-orientation:upright;     /* Buchstaben bleiben aufrecht */
+  text-transform:uppercase;
+  font-weight:700;
+  letter-spacing:.1em;
+  line-height:1.05;
+  text-align:center;
+  color:var(--text-light);
+}
+
+/* Zustand: Reiter aktiv (Menü offen) */
+.tabnav[aria-expanded="true"]{
+  filter:brightness(.95);
+}
+
+/* ================================
+   OVERLAY – Verdunklung bei geöffnetem Menü
+   ================================ */
+.nav-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(17,24,39,.45);
+  backdrop-filter:saturate(120%) blur(1px);
+  z-index:1098;
+}
+
+/* ================================
+   DRAWER – das ausfahrende Menü
+   ================================ */
+.nav-drawer{
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
+  width:min(78vw,320px);
+  background:#fff;
+  border-right:1px solid #e5e7eb;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  transform:translateX(-100%);
+  transition:transform var(--speed) ease;
+  z-index:1099;
+  display:flex;
+  flex-direction:column;
+}
+.nav-drawer.is-open{
+  transform:translateX(0);
+}
+
+/* Kopfbereich im Drawer */
+.nav-drawer__header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem;
+  border-bottom:1px solid #e5e7eb;
+}
+.nav-close{
+  border:0;
+  background:transparent;
+  font-size:1.2rem;
+  cursor:pointer;
+  color:#6b7280;
+}
+.nav-close:hover{
+  color:#111827;
+}
+
+/* Linkliste im Drawer */
+.nav-list{
+  display:flex;
+  flex-direction:column;
+  padding:.1rem 1.5rem;
+}
+.nav-link{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  padding:.7rem .75rem;
+  border-radius:.6rem;
+  color:#111827;
+  text-decoration:none;
+  transition:background .2s, transform .04s;
+}
+.nav-link:hover,
+.nav-link:focus{
+  background:#f3f4f6;
+  outline:none;
+}
+.nav-link:active{
+  transform:translateY(1px);
+}
+.nav-link.is-active{
+  background:#e5f0fb;
+  font-weight:600;
+  box-shadow:inset 0 0 0 2px rgba(10,102,194,.15);
+}
+
+/* Scroll-Abstand, damit der Reiter nichts verdeckt */
+@media (min-width:1024px){
+  body{ scroll-padding-left:48px; }
+}
+
+/* Für Nutzer mit reduzierten Animationen */
+@media (prefers-reduced-motion: reduce){
+  .nav-drawer{ transition:none; }
 }

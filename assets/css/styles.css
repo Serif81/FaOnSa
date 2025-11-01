@@ -17,11 +17,11 @@ header h1 {
     margin-top: 0px;
 }
 
-/* Navigationsstil */
+/* Navigationsstil 
 nav ul {
     list-style-type: inside;
     padding: 5px;
-}
+} 
 
 nav ul li {
     display: inline-block;
@@ -31,7 +31,7 @@ nav ul li {
 nav ul li a {
     text-decoration: inside;
     color: #333;
-}
+} */
 
 /* Hauptinhalt-Stil */
 main {
@@ -760,25 +760,25 @@ img {
   font-size: 0.95rem;
   color: #555;
 }
-/* ===== Drawer-Navigation (Variante C) ===== */
+/* ===== Drawer-Navigation (Variante C) – FINAL STABIL ===== */
 :root{
-  --brand:#007bff;        /* Akzent wie "Nach oben" */
-  --brand-hover:#0056b3;  /* Hover wie "Nach oben" */
-  --text-light:#ffffff;   /* weiße Schrift */
-  --ink:#111827;          /* dunkler Text (Links im Drawer) */
-  --muted:#6b7280;
-  --bg:#ffffff;
-  --line:#e5e7eb;
-  --hover:#f3f4f6;
-  --active:#e5f0fb;
+  --brand:#007bff;        /* Reiter-Farbe (wie "Nach oben") */
+  --brand-hover:#0056b3;  /* Hover Reiter */
+  --text-light:#ffffff;   /* Schrift auf Reiter */
+  --ink:#111827;          /* Text im Drawer */
+  --muted:#6b7280;        /* dezenter Text */
+  --bg:#ffffff;           /* Drawer-Hintergrund */
+  --line:#e5e7eb;         /* Linien/Fokus */
+  --hover:#f3f4f6;        /* Hover Link */
+  --active:#e5f0fb;       /* aktiver Link */
   --shadow:0 10px 30px rgba(0,0,0,.15);
   --speed:.25s;
 }
+
 /* ================================
    LINKER REITER – NAVIGATION
    ================================ */
 
-/* Der Reiter selbst (Button) */
 .tabnav{
   position:fixed;
   left:0;
@@ -788,41 +788,38 @@ img {
   color:var(--text-light);
   border:0;
   cursor:pointer;
-  padding:.7rem .4rem;
+  padding:.5rem .35rem;              /* schlanker als vorher */
   border-top-right-radius:.6rem;
   border-bottom-right-radius:.6rem;
   box-shadow:var(--shadow);
-  z-index:1100;
-  font-weight:600;
+  z-index:1001;                       /* unter Drawer/Overlay */
+  font-weight:700;
   display:flex;
   align-items:center;
   justify-content:center;
-  transition:filter var(--speed);
+  min-width:26px;                     /* kompakte Trefffläche */
+  min-height:62px;
+  transition:background var(--speed) ease;
 }
-
 .tabnav:hover,
 .tabnav:focus-visible{
   background:var(--brand-hover);
-  filter:none;            /* damit die Hover-Farbe unverfälscht ist */
+  outline:none;
 }
 
-/* Label im Reiter – senkrechte Buchstaben */
+/* Reiter-Label vertikal */
 .tabnav__label{
   display:inline-block;
-  writing-mode:vertical-rl;     /* Text läuft von oben nach unten */
-  text-orientation:upright;     /* Buchstaben bleiben aufrecht */
+  writing-mode:vertical-rl;
+  text-orientation:upright;
   text-transform:uppercase;
-  font-weight:700;
   letter-spacing:.1em;
   line-height:1.05;
-  text-align:center;
   color:var(--text-light);
 }
 
-/* Zustand: Reiter aktiv (Menü offen) */
-.tabnav[aria-expanded="true"]{
-  filter:brightness(.95);
-}
+/* beim offenen Menü: Reiter bewusst unter dem Drawer halten */
+.tabnav[aria-expanded="true"]{ z-index:1000; }
 
 /* ================================
    OVERLAY – Verdunklung bei geöffnetem Menü
@@ -830,10 +827,11 @@ img {
 .nav-overlay{
   position:fixed;
   inset:0;
-  background:rgba(17,24,39,.45);
-  backdrop-filter:saturate(120%) blur(1px);
-  z-index:1098;
+  background:rgba(17,24,39,.15);     /* heller als vorher, nicht „zu grau“ */
+  backdrop-filter:none;               /* kein Blur, wirkt leichter */
+  z-index:1002;                       /* unter Drawer, über Reiter */
 }
+.nav-overlay[hidden]{ display:none; } /* wenn hidden, komplett weg */
 
 /* ================================
    DRAWER – das ausfahrende Menü
@@ -843,19 +841,18 @@ img {
   left:0;
   top:0;
   bottom:0;
-  width:min(78vw,320px);
-  background:#fff;
-  border-right:1px solid #e5e7eb;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  width:min(85vw,320px);              /* mobil 85vw, desktop max 320px */
+  background:var(--bg);
+  border-right:1px solid var(--line);
+  box-shadow:var(--shadow);
   transform:translateX(-100%);
   transition:transform var(--speed) ease;
-  z-index:1099;
+  z-index:1003;                       /* OBERSTE Ebene -> Links klickbar */
   display:flex;
   flex-direction:column;
+  will-change:transform;
 }
-.nav-drawer.is-open{
-  transform:translateX(0);
-}
+.nav-drawer.is-open{ transform:translateX(0); }
 
 /* Kopfbereich im Drawer */
 .nav-drawer__header{
@@ -863,55 +860,57 @@ img {
   align-items:center;
   justify-content:space-between;
   padding:1rem;
-  border-bottom:1px solid #e5e7eb;
+  border-bottom:1px solid var(--line);
 }
 .nav-close{
   border:0;
   background:transparent;
   font-size:1.2rem;
   cursor:pointer;
-  color:#6b7280;
+  color:var(--muted);
 }
-.nav-close:hover{
-  color:#111827;
-}
+.nav-close:hover{ color:var(--ink); }
 
-/* Linkliste im Drawer */
+/* Linkliste im Drawer – IMMER vertikal */
 .nav-list{
   display:flex;
   flex-direction:column;
-  padding:.1rem 1.5rem;
+  gap:.25rem;
+  padding:1rem 1.25rem 1.25rem;       /* oben & seitlich angenehm */
 }
 .nav-link{
   display:flex;
   align-items:center;
   gap:.6rem;
-  padding:.7rem .75rem;
+  padding:.7rem .9rem;                 /* gute Tap-Zone, nicht zu groß */
   border-radius:.6rem;
-  color:#111827;
+  color:var(--ink);
   text-decoration:none;
   transition:background .2s, transform .04s;
 }
 .nav-link:hover,
 .nav-link:focus{
-  background:#f3f4f6;
+  background:var(--hover);
   outline:none;
 }
-.nav-link:active{
-  transform:translateY(1px);
-}
+.nav-link:active{ transform:translateY(1px); }
 .nav-link.is-active{
-  background:#e5f0fb;
+  background:var(--active);
   font-weight:600;
   box-shadow:inset 0 0 0 2px rgba(10,102,194,.15);
 }
 
-/* Scroll-Abstand, damit der Reiter nichts verdeckt */
+/* Scroll-Abstand (optional, nur Desktop) */
 @media (min-width:1024px){
   body{ scroll-padding-left:48px; }
 }
 
-/* Für Nutzer mit reduzierten Animationen */
-@media (prefers-reduced-motion: reduce){
+/* Mobile Feinschliff (Position Reiter) */
+@media (max-width:767px){
+  .tabnav{ top:40%; }
+}
+
+/* Bewegungsreduktion respektieren */
+@media (prefers-reduced-motion:reduce){
   .nav-drawer{ transition:none; }
 }

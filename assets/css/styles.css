@@ -641,10 +641,10 @@ img {
 .back-to-top {
   position: fixed;
   bottom: 10px;
-  right: 10px;
+  right: 2px;
   background-color: #007bff;
   color: #fff;
-  padding: 6px 12px;
+  padding: 5px 6px;
   border-radius: 15px;
   font-weight: 600;
   text-decoration: none;

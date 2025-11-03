@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://faonsa-airport-transfers.netlify.app/</loc>
+    <loc>https://airport-transfers.faonsa.de/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -10,7 +10,7 @@
   <!-- Weitere Unterseiten deiner App, falls du welche hast -->
   <!--
   <url>
-    <loc>https://faonsa-airport-transfers.netlify.app/deine-unterseite.html</loc>
+    <loc>https://airport-transfers.faonsa.de/deine-unterseite.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

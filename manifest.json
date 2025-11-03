@@ -2,9 +2,11 @@
   "name": "FAONSA",
   "short_name": "FaOnSa",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
+  "description": "Online-Training zur IHK-Fachkundeprüfung Taxi & Mietwagen, SAP-Trainings & Homepage-Erstellung mit FaOnSa.",
   "icons": [
     {
       "src": "/favicon/android-icon-192x192.png",

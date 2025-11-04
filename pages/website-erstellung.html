@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Website-Erstellung & Beratung | FaOnSa</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- exakt deine Haupt-Styles -->
-  <link rel="stylesheet" href="../assets/css/styles.css">
-
 <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <!-- Deine Styles -->
@@ -122,15 +119,17 @@
   <section id="faonsa-rondell" class="rondell-wrap">
   <div class="swiper faonsa-swiper">
     <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Favicon-Test.png" alt="Bild 1"></div>
-      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Index-Test.png"   alt="Bild 2"></div>
-      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Rich-Test.png"    alt="Bild 3"></div>
-      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Speed-Test.png"   alt="Bild 4"></div>
-      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Speed2-Test.png"  alt="Bild 5"></div>
-    <div class="faonsa-pag swiper-pagination"></div>
-    </div> <!-- ✅ HIER schließt der wrapper -->
-    
-    <!-- Navigation -->
+      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Favicon-Test.png" alt=""></div>
+      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Index-Test.png"   alt=""></div>
+      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Rich-Test.png"    alt=""></div>
+      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Speed-Test.png"   alt=""></div>
+      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Speed2-Test.png"  alt=""></div>
+    </div>
+
+    <!-- ✅ Pagination HIER (außerhalb .swiper-wrapper) -->
+    <div class="swiper-pagination faonsa-pag"></div>
+
+    <!-- ✅ Pfeile -->
     <div class="swiper-button-prev faonsa-prev" aria-label="Zurück"></div>
     <div class="swiper-button-next faonsa-next" aria-label="Weiter"></div>
   </div>

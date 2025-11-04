@@ -1,13 +1,21 @@
+// === FAONSA RONDELL – Minimal & Debug ===
 window.addEventListener('DOMContentLoaded', () => {
-  const root = document.querySelector('#faonsa-rondell .faonsa-swiper');
-  if (!root) return;
+  const sel = '#faonsa-rondell .faonsa-swiper';
+  const root = document.querySelector(sel);
+  if (!root) { console.warn('Swiper-Root nicht gefunden:', sel); return; }
+
+  console.log('Swiper verfügbar?', typeof Swiper); // sollte "function" sein
 
   const swiper = new Swiper(root, {
-    centeredSlides: true,
+    // Basis
     loop: true,
     speed: 450,
-    spaceBetween: 60,
     slidesPerView: 3,
+    slidesPerGroup: 1,
+    spaceBetween: 48,
+    centeredSlides: true,
+
+    // Navigation
     navigation: {
       nextEl: '#faonsa-rondell .faonsa-next',
       prevEl: '#faonsa-rondell .faonsa-prev',
@@ -16,16 +24,21 @@ window.addEventListener('DOMContentLoaded', () => {
       el: '#faonsa-rondell .faonsa-pag',
       clickable: true,
     },
-    slideToClickedSlide: true,
+
+    // KEIN Klick-ins-Bild zum Springen (vermeidet "3 cm daneben"-Effekt)
+    slideToClickedSlide: false,
+
+    // Breakpoints
     breakpoints: {
-      // Handy: 1.15 Slides → Nachbarn „schauen rein“
-      0:   { slidesPerView: 1.15, spaceBetween: 14, centeredSlides: true },
-      // kleines Tablet
-      640: { slidesPerView: 2,    spaceBetween: 28, centeredSlides: true },
-      // Desktop
-      900: { slidesPerView: 3,    spaceBetween: 60, centeredSlides: true },
+      0:   { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 14, centeredSlides: true, centeredSlidesBounds: true },
+      640: { slidesPerView: 2, slidesPerGroup: 1, spaceBetween: 24, centeredSlides: true },
+      900: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 48, centeredSlides: true },
     },
   });
 
-  window._r = swiper;
+  // Debug: Pfeil-Klicks & Methode testbar machen
+  window._faonsaSwiper = swiper;
+  document.querySelector('#faonsa-rondell .faonsa-next')?.addEventListener('click', () => console.log('>> next'));
+  document.querySelector('#faonsa-rondell .faonsa-prev')?.addEventListener('click', () => console.log('<< prev'));
+  console.log('Swiper init:', swiper?.slides?.length, 'slides');
 });

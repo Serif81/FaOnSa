@@ -918,14 +918,22 @@ img {
   .nav-drawer{ transition:none; }
 }
 
-/* === FAONSA RONDELL – betonte Mitte & weichere Ränder (bereinigt) === */
-:root{ --faonsa-gray:#f4f4f4; }
+/* === FAONSA RONDELL – finale, bereinigte Version === */
+:root{
+  --faonsa-gray:#f4f4f4;
+  --faonsa-blue:#4c8bf3;
 
+  /* <<< HIER stellst du den Pfeil-Abstand am Desktop ein */
+  --arrow-offset-desktop: -10px;   /* z.B. +4 oder –10px */
+}
+
+/* Grauer Bereich + hart clippen (kein Überlaufen/Scrollen) */
 #faonsa-rondell{
   background:var(--faonsa-gray);
   padding:20px 0;
   display:flex;
   justify-content:center;
+  overflow:hidden;                           /* wichtig */
 }
 
 #faonsa-rondell .faonsa-swiper{
@@ -933,25 +941,24 @@ img {
   height:400px;
   margin:0 auto;
   position:relative;
-  overflow:hidden;
+  overflow:hidden;                           /* wichtig */
+  box-sizing:border-box;
 }
 
+/* Slides & Effekte */
 #faonsa-rondell .swiper-wrapper{
   display:flex !important;
   align-items:center;
 }
 
 #faonsa-rondell .swiper-slide{
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex; align-items:center; justify-content:center;
   transition:transform .45s ease, opacity .45s ease, filter .45s ease;
   transform:scale(.78);
   opacity:.25;
   filter:blur(1.5px);
   z-index:1;
 }
-
 #faonsa-rondell .swiper-slide-prev,
 #faonsa-rondell .swiper-slide-next{
   transform:scale(.9);
@@ -959,7 +966,6 @@ img {
   filter:blur(.8px);
   z-index:2;
 }
-
 #faonsa-rondell .swiper-slide-active{
   transform:scale(1.18);
   opacity:1;
@@ -967,103 +973,71 @@ img {
   z-index:3;
 }
 
+/* Bilder */
 #faonsa-rondell .swiper-slide img{
   max-height:82%;
   max-width:90%;
-  width:auto;
-  height:auto;
+  width:auto; height:auto;
   object-fit:contain;
   border-radius:14px;
   box-shadow:0 14px 32px rgba(0,0,0,.15);
 }
 
-/* Pfeile – Desktop-Default: SICHTBAR */
+/* Pfeile – Basis (immer oben und klickbar) */
 #faonsa-rondell .faonsa-prev,
 #faonsa-rondell .faonsa-next{
-  display:flex;                        /* <- wichtig */
-  align-items:center;
-  justify-content:center;
   position:absolute;
   top:50%;
   transform:translateY(-50%);
   width:44px; height:44px;
-  z-index:50;
-  color:#4c8bf3;
-  opacity:.9;
-  transition:opacity .3s ease, transform .3s ease;
+  z-index:100;
+  pointer-events:auto;
+  color:var(--faonsa-blue);
 }
+
 #faonsa-rondell .faonsa-prev:hover,
 #faonsa-rondell .faonsa-next:hover{
-  opacity:1;
-  transform:translateY(-50%) scale(1.1);
+  opacity:1; transform:translateY(-50%) scale(1.1);
 }
 
-/* Bullets standardmäßig ausblenden (Desktop) */
-#faonsa-rondell .swiper-pagination-bullets { display:none; }
+/* Bullets standardmäßig aus (Desktop) */
+#faonsa-rondell .swiper-pagination-bullets{ display:none; }
 
-/* ===== Mobile-Optimierung (<= 640px) ===== */
-@media (max-width: 640px){
+/* ===== Desktop (>=900px): Pfeile leicht nach innen, kein Überlaufen ===== */
+@media (min-width:900px){
+  #faonsa-rondell .faonsa-prev{ left:  var(--arrow-offset-desktop) !important; }
+  #faonsa-rondell .faonsa-next{ right: var(--arrow-offset-desktop) !important; }
 
-  #faonsa-rondell{ padding:20px 0; }
-
-  /* Höhe + Peek-Effekt für Nachbarn */
+  /* optional etwas Innenluft, damit die Pfeile nicht „kleben“ */
   #faonsa-rondell .faonsa-swiper{
-    height:310px;
-    overflow:visible;
-  }
-
-  /* weichere Effekte, Nachbarn sichtbar */
-  #faonsa-rondell .swiper-slide{
-    transform:scale(.92);
-    opacity:.40;
-    filter:blur(.5px);
-  }
-  #faonsa-rondell .swiper-slide-prev,
-  #faonsa-rondell .swiper-slide-next{
-    transform:scale(.98);
-    opacity:.72;
-    filter:none;
-  }
-  #faonsa-rondell .swiper-slide-active{
-    transform:scale(1.04);
-    filter:none;
-  }
-
-  /* Bilder etwas kleiner */
-  #faonsa-rondell .swiper-slide img{
-    max-height:72%;
-    max-width:88%;
-  }
-
-  /* Bullets einblenden & stylen */
-  #faonsa-rondell .swiper-pagination-bullets{
-    display:block;
-    position:absolute;
-    left:0; right:0;
-    bottom:-6px;
-    text-align:center;
-  }
-  #faonsa-rondell .swiper-pagination-bullet{
-    background:#9bb5ff;
-    opacity:.6;
-  }
-  #faonsa-rondell .swiper-pagination-bullet-active{
-    background:#4c8bf3;
-    opacity:1;
-  }
-
-  /* Pfeile auf Mobile AUS (Wischen + Bullets reichen) */
-  #faonsa-rondell .faonsa-prev,
-  #faonsa-rondell .faonsa-next{
-    display:none !important;
+    overflow: hidden;
+    padding: 0 6px;
+    box-sizing: border-box;
   }
 }
 
-/* Desktop: Pfeile etwas nach außen ziehen */
-@media (min-width: 900px){
-  #faonsa-rondell .faonsa-prev{ left: -10px; }   /* nach Bedarf: -6px … -24px */
-  #faonsa-rondell .faonsa-next{ right: -10px; }  /* nach Bedarf: -6px … -24px */
+/* ===== Mobile (<=640px): Pfeile aus, Bullets als Wisch-Hinweis ===== */
+@media (max-width:640px){
+  #faonsa-rondell{ padding:16px 0; }
 
-  /* falls sie dabei abgeschnitten werden, Container frei geben: */
-  #faonsa-rondell .faonsa-swiper{ overflow: visible; }
+  #faonsa-rondell .faonsa-swiper{
+    height:300px;
+    overflow:hidden;                 /* nix ragt raus */
+    padding:0 10px;
+  }
+
+  #faonsa-rondell .swiper-slide{ transform:scale(.94); opacity:.45; filter:blur(.5px); }
+  #faonsa-rondell .swiper-slide-active{ transform:scale(1.06); opacity:1; filter:none; }
+
+  #faonsa-rondell .swiper-slide img{ max-height:72%; max-width:90%; }
+
+  #faonsa-rondell .swiper-pagination-bullets{
+    display:block; position:absolute; left:0; right:0; bottom:-6px; text-align:center;
+  }
+  #faonsa-rondell .swiper-pagination-bullet{ background:#9bb5ff; opacity:.6; }
+  #faonsa-rondell .swiper-pagination-bullet-active{ background:var(--faonsa-blue); opacity:1; }
+
+  /* Pfeile auf Handy aus */
+  #faonsa-rondell .faonsa-prev,
+  #faonsa-rondell .faonsa-next{ display:none !important; }
 }

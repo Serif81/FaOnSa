@@ -1068,3 +1068,39 @@ img {
   #faonsa-rondell .faonsa-prev,
   #faonsa-rondell .faonsa-next{ display:none !important; }
 }
+
+/* Nur innerhalb dieser Box: sorgt für gleichmäßige Karten */
+.kontakt-fix {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* Feinjustierung für Mobilgeräte */
+@media (max-width: 600px) {
+  .kontakt-fix {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Karten-Stil nur für die neuen DIVs */
+.kontakt-card{
+  background:#f9fafb;
+  border:2px solid #e5e7eb;
+  border-radius:12px;
+  padding:14px 16px;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  display:flex;                 /* Inhalte schön zentrieren */
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+.kontakt-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,.08);
+  border-color:#cfd8e3;
+}
+
+/* Falls irgendwo doch noch ein leeres <p> in der Box steht → ausblenden */
+.kontakt-box p:empty { display:none; }

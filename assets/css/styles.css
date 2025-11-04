@@ -994,3 +994,54 @@ img {
   opacity:1;
   transform:translateY(-50%) scale(1.1);
 }
+
+/* ===== Mobile-Optimierung fürs Rondell ===== */
+@media (max-width: 640px){
+  /* Weniger Luft oben/unten */
+  #faonsa-rondell{ padding:20px 0; }
+
+  /* Geringere Höhe des Sliders */
+  #faonsa-rondell .faonsa-swiper{
+    height: 320px;                 /* ggf. 300–340 testen */
+  }
+
+  /* Bilder kleiner halten */
+  #faonsa-rondell .swiper-slide img{
+    max-height: 72%;
+    max-width: 88%;
+  }
+
+  /* Weniger Skalierung & Blur auf Mobile */
+  #faonsa-rondell .swiper-slide{
+    transform: scale(.90);
+    opacity: .35;
+    filter: blur(.8px);
+  }
+  #faonsa-rondell .swiper-slide-prev,
+  #faonsa-rondell .swiper-slide-next{
+    transform: scale(.96);
+    opacity: .55;
+    filter: blur(.4px);
+  }
+  #faonsa-rondell .swiper-slide-active{
+    transform: scale(1.02);        /* nahezu Slotgröße → kein Überschießen */
+    filter: none;
+  }
+
+  /* Pfeile kleiner & tiefer setzen (oder ausblenden, wenn du willst) */
+  :root{
+    --swiper-navigation-size: 22px;      /* Pfeilgröße */
+    --swiper-navigation-sides-offset: 8px;
+  }
+  #faonsa-rondell .faonsa-prev,
+  #faonsa-rondell .faonsa-next{
+    top: auto;
+    bottom: 6px;                         /* unten statt mittig */
+    transform: none;
+    opacity: .8;
+  }
+}
+
+/* Pfeile auf Handy verstecken */
+#faonsa-rondell .faonsa-prev,
+#faonsa-rondell .faonsa-next{ display:none; }

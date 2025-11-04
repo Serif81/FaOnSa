@@ -917,3 +917,80 @@ img {
 @media (prefers-reduced-motion:reduce){
   .nav-drawer{ transition:none; }
 }
+
+/* === FAONSA RONDELL – betonte Mitte & weichere Ränder === */
+:root{ --faonsa-gray:#f4f4f4; }
+
+#faonsa-rondell{
+  background:var(--faonsa-gray);
+  padding:20px 0;
+  display:flex;
+  justify-content:center;
+}
+
+#faonsa-rondell .faonsa-swiper{
+  width:min(1100px, 90vw);
+  height:400px;                 /* ggf. leicht erhöhen für mehr Präsenz */
+  margin:0 auto;
+  position:relative;
+  overflow:hidden;
+}
+
+#faonsa-rondell .swiper-wrapper{
+  display:flex !important;
+  align-items:center;
+}
+
+#faonsa-rondell .swiper-slide{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .45s ease, opacity .45s ease, filter .45s ease;
+  transform:scale(.78);
+  opacity:.25;                  /* Basis viel transparenter */
+  filter:blur(1.5px);
+  z-index:1;
+}
+
+#faonsa-rondell .swiper-slide-prev,
+#faonsa-rondell .swiper-slide-next{
+  transform:scale(.9);          /* leicht größer als Randbilder */
+  opacity:.55;                  /* etwas sichtbarer */
+  filter:blur(.8px);
+  z-index:2;
+}
+
+#faonsa-rondell .swiper-slide-active{
+  transform:scale(1.18);        /* Mitte sticht richtig hervor */
+  opacity:1;
+  filter:none;
+  z-index:3;
+}
+
+#faonsa-rondell .swiper-slide img{
+  max-height:82%;
+  max-width:90%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  border-radius:14px;
+  box-shadow:0 14px 32px rgba(0,0,0,.15);
+}
+
+/* Pfeile dezent & mittig */
+#faonsa-rondell .faonsa-prev,
+#faonsa-rondell .faonsa-next{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:50;
+  color:#4c8bf3;
+  opacity:.85;
+  pointer-events:auto;
+  transition:opacity .3s ease, transform .3s ease;
+}
+#faonsa-rondell .faonsa-prev:hover,
+#faonsa-rondell .faonsa-next:hover{
+  opacity:1;
+  transform:translateY(-50%) scale(1.1);
+}

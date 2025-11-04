@@ -7,6 +7,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- exakt deine Haupt-Styles -->
   <link rel="stylesheet" href="../assets/css/styles.css">
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<!-- Deine Styles -->
+<link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
 <a id="top"></a>
@@ -56,7 +61,7 @@
     <img src="../assets/img/deine_webseite.png" alt="deine webseite" width="350" height="auto">
 <!-- Inhalte – 1:1 an deine Startseite angelehnt -->
 <section>
-  <h2>Deine eigene Webseite – nach dem Vorbild von FaOnSa</h2>
+  <h2><u>Deine eigene Webseite – nach dem Vorbild von FaOnSa</u></h2>
   <p>Dir gefällt meine Webseite? Dann kann ich dir genau so eine erstellen – als Kopie meiner Seite, nur mit deinen Inhalten.</p>
   <p>Wenn dir der Aufbau, das Design und die Funktionen meiner Webseite gefallen, bekommst du deine eigene Website auf exakt dieser Grundlage. Ich erstelle eine Kopie meiner Seite und passe sie mit deinen Texten, Bildern und Farben an. Die komplette Struktur bleibt gleich – Navigation, Kontakt- und WhatsApp-Funktion, Anruf-Button auf dem Handy – alles funktioniert wie hier auf meiner Seite.</p>
 
@@ -97,6 +102,38 @@
     <li>Alle, die schnell und günstig einen modernen Webauftritt wollen</li>
     <li>Personen, denen meine Seite gefällt und die sie als Vorlage für ihr eigenes Projekt nutzen möchten</li>
   </ul>
+<hr style="border: 1px solid #007bff; margin: 20px 0;">
+<section class="website-tests">
+  <h2><u>Nachweisbare Qualität – geprüft durch echte Leistung</u></h2>
+  <p>
+    Die hier gezeigten Testergebnisse stammen von meiner eigenen Website und belegen:
+    <strong>Sauberer Code, schnelle Ladezeiten und eine durchdachte Struktur</strong>
+    zahlen sich aus.
+  </p>
+  <p>
+    Wenn du dich für eine Website von <strong>FaOnSa</strong> entscheidest, bekommst du
+    nicht einfach nur eine Seite, sondern eine
+    <strong>technisch stabile, performante und zukunftssichere Lösung</strong>.
+    Ich lege großen Wert darauf, dass deine Website beim Test genauso gut abschneidet –
+    damit du dich voll auf dein Geschäft konzentrieren kannst.
+  </p>
+</section>
+
+  <section id="faonsa-rondell" class="rondell-wrap">
+  <div class="swiper faonsa-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Favicon-Test.png" alt="Bild 1"></div>
+      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Index-Test.png"   alt="Bild 2"></div>
+      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Rich-Test.png"    alt="Bild 3"></div>
+      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Speed-Test.png"   alt="Bild 4"></div>
+      <div class="swiper-slide"><img src="../assets/img/faonsa-Bild-Speed2-Test.png"  alt="Bild 5"></div>
+    </div> <!-- ✅ HIER schließt der wrapper -->
+    
+    <!-- Navigation -->
+    <div class="swiper-button-prev faonsa-prev" aria-label="Zurück"></div>
+    <div class="swiper-button-next faonsa-next" aria-label="Weiter"></div>
+  </div>
+</section>
 
   <hr style="border: 1px solid #007bff; margin: 20px 0;">
   <h3>🌐 Beratung zur Erstellung von Webseiten bei FaOnSa</h3>
@@ -113,7 +150,7 @@
 <p style="text-align:center; font-size:1.05em; color:#333;">
   <strong><u>💳   💰 Zahlungsmöglichkeiten:</u></strong><br><br>
 
-  Ganz bequem und sicher bezahlen –
+  Ganz bequem und sicher bezahlen – <br>
   <span class="pay-icons">
     <i class="fa-brands fa-paypal" style="color:#003087; font-size:1.2em; margin:0 6px; vertical-align:middle;"></i>
     per <strong>PayPal</strong>
@@ -168,5 +205,12 @@
   });
 })();
 </script>
+
+<!-- Swiper JS muss zuerst kommen -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Dein Skript: von /pages eine Ebene hoch zu /assets -->
+<script src="../assets/js/script.js"></script>
+
 </body>
 </html>

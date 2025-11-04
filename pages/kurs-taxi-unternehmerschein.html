@@ -165,27 +165,148 @@ Im Anschluss erhälst du den Dienstleistungsvertrag sowie die entsprechende Rech
 <div class="reveal">
 <img src="../assets/img/faonsa-Bild_vorteile.png" alt="Vorteile" width="350" height="auto">
 </div>
-<hr>
+<hr style="border: 1px solid #007bff; margin: 20px 0;">
+<hr style="border: 1px solid #007bff; margin: 20px 0;">
 
-<p>In meinem Live-Training erhältst du praxisnahes Wissen, individuelle Betreuung und wertvolle Tipps für deine Selbstständigkeit.</p>
+<!-- 🧱 Eigenständiger Vorteils-Container -->
+<div class="live-training-section">
 
-<ul>
-  <li>💬 <strong>Kostenlose Vorabberatung:</strong><br>
-  Erste Fragen klären, bevor du startest</li>
-  <div class="spacer"></div>
-  <li>🎯 <strong>Gezielte Prüfungsvorbereitung:</strong><br>
-  Live-Training mit persönlicher Begleitung</li>
-  <div class="spacer"></div>
-  <li>📘 <strong>Praktischer Lernordner:</strong><br>
-  Alle wichtigen Themen kompakt erklärt</li>
-  <div class="spacer"></div>
-  <li>🔁 <strong>Zusatzmodule & Wiederholung:</strong><br>
-  So oft lernen, bis es sitzt</li>
-  <div class="spacer"></div>
-  <li>🏁 <strong>Kostenlose Unternehmensberatung:</strong><br>
-  Unterstützung bei der Gründungsphase (nur für Teilnehmer)</li>
-</ul>
+  <style>
+    .live-training-section {
+      all: initial;
+      font-family: system-ui, sans-serif;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
+    .live-training-section * {
+      all: unset;
+      display: revert;
+      box-sizing: border-box;
+    }
+
+    .live-training-section .benefits-wrap {
+      max-width: 980px;
+      margin: 24px auto;
+      padding: 24px 18px;
+      border: 2px solid #007bff;
+      border-radius: 14px;
+      background: #f8fbff;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      font-family: system-ui, sans-serif;
+      color: #111;
+    }
+
+    .live-training-section .benefits-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 12px 0;
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 800;
+      color: #0a2761;
+    }
+
+    .live-training-section .benefits-sub {
+      margin: 0 0 16px 0;
+      font-size: clamp(15px, 2.2vw, 18px);
+      color: #273244;
+      line-height: 1.5;
+    }
+
+    .live-training-section .save-badge {
+      display: inline-block;
+      background: #19c37d;
+      color: #083b2b;
+      font-weight: 800;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: clamp(16px, 2.6vw, 20px);
+      box-shadow: 0 6px 16px rgba(25, 195, 125, .25);
+      margin: 6px 0 14px;
+    }
+
+    .live-training-section .benefits-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .live-training-section .benefit {
+      background: #fff;
+      border: 1px solid #e7eefc;
+      border-radius: 12px;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, .05);
+    }
+
+    .live-training-section .benefit i {
+      font-style: normal;
+      font-size: 22px;
+      line-height: 1;
+      color: #007bff;
+    }
+
+    .live-training-section .benefit strong {
+      display: block;
+      font-size: clamp(17px, 2.8vw, 21px);
+    }
+
+    .live-training-section .benefit small {
+      display: block;
+      font-size: clamp(13px, 2.2vw, 15px);
+      opacity: .9;
+      margin-top: 2px;
+      line-height: 1.5;
+    }
+
+    .live-training-section .idea2launch {
+      margin-top: 18px;
+      font-size: clamp(16px, 2.6vw, 20px);
+      font-weight: 700;
+      color: #0a2761;
+    }
+
+    @media (max-width: 640px) {
+      .live-training-section .benefit {
+        grid-template-columns: 24px 1fr;
+        padding: 12px;
+      }
+      .live-training-section .benefit i {
+        font-size: 20px;
+      }
+    }
+  </style>
+
+  <div class="benefits-wrap">
+    <h3 class="benefits-head">✨ Deine Vorteile im Live-Training</h3>
+    <p class="benefits-sub">In meinem Live-Training erhältst du praxisnahes Wissen, individuelle Begleitung und echte Gründer-Extras.</p>
+    <span class="save-badge">Gesamtvorteil: ca. 220&nbsp;€ gespart</span>
+
+    <ul class="benefits-list">
+      <li class="benefit"><i>💬</i><div><strong>Kostenlose Vorabberatung</strong><small>Erste Fragen klären, bevor du startest.</small></div></li>
+      <li class="benefit"><i>📋</i><div><strong>Kostenlose Checkliste (per WhatsApp)</strong><small>Die wichtigsten ersten Schritte für deinen Start.</small></div></li>
+      <li class="benefit"><i>🎯</i><div><strong>Gezielte Prüfungsvorbereitung</strong><small>Live-Training mit persönlicher Begleitung bis zur IHK-Prüfung.</small></div></li>
+      <li class="benefit"><i>📚</i><div><strong>Praktischer Lernordner + Lernvideos</strong><small>Für Trainingsteilnehmer nur 200&nbsp;€ inkl. (statt 50&nbsp;€ Einzelpreis) – im Modul&nbsp;1 enthalten.</small></div></li>
+      <li class="benefit"><i>🔁</i><div><strong>Zusatzmodule &amp; Wiederholung</strong><small>So oft lernen, bis es sitzt – so bleibst du flexibel.</small></div></li>
+      <li class="benefit"><i>🏁</i><div><strong>Kostenlose Unternehmensberatung</strong><small>Unterstützung in der Gründungsphase (nur für Teilnehmer).</small></div></li>
+      <li class="benefit"><i>📊</i><div><strong>Excel-Tool zur Kostenermittlung</strong><small>Für Teilnehmer 100&nbsp;€ statt 150&nbsp;€ – 50&nbsp;€ gespart.</small></div></li>
+      <li class="benefit"><i>🌐</i><div><strong>Beratung &amp; Erstellung deiner Website</strong><small>Für Teilnehmer 450&nbsp;€ statt 600&nbsp;€ – 150&nbsp;€ gespart.</small></div></li>
+    </ul>
+
+    <p class="idea2launch">Von der Idee bis zur Gründung – ich bin an deiner Seite.</p>
+  </div>
+</div>
+
+<hr style="border: 1px solid #007bff; margin: 20px 0;">
+<hr style="border: 1px solid #007bff; margin: 20px 0;">
 <div class="spacer"></div>
 
             <h3>🎥 <strong>Beratungsvideo</strong> 🎥</h3>

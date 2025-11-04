@@ -6,17 +6,24 @@ window.addEventListener('DOMContentLoaded', () => {
     centeredSlides: true,
     loop: true,
     speed: 450,
-    spaceBetween: 60,                 // mehr Abstand -> kein Überlappen
+    spaceBetween: 60,
     slidesPerView: 3,
     navigation: {
       nextEl: '#faonsa-rondell .faonsa-next',
       prevEl: '#faonsa-rondell .faonsa-prev',
     },
+    pagination: {
+      el: '#faonsa-rondell .faonsa-pag',
+      clickable: true,
+    },
     slideToClickedSlide: true,
     breakpoints: {
-      0:   { slidesPerView: 1, spaceBetween: 16 },
-      640: { slidesPerView: 2, spaceBetween: 32 },
-      900: { slidesPerView: 3, spaceBetween: 60 },
+      // Handy: 1.15 Slides → Nachbarn „schauen rein“
+      0:   { slidesPerView: 1.15, spaceBetween: 14, centeredSlides: true },
+      // kleines Tablet
+      640: { slidesPerView: 2,    spaceBetween: 28, centeredSlides: true },
+      // Desktop
+      900: { slidesPerView: 3,    spaceBetween: 60, centeredSlides: true },
     },
   });
 

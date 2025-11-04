@@ -1042,6 +1042,58 @@ img {
   }
 }
 
+/* Bullets standardmäßig ausblenden (Desktop) */
+#faonsa-rondell .swiper-pagination-bullets { display: none; }
+
+/* ===== Mobile-Optimierung ===== */
+@media (max-width: 640px){
+  #faonsa-rondell{ padding:20px 0; }
+
+  /* Nachbarn sollen „rein schauen“ können */
+  #faonsa-rondell .faonsa-swiper{
+    height: 310px;             /* ggf. 300–330 testen */
+    overflow: visible;         /* wichtig fürs „Peek“ */
+  }
+
+  /* Effekte etwas leichter, damit Nachbarn sichtbar sind */
+  #faonsa-rondell .swiper-slide{
+    transform: scale(.92);
+    opacity: .40;
+    filter: blur(.5px);
+  }
+  #faonsa-rondell .swiper-slide-prev,
+  #faonsa-rondell .swiper-slide-next{
+    transform: scale(.98);
+    opacity: .72;
+    filter: none;
+  }
+  #faonsa-rondell .swiper-slide-active{
+    transform: scale(1.04);
+    filter: none;
+  }
+
+  /* Bullets einblenden und hübsch machen */
+  #faonsa-rondell .swiper-pagination-bullets{
+    display: block;
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -6px;             /* leicht unter dem Slider */
+    text-align: center;
+  }
+  #faonsa-rondell .swiper-pagination-bullet{
+    background: #9bb5ff;
+    opacity: .6;
+  }
+  #faonsa-rondell .swiper-pagination-bullet-active{
+    background: #4c8bf3;
+    opacity: 1;
+  }
+
+  /* Pfeile auf Mobile weglassen (Wischen + Bullets reichen) */
+  #faonsa-rondell .faonsa-prev,
+  #faonsa-rondell .faonsa-next{ display:none; }
+}
+
 /* Pfeile auf Handy verstecken */
 #faonsa-rondell .faonsa-prev,
 #faonsa-rondell .faonsa-next{ display:none; }

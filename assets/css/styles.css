@@ -1001,7 +1001,26 @@ img {
 }
 
 /* Bullets standardmäßig aus (Desktop) */
-#faonsa-rondell .swiper-pagination-bullets{ display:none; }
+/* ===== Bullets (Punkte) immer sichtbar, auch Desktop ===== */
+#faonsa-rondell .swiper-pagination-bullets {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  margin-top: 10px;
+}
+#faonsa-rondell .swiper-pagination-bullet {
+  background: #9bb5ff;
+  opacity: .6;
+  transition: opacity .3s ease, transform .3s ease;
+}
+#faonsa-rondell .swiper-pagination-bullet-active {
+  background: var(--faonsa-blue);
+  opacity: 1;
+  transform: scale(1.3);
+}
 
 /* ===== Desktop (>=900px): Pfeile leicht nach innen, kein Überlaufen ===== */
 @media (min-width:900px){
@@ -1029,7 +1048,7 @@ img {
   #faonsa-rondell .swiper-slide{ transform:scale(.94); opacity:.45; filter:blur(.5px); }
   #faonsa-rondell .swiper-slide-active{ transform:scale(1.06); opacity:1; filter:none; }
 
-  #faonsa-rondell .swiper-slide img{ max-height:72%; max-width:90%; }
+  #faonsa-rondell .swiper-slide img{ max-height:78%; max-width:94%; }
 
   #faonsa-rondell .swiper-pagination-bullets{
     display:block; position:absolute; left:0; right:0; bottom:-6px; text-align:center;

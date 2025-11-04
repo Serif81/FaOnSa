@@ -918,7 +918,7 @@ img {
   .nav-drawer{ transition:none; }
 }
 
-/* === FAONSA RONDELL – betonte Mitte & weichere Ränder === */
+/* === FAONSA RONDELL – betonte Mitte & weichere Ränder (bereinigt) === */
 :root{ --faonsa-gray:#f4f4f4; }
 
 #faonsa-rondell{
@@ -930,7 +930,7 @@ img {
 
 #faonsa-rondell .faonsa-swiper{
   width:min(1100px, 90vw);
-  height:400px;                 /* ggf. leicht erhöhen für mehr Präsenz */
+  height:400px;
   margin:0 auto;
   position:relative;
   overflow:hidden;
@@ -947,21 +947,21 @@ img {
   justify-content:center;
   transition:transform .45s ease, opacity .45s ease, filter .45s ease;
   transform:scale(.78);
-  opacity:.25;                  /* Basis viel transparenter */
+  opacity:.25;
   filter:blur(1.5px);
   z-index:1;
 }
 
 #faonsa-rondell .swiper-slide-prev,
 #faonsa-rondell .swiper-slide-next{
-  transform:scale(.9);          /* leicht größer als Randbilder */
-  opacity:.55;                  /* etwas sichtbarer */
+  transform:scale(.9);
+  opacity:.55;
   filter:blur(.8px);
   z-index:2;
 }
 
 #faonsa-rondell .swiper-slide-active{
-  transform:scale(1.18);        /* Mitte sticht richtig hervor */
+  transform:scale(1.18);
   opacity:1;
   filter:none;
   z-index:3;
@@ -977,16 +977,19 @@ img {
   box-shadow:0 14px 32px rgba(0,0,0,.15);
 }
 
-/* Pfeile dezent & mittig */
+/* Pfeile – Desktop-Default: SICHTBAR */
 #faonsa-rondell .faonsa-prev,
 #faonsa-rondell .faonsa-next{
+  display:flex;                        /* <- wichtig */
+  align-items:center;
+  justify-content:center;
   position:absolute;
   top:50%;
   transform:translateY(-50%);
+  width:44px; height:44px;
   z-index:50;
   color:#4c8bf3;
-  opacity:.85;
-  pointer-events:auto;
+  opacity:.9;
   transition:opacity .3s ease, transform .3s ease;
 }
 #faonsa-rondell .faonsa-prev:hover,
@@ -995,105 +998,72 @@ img {
   transform:translateY(-50%) scale(1.1);
 }
 
-/* ===== Mobile-Optimierung fürs Rondell ===== */
-@media (max-width: 640px){
-  /* Weniger Luft oben/unten */
-  #faonsa-rondell{ padding:20px 0; }
-
-  /* Geringere Höhe des Sliders */
-  #faonsa-rondell .faonsa-swiper{
-    height: 320px;                 /* ggf. 300–340 testen */
-  }
-
-  /* Bilder kleiner halten */
-  #faonsa-rondell .swiper-slide img{
-    max-height: 72%;
-    max-width: 88%;
-  }
-
-  /* Weniger Skalierung & Blur auf Mobile */
-  #faonsa-rondell .swiper-slide{
-    transform: scale(.90);
-    opacity: .35;
-    filter: blur(.8px);
-  }
-  #faonsa-rondell .swiper-slide-prev,
-  #faonsa-rondell .swiper-slide-next{
-    transform: scale(.96);
-    opacity: .55;
-    filter: blur(.4px);
-  }
-  #faonsa-rondell .swiper-slide-active{
-    transform: scale(1.02);        /* nahezu Slotgröße → kein Überschießen */
-    filter: none;
-  }
-
-  /* Pfeile kleiner & tiefer setzen (oder ausblenden, wenn du willst) */
-  :root{
-    --swiper-navigation-size: 22px;      /* Pfeilgröße */
-    --swiper-navigation-sides-offset: 8px;
-  }
-  #faonsa-rondell .faonsa-prev,
-  #faonsa-rondell .faonsa-next{
-    top: auto;
-    bottom: 6px;                         /* unten statt mittig */
-    transform: none;
-    opacity: .8;
-  }
-}
-
 /* Bullets standardmäßig ausblenden (Desktop) */
-#faonsa-rondell .swiper-pagination-bullets { display: none; }
+#faonsa-rondell .swiper-pagination-bullets { display:none; }
 
-/* ===== Mobile-Optimierung ===== */
+/* ===== Mobile-Optimierung (<= 640px) ===== */
 @media (max-width: 640px){
+
   #faonsa-rondell{ padding:20px 0; }
 
-  /* Nachbarn sollen „rein schauen“ können */
+  /* Höhe + Peek-Effekt für Nachbarn */
   #faonsa-rondell .faonsa-swiper{
-    height: 310px;             /* ggf. 300–330 testen */
-    overflow: visible;         /* wichtig fürs „Peek“ */
+    height:310px;
+    overflow:visible;
   }
 
-  /* Effekte etwas leichter, damit Nachbarn sichtbar sind */
+  /* weichere Effekte, Nachbarn sichtbar */
   #faonsa-rondell .swiper-slide{
-    transform: scale(.92);
-    opacity: .40;
-    filter: blur(.5px);
+    transform:scale(.92);
+    opacity:.40;
+    filter:blur(.5px);
   }
   #faonsa-rondell .swiper-slide-prev,
   #faonsa-rondell .swiper-slide-next{
-    transform: scale(.98);
-    opacity: .72;
-    filter: none;
+    transform:scale(.98);
+    opacity:.72;
+    filter:none;
   }
   #faonsa-rondell .swiper-slide-active{
-    transform: scale(1.04);
-    filter: none;
+    transform:scale(1.04);
+    filter:none;
   }
 
-  /* Bullets einblenden und hübsch machen */
+  /* Bilder etwas kleiner */
+  #faonsa-rondell .swiper-slide img{
+    max-height:72%;
+    max-width:88%;
+  }
+
+  /* Bullets einblenden & stylen */
   #faonsa-rondell .swiper-pagination-bullets{
-    display: block;
-    position: absolute;
-    left: 0; right: 0;
-    bottom: -6px;             /* leicht unter dem Slider */
-    text-align: center;
+    display:block;
+    position:absolute;
+    left:0; right:0;
+    bottom:-6px;
+    text-align:center;
   }
   #faonsa-rondell .swiper-pagination-bullet{
-    background: #9bb5ff;
-    opacity: .6;
+    background:#9bb5ff;
+    opacity:.6;
   }
   #faonsa-rondell .swiper-pagination-bullet-active{
-    background: #4c8bf3;
-    opacity: 1;
+    background:#4c8bf3;
+    opacity:1;
   }
 
-  /* Pfeile auf Mobile weglassen (Wischen + Bullets reichen) */
+  /* Pfeile auf Mobile AUS (Wischen + Bullets reichen) */
   #faonsa-rondell .faonsa-prev,
-  #faonsa-rondell .faonsa-next{ display:none; }
+  #faonsa-rondell .faonsa-next{
+    display:none !important;
+  }
 }
 
-/* Pfeile auf Handy verstecken */
-#faonsa-rondell .faonsa-prev,
-#faonsa-rondell .faonsa-next{ display:none; }
+/* Desktop: Pfeile etwas nach außen ziehen */
+@media (min-width: 900px){
+  #faonsa-rondell .faonsa-prev{ left: -10px; }   /* nach Bedarf: -6px … -24px */
+  #faonsa-rondell .faonsa-next{ right: -10px; }  /* nach Bedarf: -6px … -24px */
+
+  /* falls sie dabei abgeschnitten werden, Container frei geben: */
+  #faonsa-rondell .faonsa-swiper{ overflow: visible; }
+}

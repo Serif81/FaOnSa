@@ -10,7 +10,7 @@ header {
   background-color: #f4f4f4;
   margin: 0;
   padding: 10px 0 10px 1.5rem; /* oben, rechts, unten, links */
-  text-align: left;            /* optional – falls Text mittig war */
+  text-align: center;            /* optional – falls Text mittig war */
   box-sizing: border-box;
 }
 

@@ -7,12 +7,35 @@ body {
 }
 
 header {
-    background-color: #4c6b3b; /* Olivgrün für den Header */
-    color: white;
-    padding: 20px;
-    display: flex; /* Aktiviert Flexbox */
-    flex-direction: column; /* Elemente in einer Spalte anordnen */
-    align-items: flex-start; /* Horizontale Zentrierung */
+    position: relative;
+
+    /* nur das Bild, kein Verlauf mehr */
+    background: url("faonsa-Bild_heater_passat.png") center 30% no-repeat;
+    background-size: cover;
+
+    /* nimmt genau die Höhe des sichtbaren Bildschirms ein */
+    height: 90vh;
+
+    color: #fff;
+    padding: 40px 5vw 20px 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* gleichmäßige, leichte Abdunklung über dem ganzen Bild */
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.30);  /* Helligkeit: 0.2 heller, 0.4 dunkler */
+    z-index: 0;
+}
+
+/* alles im Header (Text, Logo) über dem Overlay */
+header > * {
+    position: relative;
+    z-index: 1;
 }
 
 h2 {
@@ -51,17 +74,23 @@ footer {
     margin-top: 20px;
 }
 
+/* Logo im Hero-Bereich nach unten */
+header {
+    position: relative; /* WICHTIG für absolute Positionierung */
+}
+
 .logo-container {
-    width: 60%;  /* Der Container soll die gesamte Breite ausfüllen */
-    max-width: 60%;  /* Container nicht breiter als die Seite */
-    text-align: center;  /* Inhalt des Containers zentrieren */
+    position: absolute;
+    bottom: 5%;      /* → logo tiefer = Wert kleiner (z. B. 3% oder 1%) */
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: none;
 }
 
 .logo {
-    max-width: 60%;  /* Das Logo darf nicht größer als der Container sein */
-    height: auto;  /* Automatische Höhe für Proportionalität */
-    display: block;  /* Blockelement, um Margins anzuwenden */
-    margin: 0 auto;  /* Zentrierung des Logos */
+    width: 160px;    /* feste Größe damit es klar definiert ist */
+    height: auto;
 }
 
 /* Spezielle Anpassung für kleinere Bildschirme */

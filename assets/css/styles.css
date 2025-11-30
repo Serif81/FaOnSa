@@ -1136,3 +1136,8 @@ header .lead {
   color: #fff;
   text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
+
+/* Logo-Header nur auf bestimmten Unterseiten ausblenden */
+.hide-logo-header > header {
+  display: none;
+}

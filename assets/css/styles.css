@@ -7,11 +7,29 @@ body {
 }
 
 header {
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 10px 0 10px 1.5rem; /* oben, rechts, unten, links */
-  text-align: center;            /* optional – falls Text mittig war */
-  box-sizing: border-box;
+    position: relative;
+
+    /* nur das Bild, kein Verlauf mehr */
+    background: url("../img/faonsa-Bild_heater2.png") center 40% no-repeat;
+    background-size: cover;
+
+    /* nimmt genau die Höhe des sichtbaren Bildschirms ein */
+    height: 100vh;
+
+    color: #fff;
+    padding: 40px 5vw 20px 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* gleichmäßige, leichte Abdunklung über dem ganzen Bild */
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.30);  /* Helligkeit: 0.2 heller, 0.4 dunkler */
+    z-index: 0;
 }
 
 header h1 {
@@ -1104,3 +1122,30 @@ img {
 
 /* Falls irgendwo doch noch ein leeres <p> in der Box steht → ausblenden */
 .kontakt-box p:empty { display:none; }
+
+/* Header-Inhalt wirklich über das Overlay legen */
+header {
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28); /* kannst du später noch feintunen */
+  z-index: 0;
+}
+
+header > * {
+  position: relative;
+  z-index: 1;  /* GANZ wichtig: Inhalt vor dem Overlay */
+}
+
+
+header h1,
+header h2,
+header p,
+header .lead {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}

@@ -10,11 +10,11 @@ header {
     position: relative;
 
     /* nur das Bild, kein Verlauf mehr */
-    background: url("faonsa-Bild_heater_passat.png") center 30% no-repeat;
+    background: url("faonsa-Bild_heater2_passat.png") center 30% no-repeat;
     background-size: cover;
 
     /* nimmt genau die Höhe des sichtbaren Bildschirms ein */
-    height: 90vh;
+    height: 200vh;
 
     color: #fff;
     padding: 40px 5vw 20px 5vw;

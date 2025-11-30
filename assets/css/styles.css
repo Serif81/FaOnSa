@@ -28,7 +28,7 @@ header::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.30);  /* Helligkeit: 0.2 heller, 0.4 dunkler */
+    background: rgba(0, 0, 0, 0.28);  /* Helligkeit: 0.2 heller, 0.4 dunkler */
     z-index: 0;
 }
 
@@ -1124,23 +1124,10 @@ img {
 .kontakt-box p:empty { display:none; }
 
 /* Header-Inhalt wirklich über das Overlay legen */
-header {
-  position: relative;
-}
-
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.28); /* kannst du später noch feintunen */
-  z-index: 0;
-}
-
 header > * {
   position: relative;
   z-index: 1;  /* GANZ wichtig: Inhalt vor dem Overlay */
 }
-
 
 header h1,
 header h2,

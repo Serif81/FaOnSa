@@ -303,8 +303,8 @@
 
 <section class="intro">
     <p><strong>City & Flughafentransfer (FRA, ≤ 30 km):</strong> ab 59 €</p>
-    <p><strong>Feste Langstrecke:</strong> Frankfurt ↔ München</p>
-    <p>· Langstrecke Frankfurt–München: 449 € (Hin) / 799 € (Hin & Rück)</p>
+    <p><strong>Feste Langstrecke:</strong> München - Frankfurt</p>
+    <p>Freitags Langstrecke von München – Frankfurt: 449 € (Hin)</p>
     <p><strong>Zahlung:</strong> ausschließlich vor Fahrtbeginn – PayPal oder Banküberweisung ·
      <em>keine Barzahlung</em></p>
     <p><strong>Status:</strong> Testphase · Konzession beantragt ·
@@ -395,9 +395,9 @@
     <div class="ride">
       <h4><u>Hinfahrt</u></h4>
       <label for="fromCity1">Von Stadt:</label>
-      <input type="text" id="fromCity1" value="München" readonly><br>
+      <input type="text" id="fromCity1" value="München" readonly><br><br>
       <label for="toCity1">Nach Stadt:</label>
-      <input type="text" id="toCity1" value="Frankfurt" readonly><br>
+      <input type="text" id="toCity1" value="Frankfurt" readonly><br><br>
       <label for="date1">Datum:</label>
 <select id="date1">
   <option value="">Bitte wählen</option>
@@ -405,7 +405,7 @@
   <option value="9999-03-02">02.03.9999</option>
   <option value="9999-03-03">03.03.9999</option>
   <option value="9999-03-04">04.03.9999</option>
-</select><br>
+</select><br><br>
 
       <label for="time1">Uhrzeit:</label>
       <select id="time1" onchange="updateButton()">
@@ -430,7 +430,7 @@
     </div>
   </form>
 
-  <!-- Rückfahrt -->
+  <!-- Rückfahrt ausgeblendet für später wieder aktivieren 
   <form id="rideSelectionReturn" style="margin-top:20px;">
     <div class="ride">
       <h4><u>Rückfahrt</u></h4>
@@ -469,7 +469,8 @@
     </div>
   </form>
         </section>
-        
+  -->
+
   <section id="airportTransfer" style="border: 1px solid #000; padding: 10px; margin-top: 20px;">
   <h2><u>Flughafentransfer</u></h2>
   <img src="faonsa_Umkreis_F.png" alt="Fahrgebiet" width="250" height="auto">
@@ -498,14 +499,14 @@
         <option value="Offenbach">Offenbach</option>
         <option value="Rodgau">Rodgau</option>
         <option value="Rüsselsheim">Rüsselsheim</option>
-      </select><br>
+      </select><br><br>
 
       <label for="terminal">Nach Flughafen:</label>
       <select id="terminal">
         <option value="">Bitte wählen</option>
         <option value="Terminal 1">Terminal 1</option>
         <option value="Terminal 2">Terminal 2</option>
-      </select><br>
+      </select><br><br>
 
       <label for="airportDate">Datum:</label>
       <select id="airportDate">
@@ -514,7 +515,7 @@
         <option value="9999-03-02">02.03.9999</option>
         <option value="9999-03-03">03.03.9999</option>
         <option value="9999-03-04">04.03.9999</option>
-      </select><br>
+      </select><br><br>
 
       <label for="airportTime">Uhrzeit:</label>
       <select id="airportTime" onchange="updateAirportButton()">
@@ -544,7 +545,7 @@
         <option value="">Bitte wählen</option>
         <option value="Terminal 1">Terminal 1</option>
         <option value="Terminal 2">Terminal 2</option>
-      </select><br>
+      </select><br><br>
 
       <label for="toCity">Nach Stadt:</label>
       <select id="toCity">
@@ -561,7 +562,7 @@
         <option value="Offenbach">Offenbach</option>
         <option value="Rodgau">Rodgau</option>
         <option value="Rüsselsheim">Rüsselsheim</option>
-      </select><br>
+      </select><br><br>
 
       <label for="airportDateFrom">Datum:</label>
       <select id="airportDateFrom">
@@ -570,7 +571,7 @@
         <option value="9999-03-02">02.03.9999</option>
         <option value="9999-03-03">03.03.9999</option>
         <option value="9999-03-04">04.03.9999</option>
-      </select><br>
+      </select><br><br>
 
       <label for="airportTimeFrom">Uhrzeit:</label>
       <select id="airportTimeFrom" onchange="updateAirportButton()">
@@ -591,7 +592,7 @@
         <option value="21:00">21:00</option>
         <option value="22:00">22:00</option>
       </select>
-    </div>
+    </div><br>
 
     <button type="button" class="confirm-button" disabled onclick="confirmAirportTransfer()">Bestätigen</button>
   </form>
@@ -604,11 +605,11 @@
             <p>Bitte beachten Sie: Diese Anfrage dient ausschließlich für Langstreckenfahrten und ist nicht für den City-Service gedacht! </p>
             <form id="specialRidesForm">
                 <label for="specialFromCity">Von Stadt:</label>
-                <input type="text" id="specialFromCity" placeholder="Bitte Stadt eingeben"><br>
+                <input type="text" id="specialFromCity" placeholder="Bitte Stadt eingeben"><br><br>
                 <label for="specialToCity">Nach Stadt:</label>
-                <input type="text" id="specialToCity" placeholder="Bitte Stadt eingeben"><br>
+                <input type="text" id="specialToCity" placeholder="Bitte Stadt eingeben"><br><br>
                 <label for="specialDate">Datum:</label>
-                <input type="text" id="specialDate" placeholder="Bitte Datum eingeben"><br>
+                <input type="text" id="specialDate" placeholder="Bitte Datum eingeben"><br><br>
                 <label for="specialTime">Uhrzeit:</label>
                 <select id="specialTime" onchange="updateSpecialButton()">
                     <option value="">Bitte wählen</option>
@@ -632,6 +633,9 @@
         <section id="contact" style="display:none; margin-top: 20px;">
             <h2>Kontakt</h2>
             <form name="Kontakt" netlify action="/netlify/functions/submit-form" method="POST">
+                <input type="hidden" name="datum" id="netlifyDate">
+                <input type="hidden" name="uhrzeit" id="netlifyTime">
+
                 <label for="firstName">Vorname: *</label><br>
                 <input type="text" id="firstName" name="vorname" required><br><br>
                 

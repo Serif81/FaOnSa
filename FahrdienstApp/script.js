@@ -81,6 +81,20 @@ document.addEventListener("DOMContentLoaded", function() {
             city: document.getElementById("pickupCity").value,
         } : null;
 
+    let date =
+  document.getElementById("airportDate")?.value ||
+  document.getElementById("airportDateFrom")?.value ||
+  document.getElementById("date1")?.value ||
+  document.getElementById("specialDate")?.value ||
+  "";
+
+    let time =
+  document.getElementById("airportTime")?.value ||
+  document.getElementById("airportTimeFrom")?.value ||
+  document.getElementById("time1")?.value ||
+  document.getElementById("specialTime")?.value ||
+  "";
+
         // Rechnungsadresse immer sammeln
         const billingAddress = {
             street: document.getElementById("billingStreet").value,
@@ -94,6 +108,8 @@ document.addEventListener("DOMContentLoaded", function() {
             <p><strong>Nachname:</strong> ${lastName}</p>
             <p><strong>Telefonnummer:</strong> ${phone}</p>
             <p><strong>E-Mail:</strong> ${email}</p>
+            <p><strong>Datum:</strong> ${date}</p>
+            <p><strong>Uhrzeit:</strong> ${time}</p>
             <p><strong>Abholadresse identisch mit Rechnungsadresse:</strong> ${sameAddress}</p>
             <h4>Rechnungsadresse:</h4>
             <p><strong>Straße:</strong> ${billingAddress.street}</p>
@@ -108,6 +124,9 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
 
         document.getElementById("summaryContent").innerHTML = summaryContent;
+
+        document.getElementById("netlifyDate").value = date;
+        document.getElementById("netlifyTime").value = time;
 
         // Kontaktformular ausblenden und Zusammenfassung anzeigen
         contactSection.style.display = "none"; 

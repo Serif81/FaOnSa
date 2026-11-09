@@ -1,210 +1,255 @@
+/* =====================================================================
+   FaOnSa Airport Transfers – Stylesheet
+   Farbwelt: Olivgrün (Marke) auf hellem Grund
+   ===================================================================== */
+:root {
+  --gruen: #4c6b3b;
+  --gruen-dunkel: #3a4f2b;
+  --gruen-hell: #eef3ea;
+  --text: #222;
+  --text-leise: #5a5a5a;
+  --rand: #dcdcdc;
+  --hinter: #f6f7f5;
+  --radius: 10px;
+  --max: 980px;
+}
+
+* { box-sizing: border-box; }
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9; /* Helles Grau für den Hintergrund */
-    color: #333; /* Dunkles Grau für den Text */
-    margin: 0;
-    padding: 20px;
-}
-
-header {
-    position: relative;
-
-    /* nur das Bild, kein Verlauf mehr */
-    background: url("faonsa-Bild_heater2_passat.png") center 30% no-repeat;
-    background-size: cover;
-
-    /* nimmt genau die Höhe des sichtbaren Bildschirms ein */
-    height: 200vh;
-
-    color: #fff;
-    padding: 40px 5vw 20px 5vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-/* gleichmäßige, leichte Abdunklung über dem ganzen Bild */
-header::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.30);  /* Helligkeit: 0.2 heller, 0.4 dunkler */
-    z-index: 0;
-}
-
-/* alles im Header (Text, Logo) über dem Overlay */
-header > * {
-    position: relative;
-    z-index: 1;
-}
-
-h2 {
-    color: #4c6b3b; /* Olivgrün für die Überschriften */
-    margin-top: 20px;
-}
-
-section {
-    border: 1px solid #ccc; /* Helles Grau für die Rahmen */
-    border-radius: 5px; /* Abgerundete Ecken */
-    padding: 15px;
-    margin-top: 20px;
-    background-color: white; /* Weißer Hintergrund für die Abschnitte */
-}
-
-button {
-    background-color: #4c6b3b; /* Olivgrün für die Buttons */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    cursor: pointer;
-}
-
-button:disabled {
-    background-color: #ccc; /* Graue Farbe für inaktive Buttons */
-    cursor: not-allowed;
-}
-
-button:hover:not(:disabled) {
-    background-color: #3a4f2b; /* Dunkleres Olivgrün beim Hover */
-}
-
-footer {
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Logo im Hero-Bereich nach unten */
-header {
-    position: relative; /* WICHTIG für absolute Positionierung */
-}
-
-.logo-container {
-    position: absolute;
-    bottom: 5%;      /* → logo tiefer = Wert kleiner (z. B. 3% oder 1%) */
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
-    max-width: none;
-}
-
-.logo {
-    width: 160px;    /* feste Größe damit es klar definiert ist */
-    height: auto;
-}
-
-/* Spezielle Anpassung für kleinere Bildschirme */
-@media (max-width: 480px) {
-    .logo {
-        max-width: 80%;  /* Auf sehr kleinen Bildschirmen 80% der Breite */
-    }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-    .logo {
-        max-width: 60%;  /* Auf mittleren Bildschirmen 60% der Breite */
-    }
-}
-
-@media (min-width: 769px) {
-    .logo {
-        max-width: 40%;  /* Auf größeren Bildschirmen 40% der Breite */
-    }
-}
-
-/* Neuer CSS-Code für das Cookie-Banner und Modal */
-#cookieConsent {
-    background-color: rgba(20, 20, 20, 0.8);
-    min-height: auto;
-    font-size: 18px;
-    color: #ccc;
-    line-height: 1.5;
-    padding: 20px;
-    z-index: 9999;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#cookieConsent p { margin-bottom: 10px; text-align: left; width: 100%; }
-#cookieConsent a { color: #4B8EE7; }
-
-.button-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-#acceptCookies, #declineCookies, #settingsCookies {
-    background-color: #4B8EE7;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    margin: 10px;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    text-align: center;
-    z-index: 10000;
-    max-width: 95%;
-    max-height: 80vh;
-    overflow-y: auto;
-}
-.modal-content { position: relative; width: 90%; }
-.close { position: absolute; top: 13px; right: 13px; font-size: 24px; cursor: pointer; }
-
-@media (max-width: 768px) {
-    .modal { max-width: calc(100% - 40px); width: calc(100% - 40px); }
-    .modal-content { width: calc(100% - 40px); }
-}
-/* Logo bleibt zentriert */
-header .logo-container {
-  width: 100%;
-  text-align: center;
-  align-self: center; /* hebt flex-start nur fürs Logo auf */
-}
-.intro-text {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   font-size: 1rem;
-  color: #222;
-  background-color: #f7f7f7;
-  border-left: 4px solid #4c6b3b;
-  padding: 12px 18px;
-  margin: 5px 0 20px 0; /* zentriert + etwas mehr unten */
   line-height: 1.6;
-  width: 85%;           /* etwas breiter als vorher */
-  max-width: 960px;    /* aber nicht zu breit auf großen Bildschirmen */
-  border-radius: 5px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  color: var(--text);
+  background: var(--hinter);
 }
 
-@media (max-width: 768px) {
-  header {
-    height: 75vh;              /* auf Handy etwas kleiner, damit du mehr siehst */
-    background-position: center 35%;
-    padding: 20px 4vw 10px 4vw;
-  }
+main { max-width: var(--max); margin: 0 auto; padding: 0 16px 32px; }
 
-  .logo-container {
-    bottom: 10%;               /* Logo etwas höher, damit es nicht hinter Bannern hängt */
-  }
+h1, h2, h3 { line-height: 1.25; }
+h2 { color: var(--gruen); margin: 0 0 12px; font-size: 1.5rem; }
+h3 { margin: 18px 0 6px; font-size: 1.1rem; }
+a { color: var(--gruen-dunkel); }
 
-  #cookieConsent {
-    font-size: 14px;           /* kleineres Cookie-Banner */
-    padding: 12px;
-  }
+/* ---------- Kopfbereich ---------- */
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 48px 5vw 40px;
+  color: #fff;
+  background: url("faonsa-Bild_heater2_passat.png") center 35% / cover no-repeat;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.6) 100%);
+}
+.hero > * { position: relative; }
+.hero-inner { max-width: var(--max); margin: 0 auto; width: 100%; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 4px 0 8px; }
+.hero-kicker { margin: 0; text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; opacity: .9; }
+.hero-claim { font-size: clamp(1.05rem, 2.4vw, 1.35rem); margin: 0 0 20px; }
+.hero-logo { position: absolute; top: 20px; right: 5vw; width: 110px; height: auto; }
+
+/* ---------- Abschnitte ---------- */
+section {
+  background: #fff;
+  border: 1px solid var(--rand);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-top: 24px;
+}
+
+.status { border-left: 6px solid #d49a00; background: #fffaf0; }
+.status-badge {
+  display: inline-block;
+  background: #d49a00;
+  color: #fff;
+  font-weight: 600;
+  font-size: .8rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.schritte {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.schritte li { background: var(--gruen-hell); border-radius: var(--radius); padding: 16px; }
+.schritte h3 { margin: 8px 0 4px; }
+.schritte p { margin: 0; color: var(--text-leise); }
+.schritt-nr {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gruen);
+  color: #fff;
+  font-weight: 700;
+}
+.hinweis-zeile { margin: 16px 0 0; padding: 10px 14px; background: var(--hinter); border-radius: 8px; }
+
+.karten { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.karte { border: 1px solid var(--rand); border-radius: var(--radius); padding: 16px; }
+.karte h3 { margin-top: 0; }
+.preis { font-size: 1.6rem; font-weight: 700; color: var(--gruen); margin: 0 0 6px; }
+
+.zwei-spalten { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.liste { padding-left: 20px; }
+.bild { max-width: 100%; width: 260px; height: auto; border-radius: 8px; margin-top: 8px; }
+.klein { font-size: .9rem; color: var(--text-leise); }
+
+.intro-text {
+  background: var(--gruen-hell);
+  border-left: 4px solid var(--gruen);
+  padding: 12px 16px;
+  border-radius: 6px;
+}
+
+/* ---------- Formular ---------- */
+.fortschritt { list-style: none; display: flex; gap: 8px; padding: 0; margin: 16px 0; }
+.fortschritt li {
+  flex: 1;
+  text-align: center;
+  padding: 8px;
+  border-bottom: 4px solid var(--rand);
+  color: var(--text-leise);
+  font-size: .9rem;
+}
+.fortschritt li.aktiv { border-color: var(--gruen); color: var(--text); font-weight: 600; }
+.fortschritt li.erledigt { border-color: #9fb592; }
+
+fieldset.schritt { border: 0; padding: 0; margin: 0; }
+fieldset.schritt > legend { font-weight: 700; font-size: 1.15rem; margin-bottom: 12px; padding: 0; }
+fieldset.inline { border: 0; padding: 0; margin: 16px 0 0; }
+fieldset.inline legend { font-weight: 600; padding: 0; }
+fieldset.inline label { display: inline-flex; gap: 6px; margin-right: 16px; font-weight: normal; }
+
+label { display: block; font-weight: 600; margin: 14px 0 4px; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+  width: 100%;
+  padding: 11px 12px;
+  font: inherit;
+  border: 1px solid #bdbdbd;
+  border-radius: 8px;
+  background: #fff;
+}
+input:focus, select:focus, textarea:focus, button:focus-visible, summary:focus-visible {
+  outline: 3px solid rgba(76, 107, 59, .35);
+  outline-offset: 1px;
+  border-color: var(--gruen);
+}
+.feld-reihe { display: grid; gap: 0 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+.auswahl-karten { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.auswahl { margin: 0; cursor: pointer; position: relative; }
+.auswahl input { position: absolute; opacity: 0; }
+.auswahl span {
+  display: block;
+  text-align: center;
+  padding: 14px 10px;
+  border: 2px solid var(--rand);
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+.auswahl input:checked + span { border-color: var(--gruen); background: var(--gruen-hell); }
+.auswahl input:focus-visible + span { outline: 3px solid rgba(76, 107, 59, .35); }
+
+.checkbox { display: flex; gap: 10px; align-items: flex-start; font-weight: normal; margin-top: 18px; }
+.checkbox input { margin-top: 5px; width: 18px; height: 18px; flex: none; }
+
+.zusammenfassung {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  background: var(--hinter);
+  padding: 16px;
+  border-radius: 8px;
+  margin: 0;
+}
+.zusammenfassung dt { font-weight: 600; }
+.zusammenfassung dd { margin: 0; overflow-wrap: anywhere; }
+.richtpreis { font-weight: 700; color: var(--gruen); }
+
+.fehler { color: #a40000; background: #fdecec; padding: 8px 12px; border-radius: 6px; }
+.versteckt { position: absolute; left: -9999px; }
+.knoepfe { display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap; margin-top: 20px; }
+.danke { background: var(--gruen-hell); border-radius: var(--radius); padding: 20px; }
+[hidden] { display: none !important; }
+
+/* ---------- Schaltflächen ---------- */
+.btn {
+  display: inline-block;
+  background: var(--gruen);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) { background: var(--gruen-dunkel); }
+.btn:disabled { background: #b5b5b5; cursor: not-allowed; }
+.btn-gross { padding: 14px 28px; font-size: 1.1rem; }
+.btn-zweit { background: #fff; color: var(--gruen); border: 2px solid var(--gruen); }
+.btn-zweit:hover:not(:disabled) { background: var(--gruen-hell); }
+.link { background: none; border: 0; padding: 0; font: inherit; color: var(--gruen-dunkel); text-decoration: underline; cursor: pointer; }
+
+details { border-top: 1px solid var(--rand); padding: 10px 0; }
+summary { cursor: pointer; font-weight: 600; }
+
+/* ---------- Fußbereich ---------- */
+footer { text-align: center; padding: 24px 16px 40px; color: var(--text-leise); font-size: .95rem; }
+
+/* ---------- Dialoge ---------- */
+dialog.modal {
+  width: min(760px, calc(100% - 24px));
+  max-height: 85vh;
+  border: 0;
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.3);
+}
+dialog.modal::backdrop { background: rgba(0,0,0,.5); }
+dialog .close {
+  position: sticky;
+  top: 0;
+  float: right;
+  background: #fff;
+  border: 0;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 70vh; padding: 32px 20px 28px; }
+  .hero-logo { width: 80px; top: 16px; right: 16px; }
+  section { padding: 18px; }
+  .knoepfe .btn { flex: 1; }
+}
+
+/* Hinweis im Fußbereich: keine Cookies */
+.ohne-cookies {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--gruen-hell);
+  color: var(--gruen-dunkel);
+  font-size: .9rem;
 }

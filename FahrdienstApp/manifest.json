@@ -7,8 +7,8 @@
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
-  "theme_color": "#ffffff",
-  "description": "FaOnSa Airport Transfers – Ihr zuverlässiger Flughafentransfer im Raum Frankfurt. Transfers ab 59 €, Langstrecken z. B. Frankfurt–München ab 449 €.",
+  "theme_color": "#4c6b3b",
+  "description": "FaOnSa Airport Transfers – vorab gebuchter Flughafentransfer im Raum Frankfurt: Festpreis, bargeldlos, im Voraus bezahlt. Start in Vorbereitung – Voranfragen möglich.",
   "icons": [
     { "src": "android-icon-192x192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "android-icon-256x256.png", "sizes": "256x256", "type": "image/png" },

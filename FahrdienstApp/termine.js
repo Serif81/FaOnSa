@@ -1,33 +1,42 @@
 /* =====================================================================
-   TERMINE – nur diese Datei pflegen, um Fahrten freizuschalten
+   TERMINE & VERFÜGBARKEIT – nur diese Datei pflegen
    ---------------------------------------------------------------------
-   Datumsformat immer "JJJJ-MM-TT", z. B. "2027-03-06".
+   Datumsformat immer "JJJJ-MM-TT", Uhrzeiten "HH:MM".
 
-   betriebsstart  Ab diesem Tag sind freigeschaltete Termine verbindlich anfragbar
-                  ("Buchungsanfrage"). null = noch kein Start -> alles läuft als Voranfrage.
+   betriebsstart  Erster Tag, an dem gefahren wird. Buchungen sind ab sofort
+                  möglich, aber nur für Fahrten ab diesem Tag.
 
-   flughafen      Freigeschaltete Tage für "Zum / Vom Flughafen" (z. B. Ihre Samstage).
-   koeln          Freigeschaltete Tage für "Köln → Frankfurt".
-                  Leere Liste [] = für dieses Angebot ist nichts freigeschaltet:
-                  Der Kunde kann dann nur eine unverbindliche Voranfrage mit Wunschtermin stellen.
+   wochentage     Wann welche Fahrt möglich ist (0 = Sonntag … 6 = Samstag).
+                  Nicht aufgeführte Tage (Mo–Do) sind komplett gesperrt.
+                    fahrten: Liste der buchbaren Fahrtarten oder "alle"
+                    von/bis: erste und letzte wählbare Abholzeit
+                    anfrage: true = Fahrt nur "auf Anfrage" (Bestätigung folgt)
 
-   belegt         Bereits vergebene Abholzeiten je Tag – werden als "belegt" ausgegraut.
+   vorlaufTage    Mindest-Vorlauf in Tagen je Fahrtart.
+                  Köln → Frankfurt: 7 Tage (Rückkehrpflicht – die Rückfahrt muss
+                  vor Antritt der Hinfahrt nach Köln gebucht sein).
 
-   Sonderfahrten haben immer einen frei wählbaren Wunschtermin (Anfrage, Sie prüfen).
+   gesperrt       Einzelne Tage komplett sperren (z. B. Urlaub, Krankheit).
+   belegt         Bereits vergebene Abholzeiten je Tag – werden ausgegraut.
    ===================================================================== */
 const TERMINE = {
-  betriebsstart: null,
+  betriebsstart: "2026-11-14",
 
-  flughafen: [
-    // "2027-03-06",
-    // "2027-03-13",
-  ],
+  wochentage: {
+    0: { fahrten: ["Frankfurt → Köln"], von: "08:00", bis: "22:00" },               // Sonntag
+    5: { fahrten: ["Köln → Frankfurt"], von: "13:00", bis: "16:00" },               // Freitag
+    6: { fahrten: "alle",               von: "08:00", bis: "22:00", anfrage: true }, // Samstag
+  },
 
-  koeln: [
-    // "2027-03-05",
+  vorlaufTage: {
+    "Köln → Frankfurt": 7,
+  },
+
+  gesperrt: [
+    // "2026-12-26",
   ],
 
   belegt: {
-    // "2027-03-06": ["09:00", "10:00"],
+    // "2026-11-15": ["09:00", "10:00"],
   },
 };

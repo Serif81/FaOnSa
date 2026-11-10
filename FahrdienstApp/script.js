@@ -1,7 +1,7 @@
 /* =====================================================================
-   FaOnSa Airport Transfers – Anfrage / Voranfrage
+   FaOnSa Airport Transfers – Buchungsanfrage
    ---------------------------------------------------------------------
-   Termine (Startdatum, freigeschaltete Tage, belegte Zeiten) werden in
+   Termine (Startdatum, Wochentags-Regeln, Vorlauf, Sperrtage, belegte Zeiten) werden in
    termine.js gepflegt – hier nur allgemeine Einstellungen.
    ===================================================================== */
 const EINSTELLUNGEN = {
@@ -13,14 +13,15 @@ const EINSTELLUNGEN = {
   richtpreise: {
     "Zum Flughafen": "ab 59 € (Festpreis je nach Strecke, wird in der Bestätigung genannt)",
     "Vom Flughafen": "ab 59 € (Festpreis je nach Strecke, wird in der Bestätigung genannt)",
-    "Langstrecke Köln – Frankfurt": "339 € je Strecke",
+    "Frankfurt → Köln": "339 € je Strecke",
+    "Köln → Frankfurt": "339 € je Strecke",
     "Sonderfahrt": "Preis auf Anfrage"
   }
 };
 
 /* ===================================================================== */
 
-const T = (typeof TERMINE !== "undefined") ? TERMINE : { betriebsstart: null, flughafen: [], koeln: [], belegt: {} };
+const T = (typeof TERMINE !== "undefined") ? TERMINE : { betriebsstart: null, wochentage: {}, vorlaufTage: {}, gesperrt: [], belegt: {} };
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 const zwei = n => String(n).padStart(2, "0");
@@ -42,19 +43,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const m = new Date(); m.setDate(m.getDate() + 1);
   const morgen = isoLokal(m);
 
-  /* ---------- Betriebsstart: Voranfrage oder Buchungsanfrage ---------- */
-  const gestartet = Boolean(T.betriebsstart) && heute >= T.betriebsstart;
-  if (T.betriebsstart && !gestartet) {
-    $("#startdatumText").textContent = `geplanter Starttermin: ${datumDE(T.betriebsstart)}`;
-  }
-  if (gestartet) {   // Texte auf "buchbar" umstellen – Design bleibt gleich
-    $(".status").hidden = true;
+  /* ---------- Betriebsstart: Buchungen ab sofort, Fahrten ab Starttag ---------- */
+  const gestartet = Boolean(T.betriebsstart);
+  if (gestartet) {
+    const status = $(".status");
+    if (status) status.hidden = true;
     $("#anfrageTitel").textContent = "Fahrt anfragen";
-    $("#anfrage .intro-text").textContent = "Wählen Sie Ihre Fahrt und einen freigeschalteten Termin. Sie erhalten Ihre " +
+    $("#anfrage .intro-text").textContent = "Wählen Sie Ihre Fahrt und einen verfügbaren Termin. Sie erhalten Ihre " +
       "Buchungsbestätigung mit Festpreis und Rechnung per E-Mail – bezahlt wird vorab per PayPal oder Überweisung.";
     $$('a[href="#anfrage"]').forEach(a => (a.textContent = "Fahrt anfragen"));
   }
   const frueheste = (T.betriebsstart && T.betriebsstart > morgen) ? T.betriebsstart : morgen;
+  const NICHT_VERFUEGBAR = "Die Fahrt ist zu diesem Termin nicht verfügbar.";
+  const TAGNAME = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
 
   /* ---------- Fahrtart: passende Felder einblenden ---------- */
   const gruppen = { flughafen: $('[data-fuer="flughafen"]'), sonderfahrt: $('[data-fuer="sonderfahrt"]'), koeln: $('[data-fuer="koeln"]') };
@@ -65,43 +66,50 @@ document.addEventListener("DOMContentLoaded", () => {
     return "koeln";
   }
 
-  /* ---------- Termine: freigeschaltete Tage oder freier Wunschtermin ---------- */
+  /* ---------- Verfügbarkeit (harte Sperre nach termine.js) ---------- */
+  const plusTage = n => { const d = new Date(); d.setDate(d.getDate() + n); return isoLokal(d); };
+  function fruehestesDatum(art) {
+    const vorlauf = plusTage((T.vorlaufTage || {})[art] || 0);
+    return vorlauf > frueheste ? vorlauf : frueheste;
+  }
+  function erlaubtAm(wochentag, art) {
+    const r = (T.wochentage || {})[wochentag];
+    return r && (r.fahrten === "alle" || r.fahrten.includes(art)) ? r : null;
+  }
+  // Liefert die Regel des Tages für die Fahrt – oder null, wenn die Fahrt an diesem Datum gesperrt ist.
+  function regelFuer(iso, art) {
+    if (!iso || iso < fruehestesDatum(art) || (T.gesperrt || []).includes(iso)) return null;
+    return erlaubtAm(new Date(iso + "T12:00:00").getDay(), art);
+  }
+  function erlaubteZeiten(iso, art) {
+    const r = regelFuer(iso, art);
+    return r ? EINSTELLUNGEN.abholzeiten.filter(z => z >= r.von && z <= r.bis) : [];
+  }
+
   const terminWahl = $("#terminWahl"), datumFrei = $("#wunschdatumFrei"), datumFeld = $("#wunschdatum");
   const zeit = $("#wunschzeit"), hinweis = $("#terminHinweis");
-  datumFrei.min = frueheste;
-
-  function freigeschaltet(produkt) {
-    if (produkt === "sonderfahrt") return [];
-    return [...new Set(T[produkt] || [])].filter(d => d >= frueheste).sort();
-  }
-  function terminModus() {   // "fest" = Kunde wählt aus freigeschalteten Tagen
-    return freigeschaltet(gruppeFuer(fahrtart())).length ? "fest" : "wunsch";
-  }
+  terminWahl.hidden = true;
 
   function baueTermine() {
-    const produkt = gruppeFuer(fahrtart());
-    const tage = freigeschaltet(produkt);
-    terminWahl.replaceChildren(new Option("Bitte wählen", ""));
-    tage.forEach(d => terminWahl.add(new Option(datumLang(d), d)));
-    const fest = tage.length > 0;
-    terminWahl.hidden = !fest;
-    datumFrei.hidden = fest;
-    $("#terminLabel").setAttribute("for", fest ? "terminWahl" : "wunschdatumFrei");
-    $("#terminLabel").textContent = fest ? "Termin *" : "Wunschtermin *";
-    if (produkt === "sonderfahrt") {
-      hinweis.textContent = "Wunschtermin frei wählbar – ich prüfe, ob die Fahrt möglich ist, und melde mich bei Ihnen.";
-    } else if (fest) {
-      hinweis.textContent = gestartet ? "Nur freigeschaltete Termine sind buchbar."
-                                      : "Freigeschaltete Termine nach dem Betriebsstart.";
-    } else {
-      hinweis.textContent = "Für diese Fahrt sind derzeit keine Termine freigeschaltet. Nennen Sie Ihren Wunschtermin – " +
-                            "Sie erhalten eine Rückmeldung, sobald er möglich ist (unverbindliche Voranfrage).";
-    }
+    const art = fahrtart();
+    datumFrei.min = fruehestesDatum(art);
+    $("#terminLabel").setAttribute("for", "wunschdatumFrei");
+    $("#terminLabel").textContent = "Termin *";
     uebernehmeDatum();
   }
 
   function uebernehmeDatum() {
-    datumFeld.value = terminModus() === "fest" ? terminWahl.value : datumFrei.value;
+    const art = fahrtart();
+    datumFeld.value = datumFrei.value;
+    const tage = [1, 2, 3, 4, 5, 6, 0].filter(t => erlaubtAm(t, art))
+      .map(t => { const r = erlaubtAm(t, art); return `${TAGNAME[t]} ${r.von}–${r.bis} Uhr`; });
+    if (datumFeld.value && !regelFuer(datumFeld.value, art)) {
+      hinweis.textContent = NICHT_VERFUEGBAR;
+      hinweis.classList.add("gesperrt");
+    } else {
+      hinweis.textContent = tage.length ? `Verfügbar: ${tage.join(" · ")}` : NICHT_VERFUEGBAR;
+      hinweis.classList.remove("gesperrt");
+    }
     baueZeiten();
     setzeAnfrageart();
   }
@@ -109,26 +117,27 @@ document.addEventListener("DOMContentLoaded", () => {
   function baueZeiten() {
     const gewaehlt = zeit.value;
     const belegt = new Set((T.belegt || {})[datumFeld.value] || []);
-    zeit.replaceChildren(new Option("Bitte wählen", ""));
-    EINSTELLUNGEN.abholzeiten.forEach(z => {
+    const erlaubt = datumFeld.value ? erlaubteZeiten(datumFeld.value, fahrtart()) : [];
+    zeit.replaceChildren(new Option(datumFeld.value && !erlaubt.length ? "nicht verfügbar" : "Bitte wählen", ""));
+    erlaubt.forEach(z => {
       const o = new Option(belegt.has(z) ? `${z} Uhr (belegt)` : `${z} Uhr`, z);
       o.disabled = belegt.has(z);
       zeit.add(o);
     });
-    if (gewaehlt && !belegt.has(gewaehlt)) zeit.value = gewaehlt;
+    zeit.disabled = !erlaubt.length;
+    if (gewaehlt && erlaubt.includes(gewaehlt) && !belegt.has(gewaehlt)) zeit.value = gewaehlt;
   }
 
   function setzeAnfrageart() {
-    const buchung = gestartet && terminModus() === "fest" && gruppeFuer(fahrtart()) !== "sonderfahrt";
-    form.elements["anfrageart"].value = buchung ? "Buchungsanfrage (freigeschalteter Termin)"
-      : (gruppeFuer(fahrtart()) === "sonderfahrt" ? "Anfrage Sonderfahrt (Wunschtermin)" : "Voranfrage (Wunschtermin, unverbindlich)");
-    form.elements["termin_status"].value = terminModus() === "fest" ? "freigeschalteter Termin" : "Wunschtermin – bitte prüfen";
-    const verb = buchung ? "Anfrage" : "Voranfrage";
-    $("#senden").textContent = buchung ? "Anfrage verbindlich senden" : "Voranfrage unverbindlich senden";
-    $("#hinweisSchritt3").innerHTML = buchung
-      ? "Mit dem Absenden fragen Sie den gewählten Termin an. Der Vertrag kommt erst mit meiner Bestätigung per E-Mail zustande; " +
-        "bezahlt wird vorab per PayPal oder Überweisung."
-      : `Hinweis: Dies ist eine <strong>unverbindliche ${verb}</strong>. Es entsteht kein Vertrag und es ist nichts zu bezahlen.`;
+    const art = fahrtart();
+    const r = regelFuer(datumFeld.value, art);
+    const aufAnfrage = gruppeFuer(art) === "sonderfahrt" || Boolean(r && r.anfrage);
+    form.elements["anfrageart"].value = aufAnfrage ? "Anfrage (auf Anfrage – Bestätigung folgt)" : "Buchungsanfrage";
+    form.elements["termin_status"].value = aufAnfrage ? "auf Anfrage" : "verfügbarer Termin";
+    $("#senden").textContent = "Anfrage verbindlich senden";
+    $("#hinweisSchritt3").innerHTML =
+      "Mit dem Absenden fragen Sie den gewählten Termin an. Der Vertrag kommt erst mit meiner Bestätigung per E-Mail zustande; " +
+      "bezahlt wird vorab per PayPal oder Überweisung.";
   }
 
   function zeigeFahrtFelder() {
@@ -143,7 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
     baueTermine();
   }
   $$('input[name="fahrtart"]').forEach(r => r.addEventListener("change", zeigeFahrtFelder));
-  terminWahl.addEventListener("change", uebernehmeDatum);
   datumFrei.addEventListener("change", uebernehmeDatum);
   zeigeFahrtFelder();
 
@@ -170,9 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                               : `Bitte prüfen Sie das Feld „${name || "Pflichtfeld"}“.`, falsch);
     }
     if (nr === 1) {
-      if (!datumFeld.value) return melde("Bitte wählen Sie einen Termin.", terminModus() === "fest" ? terminWahl : datumFrei);
-      if (terminModus() === "wunsch" && datumFeld.value < frueheste)
-        return melde(`Bitte wählen Sie einen Termin ab dem ${datumDE(frueheste)}.`, datumFrei);
+      if (!datumFeld.value) return melde("Bitte wählen Sie einen Termin.", datumFrei);
+      if (!erlaubteZeiten(datumFeld.value, fahrtart()).includes(zeit.value)) return melde(NICHT_VERFUEGBAR, datumFrei);
     }
     fehler.hidden = true;
     return true;
@@ -208,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (art === "Zum Flughafen") strecke = `${d.get("ort")} → Flughafen Frankfurt, ${d.get("terminal")}`;
     else if (art === "Vom Flughafen") strecke = `Flughafen Frankfurt, ${d.get("terminal")} → ${d.get("ort")}`;
     else if (art === "Sonderfahrt") strecke = `${d.get("von_ort")} → ${d.get("nach_ort")}`;
-    else strecke = "Köln → Frankfurt";
+    else strecke = art;
 
     const adresse = d.get("adresse_gleich") === "nein"
       ? `${d.get("abhol_strasse")}, ${d.get("abhol_plz")} ${d.get("abhol_ort")}`
@@ -250,6 +257,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ---------- Absenden (Netlify Forms -> E-Mail-Benachrichtigung) ---------- */
   form.addEventListener("submit", async e => {
     e.preventDefault();
+    if (!schrittGueltig(1)) { zeigeSchritt(1); return; }
+    if (!schrittGueltig(1)) { zeigeSchritt(1); return; }
     if (!schrittGueltig(3)) return;
     baueZusammenfassung();
     const knopf = $("#senden");
@@ -264,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body: new URLSearchParams(new FormData(form)).toString()
       });
       if (!antwort.ok) throw new Error(`Status ${antwort.status}`);
-      const buchung = form.elements["anfrageart"].value.startsWith("Buchung");
+      const buchung = true;
       form.hidden = true;
       $(".fortschritt").hidden = true;
       $("#dankeTitel").textContent = buchung ? "Vielen Dank für Ihre Anfrage!" : "Vielen Dank für Ihre Voranfrage!";

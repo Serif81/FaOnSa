@@ -253,3 +253,6 @@ dialog .close {
   color: var(--gruen-dunkel);
   font-size: .9rem;
 }
+
+/* Verfügbarkeit: gesperrter Termin */
+#terminHinweis.gesperrt { color: #b00020; font-weight: 700; }

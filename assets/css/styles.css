@@ -622,9 +622,11 @@ html {
   opacity: 1;
   transform: translateY(0);
 }
-/* Abstand zwischen Bildern */
+/* Abstand zwischen Bildern – und nie breiter als der Container (verhindert seitliches Scrollen am Handy) */
 img {
   margin: 10px;
+  max-width: calc(100% - 20px);
+  height: auto;
 }
 
 .faonsa-checklist-copy {
@@ -1141,3 +1143,794 @@ header .lead {
 .hide-logo-header > header {
   display: none;
 }
+
+/* =====================================================
+   FaOnSa Premium-Bausteine (Coach, Angebote, Termine)
+   Farben passend zum bestehenden Blau/Gold der Seite
+   ===================================================== */
+:root {
+  --fa-navy: #0b2545;
+  --fa-navy-2: #13315c;
+  --fa-blau: #0b5bd3;
+  --fa-gold: #d4a017;
+  --fa-gold-hell: #ffd700;
+  --fa-gruen: #2f7a1f;
+  --fa-text: #1f2937;
+  --fa-grau: #6b7280;
+  --fa-linie: #e5e7eb;
+  --fa-radius: 18px;
+  --fa-schatten: 0 10px 30px rgba(11, 37, 69, .10), 0 2px 6px rgba(11, 37, 69, .06);
+  --fa-schatten-hover: 0 18px 44px rgba(11, 37, 69, .18), 0 4px 10px rgba(11, 37, 69, .08);
+}
+
+/* ---------- Abschnittskopf ---------- */
+.angebot-kopf {
+  max-width: 980px;
+  margin: 48px 0 8px;
+  text-align: center;
+}
+.angebot-kopf h3 {
+  margin: 6px 0 8px;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--fa-navy);
+}
+.angebot-kopf p { margin: 0 auto; max-width: 620px; color: var(--fa-grau); }
+.angebot-kopf--klein { margin-top: 36px; }
+.angebot-kopf--klein h3 { font-size: 1.4rem; }
+.angebot-kicker,
+.coach-kicker {
+  display: inline-block;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--fa-gold);
+}
+
+/* ---------- Coach-Karte ---------- */
+.coach-karte {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 980px;
+  margin: 40px 0;
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--fa-navy) 0%, var(--fa-navy-2) 60%, #1d4e89 100%);
+  color: #fff;
+  box-shadow: var(--fa-schatten);
+}
+@media (min-width: 760px) {
+  .coach-karte { grid-template-columns: 280px 1fr; }
+}
+.coach-foto-wrap {
+  position: relative;
+  min-height: 260px;
+  background: #0f2a4d;
+}
+.coach-foto {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  margin: 0;
+}
+@media (max-width: 759px) {
+  .coach-foto { max-height: 300px; }
+}
+.coach-foto-wrap::after {               /* dezenter Goldrand zum Text hin */
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--fa-gold), var(--fa-gold-hell));
+}
+@media (min-width: 760px) {
+  .coach-foto-wrap::after { inset: 0 0 0 auto; width: 4px; height: auto; }
+}
+.coach-text { padding: 28px 28px 30px; }
+.coach-text h3 {
+  margin: 6px 0 14px;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  line-height: 1.25;
+  color: #fff;
+}
+.coach-text blockquote {
+  margin: 0 0 10px;
+  padding: 4px 0 4px 20px;
+  border-left: 3px solid var(--fa-gold-hell);
+  font-size: 1.06rem;
+  font-style: italic;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, .92);
+}
+.coach-signatur {
+  margin: 0 0 18px 23px;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--fa-gold-hell);
+}
+.coach-fakten {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.coach-fakten li {
+  position: relative;
+  padding: 6px 12px 6px 28px;
+  border-radius: 999px;
+  font-size: .85rem;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 215, 0, .35);
+}
+.coach-fakten li::before {
+  content: "✓";
+  position: absolute;
+  left: 11px;
+  font-weight: 700;
+  color: var(--fa-gold-hell);
+}
+
+/* ---------- Optionskarten ---------- */
+.optionen-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 26px;
+  max-width: 980px;
+  margin: 30px 0 10px;
+  align-items: stretch;
+}
+@media (min-width: 820px) {
+  .optionen-grid { grid-template-columns: 1fr 1fr; }
+}
+.option-karte {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 26px 26px;
+  border-radius: var(--fa-radius);
+  background: #fff;
+  border: 1px solid var(--fa-linie);
+  box-shadow: var(--fa-schatten);
+  text-align: left;
+  color: var(--fa-text);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.option-karte:hover { transform: translateY(-4px); box-shadow: var(--fa-schatten-hover); }
+
+/* Empfohlene Karte: Goldrahmen + Ribbon */
+.option-karte.ist-empfohlen {
+  border: 2px solid var(--fa-gold);
+  background: linear-gradient(180deg, rgba(212, 160, 23, .08) 0, rgba(255, 255, 255, 0) 180px), #fff;
+}
+.option-ribbon {
+  position: absolute;
+  top: -14px;
+  right: 22px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  color: var(--fa-navy);
+  background: linear-gradient(90deg, var(--fa-gold), var(--fa-gold-hell));
+  box-shadow: 0 4px 12px rgba(212, 160, 23, .45);
+}
+.option-kopf { margin-bottom: 14px; }
+.option-label {
+  display: inline-block;
+  padding: 3px 11px;
+  border-radius: 999px;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--fa-navy);
+}
+.option-b .option-label { background: var(--fa-gruen); }
+.option-karte h4 {
+  margin: 12px 0 2px;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  color: var(--fa-navy);
+}
+.option-tagline { margin: 0; color: var(--fa-grau); font-size: .95rem; }
+
+.option-preis {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  padding: 14px 0 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--fa-linie);
+}
+.option-preis .betrag {
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: var(--fa-navy);
+}
+.option-preis .waehrung { font-size: 1.6rem; font-weight: 700; color: var(--fa-navy); }
+.option-b .option-preis .betrag,
+.option-b .option-preis .waehrung { color: var(--fa-gruen); }
+.option-preis .preis-info { flex-basis: 100%; font-size: .82rem; color: var(--fa-grau); }
+
+.platz-anzeige {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.platz-anzeige span {
+  padding: 10px 8px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: .85rem;
+  color: var(--fa-navy);
+  background: #eef4ff;
+  border: 1px solid #d6e4ff;
+}
+.platz-anzeige b { display: block; font-size: 1.5rem; line-height: 1.1; }
+.option-sub { margin: 0 0 14px; font-size: .95rem; }
+
+.option-gutschein {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: .93rem;
+  line-height: 1.5;
+  background: linear-gradient(135deg, #f1f8ec, #e6f3dd);
+  border: 1px dashed var(--fa-gruen);
+}
+.gutschein-icon { font-size: 1.5rem; line-height: 1; }
+
+.option-liste {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+  flex: 1;                               /* Button bündig unten */
+}
+.option-liste li {
+  position: relative;
+  padding: 8px 0 8px 32px;
+  border-top: 1px solid #f2f2f4;
+  font-size: .97rem;
+}
+.option-liste li:first-child { border-top: none; }
+.option-liste li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: .8rem;
+  font-weight: 700;
+  line-height: 22px;
+  text-align: center;
+  color: #fff;
+  background: var(--fa-navy);
+}
+.option-b .option-liste li::before { background: var(--fa-gruen); }
+.option-liste li.highlight {
+  margin: 4px -10px;
+  padding-left: 42px;
+  padding-right: 10px;
+  border-radius: 10px;
+  border-top-color: transparent;
+  background: #fff7dc;
+}
+.option-liste li.highlight::before { left: 10px; content: "★"; background: var(--fa-gold); }
+.option-liste li.highlight + li { border-top-color: transparent; }
+
+.option-cta {
+  display: block;
+  padding: 14px 18px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.02rem;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, var(--fa-navy), #1d4e89);
+  box-shadow: 0 6px 16px rgba(11, 37, 69, .25);
+  transition: filter .2s ease, transform .2s ease;
+}
+.option-cta:hover { filter: brightness(1.12); transform: translateY(-1px); }
+.option-cta--outline {
+  color: var(--fa-gruen);
+  background: #fff;
+  border: 2px solid var(--fa-gruen);
+  box-shadow: none;
+}
+.option-cta--outline:hover { background: #f1f8ec; filter: none; }
+
+/* ---------- Zusatztrainings ---------- */
+.addon-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 980px;
+  margin: 16px 0 10px;
+}
+@media (min-width: 820px) {
+  .addon-grid { grid-template-columns: 1fr 1fr; }
+}
+.addon-karte {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--fa-linie);
+  box-shadow: 0 4px 14px rgba(11, 37, 69, .07);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.addon-karte:hover { transform: translateY(-3px); box-shadow: var(--fa-schatten); }
+.addon-nr {
+  flex: 0 0 46px;
+  height: 46px;
+  border-radius: 12px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 46px;
+  text-align: center;
+  color: var(--fa-gold-hell);
+  background: var(--fa-navy);
+}
+.addon-body { flex: 1; }
+.addon-body h4 { margin: 0 0 3px; font-size: 1.08rem; color: var(--fa-navy); }
+.addon-body p { margin: 0; padding: 0; font-size: .9rem; color: var(--fa-grau); line-height: 1.45; }
+.addon-preis {
+  white-space: nowrap;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--fa-navy);
+}
+
+/* ---------- Termine (Premium-Variante) ---------- */
+.termine-box--premium {
+  max-width: 980px;
+  margin: 30px 0;
+  padding: 24px 24px 20px;
+  border: 1px solid var(--fa-linie);
+  border-left: 5px solid var(--fa-gold);
+  border-radius: var(--fa-radius);
+  box-shadow: var(--fa-schatten);
+}
+.termine-box--premium h3 { color: var(--fa-navy); }
+.termine-info { margin: 0 0 16px; font-size: .95rem; color: var(--fa-text); }
+.termine-hinweis { margin: 16px 0 0; font-size: .9rem; color: var(--fa-grau); }
+
+.termin-kacheln {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.termin-kacheln li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 10px 12px;
+  border-radius: 14px;
+  text-align: center;
+  background: #f7f9fc;
+  border: 1px solid #e3e9f3;
+  transition: transform .2s ease, border-color .2s ease;
+}
+.termin-kacheln li:hover { transform: translateY(-2px); border-color: var(--fa-blau); }
+.termin-tag {
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--fa-navy);
+}
+.termin-monat { margin-top: 4px; font-weight: 700; color: var(--fa-blau); }
+.termin-meta { margin-top: 4px; font-size: .76rem; color: var(--fa-grau); }
+.termin-kacheln li.ist-prelaunch {
+  background: linear-gradient(160deg, var(--fa-navy), #1d4e89);
+  border-color: var(--fa-gold);
+}
+.termin-kacheln li.ist-prelaunch .termin-tag { color: var(--fa-gold-hell); }
+.termin-kacheln li.ist-prelaunch .termin-monat { color: #fff; }
+.termin-kacheln li.ist-prelaunch .termin-meta { color: rgba(255, 255, 255, .8); }
+
+/* ---------- Modul-Lead (Kursseite Modul 2/3) ---------- */
+.modul-lead {
+  max-width: 980px;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #eef4ff;
+  border-left: 4px solid var(--fa-navy);
+}
+.modul-lead__chip {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--fa-gold-hell);
+  background: var(--fa-navy);
+}
+
+/* globale "section p"-Einrückung in den Karten neutralisieren */
+.option-karte p, .coach-karte p, .addon-karte p, .termine-box--premium p, .angebot-kopf p { padding-left: 0; }
+
+@media (max-width: 480px) {
+  .option-karte { padding: 26px 18px 20px; }
+  .coach-text blockquote { font-size: 1rem; }
+  .termin-tag { font-size: 1.8rem; }
+  .termin-kacheln { grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); }
+  .option-preis .betrag { font-size: 2.7rem; }
+  .coach-text { padding: 22px 18px 24px; }
+  .addon-karte { flex-wrap: wrap; }
+  .addon-preis { margin-left: 62px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .option-karte, .addon-karte, .termin-kacheln li, .option-cta { transition: none; }
+}
+
+/* =====================================================
+   FaOnSa Effekte – reines CSS (Keyframes + Transitions)
+   Ausgelöst über Klassen aus assets/js/effects.js.
+   Ohne JS (.fx-ready fehlt) bleibt alles normal sichtbar.
+   Animiert werden nur opacity / translate / transform /
+   background-position → GPU-freundlich, kein Ruckeln.
+   ===================================================== */
+
+/* ---------- Grundlagen für flüssige Bedienung ---------- */
+a, button, summary, .option-cta, .kontakt-button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;               /* keine Doppeltipp-Verzögerung am Handy */
+}
+:where(a, button, summary):focus-visible {
+  outline: 3px solid var(--fa-gold-hell);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+.coach-foto { max-width: 100%; }           /* Ausnahme von der globalen img-Begrenzung */
+
+/* ---------- Scroll-Einblenden (Fade + Slide) ---------- */
+/* "translate" statt "transform": so bleiben die Hover-Effekte der Karten erhalten */
+.fx-ready .fx {
+  opacity: 0;
+  translate: 0 26px;
+  transition:
+    opacity .7s cubic-bezier(.22, .61, .36, 1),
+    translate .7s cubic-bezier(.22, .61, .36, 1);
+  transition-delay: calc(var(--fx-i, 0) * 90ms);
+}
+.fx-ready .fx.is-visible { opacity: 1; translate: 0 0; }
+
+/* Coach-Karte: Foto und Text gleiten von den Seiten herein */
+.fx-ready .coach-karte.fx { translate: 0 0; }
+.fx-ready .coach-karte .coach-foto-wrap,
+.fx-ready .coach-karte .coach-text {
+  opacity: 0;
+  transition: opacity .8s ease, translate .8s cubic-bezier(.22, .61, .36, 1);
+}
+.fx-ready .coach-karte .coach-foto-wrap { translate: -30px 0; }
+.fx-ready .coach-karte .coach-text { translate: 30px 0; transition-delay: .15s; }
+.fx-ready .coach-karte.is-visible .coach-foto-wrap,
+.fx-ready .coach-karte.is-visible .coach-text { opacity: 1; translate: 0 0; }
+.fx-ready .coach-fakten li {
+  opacity: 0;
+  scale: .9;
+  transition: opacity .45s ease, scale .45s cubic-bezier(.34, 1.56, .64, 1);
+}
+.fx-ready .coach-karte.is-visible .coach-fakten li { opacity: 1; scale: 1; }
+.coach-fakten li:nth-child(1) { transition-delay: .55s; }
+.coach-fakten li:nth-child(2) { transition-delay: .65s; }
+.coach-fakten li:nth-child(3) { transition-delay: .75s; }
+.coach-fakten li:nth-child(4) { transition-delay: .85s; }
+.coach-fakten li:nth-child(5) { transition-delay: .95s; }
+
+/* Leistungslisten in den Optionskarten: Häkchen nacheinander */
+.fx-ready .option-liste li {
+  opacity: 0;
+  translate: -10px 0;
+  transition: opacity .45s ease, translate .45s ease;
+}
+.fx-ready .option-karte.is-visible .option-liste li { opacity: 1; translate: 0 0; }
+.option-liste li:nth-child(1) { transition-delay: .35s; }
+.option-liste li:nth-child(2) { transition-delay: .45s; }
+.option-liste li:nth-child(3) { transition-delay: .55s; }
+.option-liste li:nth-child(4) { transition-delay: .65s; }
+.option-liste li:nth-child(5) { transition-delay: .75s; }
+
+/* Bestehende .reveal-Bereiche: nur noch versteckt, wenn das Skript läuft */
+.reveal { opacity: 1; transform: none; }
+.fx-ready .reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .8s ease-out, transform .8s ease-out;
+}
+.fx-ready .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ---------- Schimmer (Lichtstreifen über Buttons & Ribbon) ---------- */
+.fx-shimmer { overflow: hidden; isolation: isolate; }
+.fx-shimmer:not(.option-ribbon) { position: relative; }   /* Ribbon bleibt absolut positioniert */
+.fx-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, .55) 50%, transparent 75%);
+  translate: -130% 0;
+}
+/* einmal beim Sichtbarwerden … */
+.fx-shimmer.is-visible::after { animation: fx-sweep 1.3s .5s cubic-bezier(.4, 0, .2, 1) 1 both; }
+/* … und beim Haupt-CTA dezent alle 8 Sekunden wieder */
+.option-a .option-cta.is-visible::after,
+.kurs-taxi-button.is-visible::after { animation: fx-sweep-loop 8s 1s ease-in-out infinite; }
+.fx-shimmer:hover::after { animation: fx-sweep .9s cubic-bezier(.4, 0, .2, 1) 1 both; }
+.option-cta--outline::after { background: linear-gradient(110deg, transparent 25%, rgba(47, 122, 31, .18) 50%, transparent 75%); }
+
+@keyframes fx-sweep { from { translate: -130% 0; } to { translate: 130% 0; } }
+@keyframes fx-sweep-loop {
+  0%, 82% { translate: -130% 0; }
+  100%    { translate: 130% 0; }
+}
+
+/* ---------- Preis-Schimmer (Glanz läuft einmal durch die Zahl) ---------- */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .fx-ready .option-preis .betrag {
+    background: linear-gradient(100deg, var(--fa-navy) 0 40%, #6f9be0 50%, var(--fa-navy) 60% 100%);
+    background-size: 250% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .fx-ready .option-b .option-preis .betrag {
+    background-image: linear-gradient(100deg, var(--fa-gruen) 0 40%, #8fd17a 50%, var(--fa-gruen) 60% 100%);
+  }
+  .fx-ready .option-karte.is-visible .option-preis .betrag { animation: fx-preis 1.6s .4s ease-in-out 1 both; }
+}
+@keyframes fx-preis { from { background-position: 100% 0; } to { background-position: 0 0; } }
+
+/* ---------- Glow (sanftes Pulsieren auf Highlights) ---------- */
+.option-ribbon.is-visible { animation: fx-glow-gold 3.2s 1.2s ease-in-out infinite; }
+.termin-kacheln li.ist-prelaunch.is-visible { animation: fx-glow-navy 3.6s 1s ease-in-out infinite; }
+.fx-ready .option-karte.is-visible .option-liste li.highlight {
+  background: linear-gradient(100deg, #fff7dc 0 40%, #fff0b8 50%, #fff7dc 60% 100%);
+  background-size: 250% 100%;
+  animation: fx-preis 1.8s 1.1s ease-in-out 1 both;
+}
+@keyframes fx-glow-gold {
+  0%, 100% { box-shadow: 0 4px 12px rgba(212, 160, 23, .40); }
+  50%      { box-shadow: 0 4px 22px rgba(255, 215, 0, .85); }
+}
+@keyframes fx-glow-navy {
+  0%, 100% { box-shadow: 0 4px 14px rgba(11, 37, 69, .20); }
+  50%      { box-shadow: 0 6px 26px rgba(212, 160, 23, .55); }
+}
+
+/* ---------- Micro-Interactions ---------- */
+/* Druck-Feedback über die eigene Eigenschaft "scale" – sie wird mit einem vorhandenen
+   transform (z. B. translateY(-50%) beim Navigations-Reiter) kombiniert statt es zu ersetzen.
+   Sonst springt das Element beim Drücken weg und der Klick kommt nicht an. */
+.option-cta, .kontakt-button, .kurs-taxi-button, .web-app-button, .whatsapp-btn, .close-price-list,
+button:not(.tabnav):not(.nav-close) {
+  transition: transform .18s ease, scale .15s ease, filter .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.option-cta:active, .kontakt-button:active, .kurs-taxi-button:active,
+.web-app-button:active, .whatsapp-btn:active, button:not(.tabnav):not(.nav-close):active { scale: .97; }
+
+.option-karte:hover .option-label,
+.addon-karte:hover .addon-nr { transform: scale(1.08); }
+.option-label, .addon-nr { transition: transform .25s cubic-bezier(.34, 1.56, .64, 1); }
+.option-karte:hover .option-liste li::before { transform: scale(1.1); }
+.option-liste li::before { transition: transform .25s ease; }
+
+.coach-fakten li { transition: background-color .2s ease, border-color .2s ease; }
+.coach-fakten li:hover { background: rgba(255, 215, 0, .14); border-color: var(--fa-gold-hell); }
+
+.termin-kacheln li:hover { box-shadow: 0 8px 20px rgba(11, 37, 69, .12); }
+
+/* FAQ-Akkordeon: weiches Aufklappen des Inhalts */
+details > summary { cursor: pointer; transition: color .2s ease; }
+details > summary:hover { color: var(--fa-blau); }
+details[open] > *:not(summary) { animation: fx-aufklappen .35s ease-out both; }
+@keyframes fx-aufklappen { from { opacity: 0; translate: 0 -6px; } to { opacity: 1; translate: 0 0; } }
+
+/* Header-Begrüßung auf der Startseite: sanfter Auftritt beim Laden */
+header > h1, header > h2, header > .responsive-logo { animation: fx-hero .9s cubic-bezier(.22, .61, .36, 1) both; position: relative; }
+header > h2 { animation-delay: .15s; }
+header > .responsive-logo { animation-delay: .3s; }
+@keyframes fx-hero { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+
+/* ---------- Lesefortschritt oben (reines CSS, wo unterstützt) ---------- */
+@supports (animation-timeline: scroll()) {
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    z-index: 3000;
+    pointer-events: none;
+    transform-origin: 0 50%;
+    background: linear-gradient(90deg, var(--fa-gold), var(--fa-gold-hell));
+    animation: fx-fortschritt linear both;
+    animation-timeline: scroll(root);
+  }
+  @keyframes fx-fortschritt { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+}
+
+/* ---------- Barrierefreiheit: "Bewegung reduzieren" respektieren ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal, .fx { opacity: 1 !important; translate: none !important; transform: none !important; }
+  body::after { display: none; }
+}
+
+/* =====================================================
+   Website-Erstellung: Versprechen-Band, Preis "ab", Ablauf
+   ===================================================== */
+.versprechen-band {
+  max-width: 980px;
+  box-sizing: border-box;
+  margin: 28px 0 10px;
+  padding: 26px 28px;
+  border-radius: 22px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, var(--fa-navy) 0%, var(--fa-navy-2) 60%, #1d4e89 100%);
+  border-bottom: 4px solid var(--fa-gold);
+  box-shadow: var(--fa-schatten);
+}
+.versprechen-band p.versprechen-titel {
+  margin: 8px 0 16px;
+  padding: 0;
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  font-weight: 800;
+  line-height: 1.25;
+}
+.versprechen-titel span {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: .62em;
+  font-weight: 400;
+  color: rgba(255, 255, 255, .88);
+}
+.versprechen-punkte {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.versprechen-punkte li {
+  position: relative;
+  padding: 6px 14px 6px 30px;
+  border-radius: 999px;
+  font-size: .88rem;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 215, 0, .35);
+}
+.versprechen-punkte li::before {
+  content: "✓";
+  position: absolute;
+  left: 12px;
+  font-weight: 700;
+  color: var(--fa-gold-hell);
+}
+
+/* Überschriften in Karten als h3 (Website-Seite) wie die h4 der Trainingsseite */
+.option-karte h3 {
+  margin: 12px 0 2px;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  color: var(--fa-navy);
+}
+.angebot-kopf h2 {
+  margin: 6px 0 8px;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--fa-navy);
+}
+.option-preis .preis-ab {
+  align-self: flex-end;
+  margin-right: 2px;
+  padding-bottom: 6px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--fa-grau);
+}
+
+/* Ablauf als Schritt-Leiste */
+.ablauf-schritte {
+  counter-reset: schritt;
+  list-style: none;
+  max-width: 980px;
+  margin: 18px 0;
+  padding: 0;
+}
+.ablauf-schritte li {
+  counter-increment: schritt;
+  position: relative;
+  padding: 4px 0 22px 58px;
+}
+.ablauf-schritte li::before {
+  content: counter(schritt);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  font-weight: 800;
+  line-height: 40px;
+  text-align: center;
+  color: var(--fa-gold-hell);
+  background: var(--fa-navy);
+  box-shadow: 0 4px 12px rgba(11, 37, 69, .2);
+}
+.ablauf-schritte li::after {            /* Verbindungslinie */
+  content: "";
+  position: absolute;
+  left: 19px;
+  top: 44px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(var(--fa-gold), rgba(212, 160, 23, .15));
+}
+.ablauf-schritte li:last-child { padding-bottom: 4px; }
+.ablauf-schritte li:last-child::after { display: none; }
+.ablauf-schritte strong { display: block; color: var(--fa-navy); font-size: 1.05rem; }
+.ablauf-schritte span { display: block; color: var(--fa-grau); font-size: .93rem; }
+.fx-ready .ablauf-schritte.fx li { opacity: 0; translate: -12px 0; transition: opacity .5s ease, translate .5s ease; }
+.fx-ready .ablauf-schritte.fx.is-visible li { opacity: 1; translate: 0 0; }
+.ablauf-schritte li:nth-child(2) { transition-delay: .12s; }
+.ablauf-schritte li:nth-child(3) { transition-delay: .24s; }
+.ablauf-schritte li:nth-child(4) { transition-delay: .36s; }
+.ablauf-schritte li:nth-child(5) { transition-delay: .48s; }
+@media (prefers-reduced-motion: reduce) {
+  .ablauf-schritte li { opacity: 1 !important; translate: none !important; }
+}
+
+/* Coach-Karte: "Warum goldrichtig"-Liste */
+.coach-gruende {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 215, 0, .25);
+}
+.coach-karte p.coach-gruende__titel { margin: 0 0 8px; font-weight: 700; color: var(--fa-gold-hell); }
+.coach-gruende ul { list-style: none; margin: 0; padding: 0; }
+.coach-gruende li { position: relative; padding: 4px 0 4px 24px; font-size: .95rem; color: rgba(255, 255, 255, .92); }
+.coach-gruende li::before { content: "★"; position: absolute; left: 0; color: var(--fa-gold-hell); }
+
+/* Menü kompakt + scrollbar: auch auf kleinen Bildschirmen sind alle Links erreichbar */
+.nav-drawer { width: min(80vw, 280px); max-height: 100dvh; }
+.nav-drawer__header { padding: .6rem 1rem; }
+.nav-list { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch; gap: .1rem; padding: .5rem .75rem 1rem; }
+.nav-link { padding: .45rem .7rem; font-size: .95rem; }

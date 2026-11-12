@@ -43,6 +43,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const m = new Date(); m.setDate(m.getDate() + 1);
   const morgen = isoLokal(m);
 
+  /* ---------- Startbalken: ab dem Starttag "Wir sind gestartet" ---------- */
+  const startBalken = $("#startBalken");
+  if (startBalken && T.betriebsstart && heute >= T.betriebsstart) {
+    startBalken.innerHTML = `<strong>Wir sind gestartet!</strong> <span>Der FaOnSa Fahrdienst fährt seit dem ` +
+      `${datumDE(T.betriebsstart)} – Fahrten ab sofort buchbar.</span>`;
+  }
+
+  /* ---------- Eröffnungsaktion nach Ablauf automatisch ausblenden ---------- */
+  const aktion = $("#aktion");
+  if (aktion && aktion.dataset.ende && heute > aktion.dataset.ende) aktion.hidden = true;
+
   /* ---------- Betriebsstart: Buchungen ab sofort, Fahrten ab Starttag ---------- */
   const gestartet = Boolean(T.betriebsstart);
   if (gestartet) {
@@ -51,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#anfrageTitel").textContent = "Fahrt anfragen";
     $("#anfrage .intro-text").textContent = "Wählen Sie Ihre Fahrt und einen verfügbaren Termin. Sie erhalten Ihre " +
       "Buchungsbestätigung mit Festpreis und Rechnung per E-Mail – bezahlt wird vorab per PayPal oder Überweisung.";
-    $$('a[href="#anfrage"]').forEach(a => (a.textContent = "Fahrt anfragen"));
+    $$('a[href="#anfrage"]:not(.aktion-btn)').forEach(a => (a.textContent = "Fahrt anfragen"));
   }
   const frueheste = (T.betriebsstart && T.betriebsstart > morgen) ? T.betriebsstart : morgen;
   const NICHT_VERFUEGBAR = "Die Fahrt ist zu diesem Termin nicht verfügbar.";

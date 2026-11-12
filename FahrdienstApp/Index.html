@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FaOnSa Airport Transfers – Flughafentransfer Frankfurt | Jetzt buchen</title>
-  <meta name="description" content="FaOnSa Airport Transfers: vorab gebuchter Flughafentransfer im Rhein-Main-Gebiet und planbare Langstreckenfahrten – Festpreis, bargeldlos, im Voraus bezahlt. Der Fahrbetrieb startet in Kürze, Voranfragen sind bereits möglich.">
+  <title>Fahrdienst Frankfurt – Flughafentransfer &amp; Fahrdienst Frankfurt–Köln | FaOnSa</title>
+  <meta name="description" content="FaOnSa – Ihr Fahrdienst ab Frankfurt: Flughafentransfer Frankfurt (FRA) und Fahrdienst Frankfurt–Köln zum Festpreis, vorab gebucht und bargeldlos bezahlt. Start am 14.11.2026 – zur Eröffnung 20 % Rabatt für Neukunden.">
   <meta name="robots" content="index, follow">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://airport-transfers.faonsa.de/sitemap.xml">
   <link rel="canonical" href="https://airport-transfers.faonsa.de/">
@@ -25,21 +25,22 @@
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://airport-transfers.faonsa.de/">
-  <meta property="og:title" content="FaOnSa Airport Transfers – Flughafentransfer Frankfurt | Jetzt buchen">
-  <meta property="og:description" content="Vorab gebuchter Flughafentransfer Frankfurt (FRA) – Festpreis, bargeldlos, im Voraus bezahlt. Fahrbetrieb ab 14.11.2026.">
+  <meta property="og:title" content="FaOnSa Fahrdienst Frankfurt – Flughafentransfer &amp; Frankfurt–Köln">
+  <meta property="og:description" content="Ihr Fahrdienst ab Frankfurt: Flughafentransfer FRA und Fahrdienst Frankfurt–Köln – Festpreis, bargeldlos, im Voraus bezahlt. Start am 14.11.2026.">
   <meta property="og:image" content="https://airport-transfers.faonsa.de/faonsa_Logo_3.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FaOnSa Airport Transfers – Jetzt buchen">
-  <meta name="twitter:description" content="Flughafentransfer Frankfurt: Festpreis, bargeldlos, im Voraus bezahlt. Fahrbetrieb ab 14.11.2026.">
+  <meta name="twitter:title" content="FaOnSa Fahrdienst Frankfurt – Jetzt buchen">
+  <meta name="twitter:description" content="Fahrdienst Frankfurt: Flughafentransfer und Frankfurt–Köln zum Festpreis, bargeldlos, im Voraus bezahlt. Start am 14.11.2026.">
   <meta name="twitter:image" content="https://airport-transfers.faonsa.de/faonsa_Logo_3.png">
 
-  <!-- Strukturierte Daten: bewusst ohne Öffnungszeiten/Angebote, solange der Fahrbetrieb noch nicht gestartet ist -->
+  <!-- Strukturierte Daten für Google (bewusst ohne Öffnungszeiten/Fahrplan – Fahrten nur nach Vorabbuchung) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "FaOnSa Airport Transfers",
-    "description": "Vorab gebuchter Mietwagen-Fahrdienst (Flughafentransfer Frankfurt und Langstrecken). Fahrbetrieb ab 14.11.2026.",
+    "alternateName": "FaOnSa Fahrdienst",
+    "description": "Vorab gebuchter Mietwagen-Fahrdienst ab Frankfurt: Flughafentransfer Frankfurt (FRA), Fahrdienst Frankfurt–Köln und individuelle Langstreckenfahrten. Start am 14.11.2026.",
     "url": "https://airport-transfers.faonsa.de/",
     "image": "https://airport-transfers.faonsa.de/faonsa_Logo_3.png",
     "telephone": "+49-1577-8724503",
@@ -51,7 +52,17 @@
       "addressLocality": "Frankfurt",
       "addressCountry": "DE"
     },
-    "areaServed": "Rhein-Main-Gebiet, Flughafen Frankfurt (FRA)",
+    "areaServed": ["Frankfurt am Main", "Rhein-Main-Gebiet", "Flughafen Frankfurt (FRA)", "Köln"],
+    "foundingDate": "2026-11-14",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Leistungen des FaOnSa Fahrdienstes",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Flughafentransfer Frankfurt (FRA)", "serviceType": "Fahrdienst / Flughafentransfer" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fahrdienst Frankfurt – Köln", "serviceType": "Fahrdienst / Langstrecke" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Individuelle Langstreckenfahrten ab Frankfurt", "serviceType": "Fahrdienst / Sonderfahrt" } }
+      ]
+    },
     "paymentAccepted": "PayPal, Banküberweisung",
     "priceRange": "€€"
   }
@@ -59,17 +70,65 @@
 </head>
 <body>
 
+<!-- ===== Startbalken (Text wechselt ab Betriebsstart automatisch, siehe script.js) ===== -->
+<div class="start-balken" id="startBalken" role="note">
+  <strong>Offizieller Start am Samstag, 14.11.2026:</strong>
+  <span id="startText">Ab diesem Tag ist der FaOnSa Fahrdienst unterwegs. Fahrten können Sie schon jetzt anfragen.</span>
+</div>
+
 <header class="hero">
   <div class="hero-inner">
     <p class="hero-kicker">Mietwagen-Fahrdienst · Rhein-Main</p>
-    <h1>FaOnSa Airport Transfers</h1>
-    <p class="hero-claim">Ihr vorab gebuchter Flughafentransfer Frankfurt – <br>Festpreis, bargeldlos, pünktlich.</p>
+    <h1>FaOnSa Airport Transfers <span class="h1-zusatz">Ihr Fahrdienst ab Frankfurt</span></h1>
+    <p class="hero-claim">Flughafentransfer Frankfurt und Fahrdienst Frankfurt–Köln – <br>vorab gebucht, Festpreis, bargeldlos, pünktlich.</p>
     <a href="#anfrage" class="btn btn-gross">Fahrt anfragen</a>
   </div>
   <img src="faonsa_Logo_3.png" alt="Logo von FaOnSa Airport Transfers" class="hero-logo">
 </header>
 
 <main>
+
+  <!-- ===== Eröffnungsaktion (wird nach dem Enddatum automatisch ausgeblendet, siehe data-ende) ===== -->
+  <section class="aktion" id="aktion" data-ende="2027-05-13" aria-labelledby="aktionTitel">
+    <p class="aktion-badge">Eröffnungsaktion für Neukunden</p>
+    <h2 id="aktionTitel">20 % Rabatt auf Ihre erste Fahrt Frankfurt ⇄ Köln</h2>
+    <p class="aktion-text">
+      Zum Start meines Fahrdienstes erhalten Neukunden auf ihre <strong>erste Fahrt</strong>
+      zwischen Frankfurt und Köln <strong>20 % Rabatt</strong>:
+    </p>
+    <p class="aktion-preis"><strong>271,20 €</strong> <s>339 €</s> <span>je Fahrt, Festpreis für das ganze Fahrzeug</span></p>
+    <ul class="aktion-liste">
+      <li><strong>Frankfurt → Köln</strong> – an Sonntagen buchbar</li>
+      <li><strong>Köln → Frankfurt</strong> – an Freitagen buchbar</li>
+    </ul>
+    <p class="aktion-text">
+      Sicher und zuverlässig ans Ziel: Sie buchen die Fahrt individuell im Voraus, werden an Ihrer Wunschadresse abgeholt
+      und direkt zu Ihrem Ziel gefahren – ohne Umsteigen, ohne Zwischenstopps für andere Fahrgäste.
+    </p>
+    <a href="#anfrage" class="btn aktion-btn">Jetzt Fahrt anfragen</a>
+    <p class="aktion-bedingungen">
+      <strong>Aktionsbedingungen:</strong> Gilt für Fahrten vom 14.11.2026 bis einschließlich 13.05.2027, nur für Neukunden
+      (Personen, die bisher noch keine Fahrt bei FaOnSa gebucht haben), einmalig für die erste gebuchte Fahrt auf der Strecke
+      Frankfurt → Köln oder Köln → Frankfurt. Kein Code nötig – der Rabatt wird bei der Buchungsbestätigung automatisch
+      berücksichtigt. Nicht mit anderen Rabatten kombinierbar, keine Barauszahlung. Es gelten die Verfügbarkeit
+      sowie die <a href="#agbTitel">AGB</a>.
+    </p>
+  </section>
+
+  <!-- ===== Einleitung / Suchmaschinen-Text ===== -->
+  <section aria-labelledby="introTitel">
+    <h2 id="introTitel">Ihr Fahrdienst ab Frankfurt – Flughafentransfer &amp; Langstrecke</h2>
+    <p>
+      FaOnSa ist ein <strong>Mietwagen-Fahrdienst aus Frankfurt am Main</strong>. Ich bringe Sie zum
+      <strong>Flughafen Frankfurt (FRA)</strong> – Terminal 1 oder Terminal 2 – oder hole Sie dort ab, ebenso übernehme ich
+      <strong>Fahrten zwischen Frankfurt und Köln</strong> sowie individuelle Langstreckenfahrten im Rhein-Main-Gebiet.
+    </p>
+    <p>
+      Jede Fahrt wird vorab gebucht und zu einem <strong>Festpreis</strong> bestätigt. Bezahlt wird bargeldlos im Voraus per
+      PayPal oder Überweisung – im Fahrzeug fällt kein Bargeld an. Sie mieten das Fahrzeug mit Fahrer für sich allein
+      (bis zu 3 Fahrgäste) und werden direkt von Ihrer Adresse zu Ihrem Ziel gefahren.
+    </p>
+  </section>
 
 
   <!-- ===== So funktioniert's ===== -->
@@ -376,6 +435,11 @@
       <summary>Was kostet Wartezeit?</summary>
       <p>Bitte seien Sie pünktlich. Ab 10 Minuten nach der vereinbarten Zeit gilt die Fahrt laut AGB als nicht angetreten.
         Mögliche Parkgebühren werden nachträglich per Rechnung abgerechnet – nie bar im Fahrzeug.</p>
+    </details>
+    <details>
+      <summary>Wer erhält den Eröffnungsrabatt von 20 %?</summary>
+      <p>Alle Neukunden auf ihre erste Fahrt Frankfurt → Köln oder Köln → Frankfurt im Zeitraum vom 14.11.2026 bis 13.05.2027.
+        Sie brauchen keinen Code – der Rabatt wird in Ihrer Buchungsbestätigung automatisch berücksichtigt.</p>
     </details>
     <details>
       <summary>Ist das ein Taxi?</summary>

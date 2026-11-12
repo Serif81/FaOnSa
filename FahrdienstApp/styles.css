@@ -55,6 +55,49 @@ a { color: var(--gruen-dunkel); }
 .hero-claim { font-size: clamp(1.05rem, 2.4vw, 1.35rem); margin: 0 0 20px; }
 .hero-logo { position: absolute; top: 20px; right: 5vw; width: 110px; height: auto; }
 
+/* ---------- Startbalken ganz oben ---------- */
+.start-balken {
+  background: var(--gruen-dunkel);
+  color: #fff;
+  text-align: center;
+  padding: 12px 16px;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+.start-balken strong { color: #ffd54a; margin-right: 4px; }
+
+.h1-zusatz { display: block; font-size: .5em; font-weight: 600; opacity: .95; margin-top: 4px; }
+
+/* ---------- Eröffnungsaktion (roter Kasten) ---------- */
+section.aktion {
+  background: #b71c1c;
+  border: 3px solid #8e0000;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(183, 28, 28, .25);
+}
+.aktion h2 { color: #fff; font-size: clamp(1.35rem, 3.2vw, 1.8rem); margin-bottom: 10px; }
+.aktion a { color: #fff; }
+.aktion-badge {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #ffd54a;
+  color: #5a0000;
+  font-weight: 700;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.aktion-text { margin: 0 0 10px; }
+.aktion-preis { margin: 4px 0 10px; font-size: 1.05rem; }
+.aktion-preis strong { font-size: 2rem; color: #ffd54a; margin-right: 8px; }
+.aktion-preis s { opacity: .85; margin-right: 8px; }
+.aktion-liste { margin: 0 0 12px; padding-left: 20px; }
+.aktion-liste li { margin-bottom: 4px; }
+.aktion .aktion-btn { background: #fff; color: #b71c1c; font-weight: 700; margin: 4px 0 14px; }
+.aktion-bedingungen { margin: 0; font-size: .82rem; opacity: .92; }
+
 /* ---------- Abschnitte ---------- */
 section {
   background: #fff;

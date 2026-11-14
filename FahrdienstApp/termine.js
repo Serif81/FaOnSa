@@ -43,9 +43,9 @@ const TERMINE = {
   betriebsstart: "2026-11-14",
 
   wochentage: {
-    0: { fahrten: ["Frankfurt → Köln"], von: "00:00", bis: "23:00" },               // Sonntag
-    5: { fahrten: ["Köln → Frankfurt"], von: "14:00", bis: "17:00" },               // Freitag
-    6: { fahrten: "alle",               von: "00:00", bis: "23:00", anfrage: true }, // Samstag
+    0: { fahrten: ["Frankfurt → Köln"], von: "00:00", bis: "23:00" }, // Sonntag: nur FFM → Köln
+    5: { fahrten: ["Köln → Frankfurt"], von: "14:00", bis: "17:00" }, // Freitag: nur Köln → FFM (7 Tage Vorlauf + Hinfahrt am So davor)
+    6: { fahrten: "alle",               von: "00:00", bis: "23:00" }, // Samstag: ALLES buchbar (auch heute)
   },
 
   wochenlimitStunden: 8,
@@ -61,8 +61,9 @@ const TERMINE = {
   },
 
   vorlaufTage: {
-    "Köln → Frankfurt": 7,
+    "Köln → Frankfurt": 7, // gilt laut script.js nur noch für Freitage
   },
+  rueckkehrpflichtKoelnFfm: true,
 
   gesperrt: [
     // "2026-12-26",

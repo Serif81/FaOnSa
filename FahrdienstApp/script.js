@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "Buchungsbestätigung mit Festpreis und Rechnung per E-Mail – bezahlt wird vorab per PayPal oder Überweisung.";
     $$('a[href="#anfrage"]:not(.aktion-btn)').forEach(a => (a.textContent = "Fahrt anfragen"));
   }
-  const frueheste = (T.betriebsstart && T.betriebsstart > morgen) ? T.betriebsstart : morgen;
+  const frueheste = (T.betriebsstart && T.betriebsstart > heute) ? T.betriebsstart : heute;
   const NICHT_VERFUEGBAR = "Die Fahrt ist zu diesem Termin nicht verfügbar.";
   const WOCHE_VOLL = "In dieser Kalenderwoche sind leider alle Fahrzeiten vergeben. Bitte wählen Sie einen Termin in einer anderen Woche.";
 
@@ -78,8 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const K = KALENDER;
   const plusTage = n => { const d = new Date(); d.setDate(d.getDate() + n); return isoLokal(d); };
   function fruehestesDatum(art) {
-    const vorlauf = plusTage((T.vorlaufTage || {})[art] || 0);
-    return vorlauf > frueheste ? vorlauf : frueheste;
+    return frueheste;
   }
   const geplanteDauer = art => (T.geplanteDauer || {})[art] || 60;
   // Rund um die Uhr: alle Abholzeiten von 00:00 bis 23:xx im eingestellten Takt
@@ -94,15 +93,43 @@ document.addEventListener("DOMContentLoaded", () => {
     return r && (r.fahrten === "alle" || r.fahrten.includes(art)) ? r : null;
   }
   const regelFuer = (iso, art) => iso ? erlaubtAm(K.zuDatum(iso).getDay(), art) : null;
+
+  // Prüft, ob am Sonntag davor (5 Tage vor Freitag) eine bestätigte Fahrt "Frankfurt → Köln" eingetragen ist
+  function hatHinfahrtAmSonntagDavor(freitagIso) {
+    const so = K.zuDatum(freitagIso);
+    so.setDate(so.getDate() - 5);
+    const sonntagIso = isoLokal(so);
+    return (T.fahrten || []).some(f => f && f.datum === sonntagIso && f.strecke && f.strecke.includes("Frankfurt → Köln"));
+  }
+
   // Grund (Text), warum ein Datum nicht buchbar ist – oder null
   function datumGesperrt(iso, art) {
-    if (!iso || iso < fruehestesDatum(art) || (T.gesperrt || []).includes(iso) || !regelFuer(iso, art)) return NICHT_VERFUEGBAR;
+    if (!iso || iso < frueheste || (T.gesperrt || []).includes(iso) || !regelFuer(iso, art)) return NICHT_VERFUEGBAR;
+    const wochentag = K.zuDatum(iso).getDay();
+    // Spezielle Freitags-Regel für Köln → Frankfurt (gilt NICHT samstags!)
+    if (art === "Köln → Frankfurt" && wochentag === 5) {
+      const vorlauf = (T.vorlaufTage || {})[art] || 0;
+      if (vorlauf > 0 && iso < plusTage(vorlauf)) {
+        return `Köln → Frankfurt ist freitags nur mit mindestens ${vorlauf} Tagen Vorlauf buchbar.`;
+      }
+      if (T.rueckkehrpflichtKoelnFfm && !hatHinfahrtAmSonntagDavor(iso)) {
+        return "An diesem Freitag ist keine Fahrt Köln → Frankfurt verfügbar (keine Hinfahrt am Sonntag davor gebucht).";
+      }
+    }
     if (K.wocheInfo(K.zuDatum(iso)).voll) return WOCHE_VOLL;
     return null;
   }
+
   function zeitenAm(iso, art) {
     const r = regelFuer(iso, art);
-    return r ? ABHOLZEITEN.filter(z => z >= r.von && z <= r.bis) : [];
+    if (!r) return [];
+    let zeiten = ABHOLZEITEN.filter(z => z >= r.von && z <= r.bis);
+    // Wenn heute gewählt wird: bereits vergangene Uhrzeiten ausblenden
+    if (iso === heute) {
+      const jetzt = K.zeitText(new Date());
+      zeiten = zeiten.filter(z => z > jetzt);
+    }
+    return zeiten;
   }
   const zeitFrei = (iso, z, art) => zeitenAm(iso, art).includes(z) && K.pruefe(K.zuDatum(iso, z), geplanteDauer(art)).ok;
   function freieZeiten(iso, art) {
@@ -140,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       const vorlauf = (T.vorlaufTage || {})[art];
       hinweis.textContent = verfuegbarText(art) + "." +
-        (vorlauf ? ` Mindestens ${vorlauf} Tage Vorlauf.` : "");
+        (art === "Köln → Frankfurt" && vorlauf ? ` (Freitags mind. ${vorlauf} Tage Vorlauf)` : "");
       hinweis.classList.remove("gesperrt");
     }
     baueZeiten();

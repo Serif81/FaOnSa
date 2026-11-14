@@ -88,15 +88,31 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let m = 0; m < 1440; m += takt) z.push(`${zwei(Math.floor(m / 60))}:${zwei(m % 60)}`);
     return z;
   })();
+  // Wochentags-Regel (termine.js → wochentage): welche Fahrt an welchem Tag, welche Uhrzeiten
+  function erlaubtAm(wochentag, art) {
+    const r = (T.wochentage || {})[wochentag];
+    return r && (r.fahrten === "alle" || r.fahrten.includes(art)) ? r : null;
+  }
+  const regelFuer = (iso, art) => iso ? erlaubtAm(K.zuDatum(iso).getDay(), art) : null;
   // Grund (Text), warum ein Datum nicht buchbar ist – oder null
   function datumGesperrt(iso, art) {
-    if (!iso || iso < fruehestesDatum(art) || (T.gesperrt || []).includes(iso)) return NICHT_VERFUEGBAR;
+    if (!iso || iso < fruehestesDatum(art) || (T.gesperrt || []).includes(iso) || !regelFuer(iso, art)) return NICHT_VERFUEGBAR;
     if (K.wocheInfo(K.zuDatum(iso)).voll) return WOCHE_VOLL;
     return null;
   }
-  const zeitFrei = (iso, z, art) => K.pruefe(K.zuDatum(iso, z), geplanteDauer(art)).ok;
+  function zeitenAm(iso, art) {
+    const r = regelFuer(iso, art);
+    return r ? ABHOLZEITEN.filter(z => z >= r.von && z <= r.bis) : [];
+  }
+  const zeitFrei = (iso, z, art) => zeitenAm(iso, art).includes(z) && K.pruefe(K.zuDatum(iso, z), geplanteDauer(art)).ok;
   function freieZeiten(iso, art) {
-    return datumGesperrt(iso, art) ? [] : ABHOLZEITEN.filter(z => zeitFrei(iso, z, art));
+    return datumGesperrt(iso, art) ? [] : zeitenAm(iso, art).filter(z => zeitFrei(iso, z, art));
+  }
+  const TAGNAME = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+  function verfuegbarText(art) {
+    const tage = [1, 2, 3, 4, 5, 6, 0].filter(t => erlaubtAm(t, art))
+      .map(t => { const r = erlaubtAm(t, art); return `${TAGNAME[t]} ${r.von}–${r.bis} Uhr`; });
+    return tage.length ? `Verfügbar: ${tage.join(" · ")}` : NICHT_VERFUEGBAR;
   }
 
   const terminWahl = $("#terminWahl"), datumFrei = $("#wunschdatumFrei"), datumFeld = $("#wunschdatum");
@@ -123,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hinweis.classList.add("gesperrt");
     } else {
       const vorlauf = (T.vorlaufTage || {})[art];
-      hinweis.textContent = "Rund um die Uhr buchbar – auch frühmorgens und nachts." +
+      hinweis.textContent = verfuegbarText(art) + "." +
         (vorlauf ? ` Mindestens ${vorlauf} Tage Vorlauf.` : "");
       hinweis.classList.remove("gesperrt");
     }
@@ -133,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function baueZeiten() {
     const gewaehlt = zeit.value, iso = datumFeld.value, art = fahrtart();
-    const optionen = iso && !datumGesperrt(iso, art) ? ABHOLZEITEN.map(z => ({ z, ok: zeitFrei(iso, z, art) })) : [];
+    const optionen = iso && !datumGesperrt(iso, art) ? zeitenAm(iso, art).map(z => ({ z, ok: zeitFrei(iso, z, art) })) : [];
     const frei = optionen.filter(o => o.ok);
     zeit.replaceChildren(new Option(iso && !frei.length ? "nicht verfügbar" : "Bitte wählen", ""));
     optionen.forEach(({ z, ok }) => {
@@ -146,7 +162,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setzeAnfrageart() {
-    const aufAnfrage = gruppeFuer(fahrtart()) === "sonderfahrt";
+    const art = fahrtart(), r = regelFuer(datumFeld.value, art);
+    const aufAnfrage = gruppeFuer(art) === "sonderfahrt" || Boolean(r && r.anfrage);
     form.elements["anfrageart"].value = aufAnfrage ? "Anfrage (auf Anfrage – Bestätigung folgt)" : "Buchungsanfrage";
     form.elements["termin_status"].value = aufAnfrage ? "auf Anfrage" : "verfügbarer Termin";
     $("#senden").textContent = "Anfrage verbindlich senden";

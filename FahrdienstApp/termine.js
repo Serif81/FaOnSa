@@ -4,13 +4,19 @@
    Datumsformat immer "JJJJ-MM-TT", Uhrzeiten "HH:MM" (24-Stunden-Format).
 
    Grundregeln (werden automatisch geprüft, siehe kalender.js):
-   • Rund um die Uhr buchbar – 00:00 bis 23:59, jeden Tag, auch Nachtfahrten.
+   • Buchbar nur an den unter "wochentage" eingetragenen Tagen (Mo–Do gesperrt),
+     dort mit Abholzeiten von "von" bis "bis" (00:00–23:00 = rund um die Uhr).
    • Maximal "wochenlimitStunden" Arbeitszeit pro Kalenderwoche (Mo 00:00 – So 24:00).
      Ist das Limit erreicht, ist die restliche Woche für neue Buchungen komplett gesperrt.
    • Jede eingetragene Fahrt sperrt ihr Zeitfenster gegen Überschneidungen und
      wird automatisch vom Wochenkontingent abgezogen.
 
    betriebsstart       Erster Tag, an dem gefahren wird.
+   wochentage          Wann welche Fahrt möglich ist (0 = Sonntag … 6 = Samstag).
+                       Nicht aufgeführte Tage (Mo–Do) sind komplett gesperrt.
+                         fahrten: Liste der buchbaren Fahrtarten oder "alle"
+                         von/bis: erste und letzte wählbare Abholzeit
+                         anfrage: true = Fahrt nur "auf Anfrage" (Bestätigung folgt)
    wochenlimitStunden  Maximale Arbeitszeit je Kalenderwoche.
    pufferMinuten       Optionaler Abstand vor/nach jeder Fahrt (0 = direkt anschließend buchbar).
    taktMinuten         Abstand der wählbaren Abholzeiten im Formular (60 = volle Stunde, 30 = halbe Stunde).
@@ -35,6 +41,12 @@
    ===================================================================== */
 const TERMINE = {
   betriebsstart: "2026-11-14",
+
+  wochentage: {
+    0: { fahrten: ["Frankfurt → Köln"], von: "00:00", bis: "23:00" },               // Sonntag
+    5: { fahrten: ["Köln → Frankfurt"], von: "14:00", bis: "17:00" },               // Freitag
+    6: { fahrten: "alle",               von: "00:00", bis: "23:00", anfrage: true }, // Samstag
+  },
 
   wochenlimitStunden: 8,
   pufferMinuten: 0,

@@ -22,7 +22,7 @@
    gesperrt            Einzelne Tage komplett sperren (z. B. Urlaub, Krankheit).
 
    fahrten             BESTÄTIGTE Fahrten – hier nach jeder Bestätigung eine Zeile eintragen
-                       (die Verwaltungsseite verwaltung.html erzeugt die Zeile fertig zum Kopieren).
+                       (die lokale Verwaltungsseite im Ordner FaOnSa-Verwaltung erzeugt die Zeile).
                          datum   Starttag der Fahrt
                          von     Startzeit (Beginn der Arbeitszeit, z. B. Abfahrt/Abholung)
                          bis     Endzeit. Liegt "bis" vor/auf "von", geht die Fahrt über Mitternacht.

@@ -4,7 +4,7 @@
    • 24/7: keine festen Tageszeitfenster
    • Wochenlimit: Summe aller bestätigten Fahrten je Kalenderwoche (Mo–So)
    • Überschneidungsschutz für jedes eingetragene Zeitfenster
-   Wird von script.js (Kundenformular) und verwaltung.js (Verwaltung) genutzt.
+   Wird von script.js (Kundenformular) und der lokalen Verwaltung (Ordner FaOnSa-Verwaltung, nicht veröffentlicht) genutzt.
    ===================================================================== */
 const KALENDER = (() => {
   const T = (typeof TERMINE !== "undefined") ? TERMINE : {};

@@ -98,8 +98,8 @@
     </p>
     <p class="aktion-preis"><strong>271,20 €</strong> <s>339 €</s> <span>je Fahrt, Festpreis für das ganze Fahrzeug</span></p>
     <ul class="aktion-liste">
-      <li><strong>Frankfurt → Köln</strong> – an Sonntagen buchbar</li>
-      <li><strong>Köln → Frankfurt</strong> – an Freitagen buchbar</li>
+      <li><strong>Frankfurt → Köln</strong> – jeden Tag, rund um die Uhr buchbar</li>
+      <li><strong>Köln → Frankfurt</strong> – jeden Tag, rund um die Uhr buchbar (7 Tage Vorlauf)</li>
     </ul>
     <p class="aktion-text">
       Sicher und zuverlässig ans Ziel: Sie buchen die Fahrt individuell im Voraus, werden an Ihrer Wunschadresse abgeholt
@@ -120,7 +120,7 @@
     <h2 id="introTitel">Ihr Fahrdienst ab Frankfurt – Flughafentransfer &amp; Langstrecke</h2>
     <p>
       FaOnSa ist ein <strong>Mietwagen-Fahrdienst aus Frankfurt am Main</strong>. Ich bringe Sie zum
-      <strong>Flughafen Frankfurt (FRA)</strong> – Terminal 1 oder Terminal 2 – oder hole Sie dort ab, ebenso übernehme ich
+      <strong>Flughafen Frankfurt am Main (FRA)</strong> – Terminal 1, Terminal 2 oder Terminal 3 – oder hole Sie dort ab, ebenso übernehme ich
       <strong>Fahrten zwischen Frankfurt und Köln</strong> sowie individuelle Langstreckenfahrten im Rhein-Main-Gebiet.
     </p>
     <p>
@@ -166,12 +166,12 @@
       <article class="karte">
         <h3>Flughafentransfer FRA</h3>
         <p class="preis">ab 59 €</p>
-        <p>Von Ihrer Adresse zum Flughafen Frankfurt (Terminal 1 oder 2) oder zurück – für Strecken ab ca. 30 km.</p>
+        <p>Von Ihrer Adresse zum Flughafen Frankfurt am Main (Terminal 1, 2 oder 3) oder zurück – für Strecken ab ca. 30 km.</p>
       </article>
       <article class="karte">
         <h3>Langstrecke Frankfurt ⇄ Köln</h3>
         <p class="preis">339 €</p>
-        <p>Frankfurt → Köln sonntags, Köln → Frankfurt freitags 13–16 Uhr. Je Strecke.</p>
+        <p>In beide Richtungen an jedem Tag und rund um die Uhr buchbar. Je Strecke.</p>
       </article>
       <article class="karte">
         <h3>Sonderfahrten</h3>
@@ -191,11 +191,11 @@
         <img src="faonsa_Umkreis_F.png" alt="Karte des Einzugsgebiets rund um Frankfurt" class="bild">
       </div>
       <div>
-        <h3>Geplante Fahrzeiten</h3>
+        <h3>Fahrzeiten</h3>
         <ul class="liste">
-          <li>Flughafentransfers voraussichtlich <strong>samstags</strong>, andere Tage auf Anfrage</li>
-          <li>Abholung jeweils zur <strong>vollen Stunde</strong> zwischen 08:00 und 22:00 Uhr</li>
-          <li>Jede Fahrt ist für ein Zeitfenster von <strong>60 Minuten</strong> eingeplant</li>
+          <li><strong>Rund um die Uhr</strong> buchbar – an jedem Tag, auch frühmorgens und nachts</li>
+          <li>Abholung jeweils zur <strong>vollen Stunde</strong></li>
+          <li>Begrenzte Fahrzeiten pro Woche – <strong>frühzeitig buchen</strong> sichert Ihren Termin</li>
           <li>Maximal <strong>3 Fahrgäste</strong>, Gepäck bis <strong>40 kg pro Person</strong> inklusive</li>
         </ul>
         <img src="faonsa_Passat.png" alt="Fahrzeug von FaOnSa Airport Transfers" class="bild">
@@ -223,6 +223,7 @@
       <input type="hidden" name="termin_status" value="">
       <input type="hidden" name="subject" value="Neue Anfrage – FaOnSa Airport Transfers">
       <input type="hidden" name="zusammenfassung" value="">
+      <input type="hidden" name="buchungsdaten" value="">
       <p class="versteckt"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
 
       <!-- ---------- Schritt 1: Fahrt ---------- -->
@@ -242,13 +243,16 @@
           <input type="text" id="ort" name="ort" autocomplete="street-address" placeholder="z. B. Musterstraße 1, 65183 Wiesbaden">
           <p class="klein">Keine Kurzstrecken – Flughafentransfers ab ca. 30 km Entfernung von Frankfurt.</p>
 
-          <label for="terminal">Terminal *</label>
+          <label for="terminal">Terminal am Flughafen Frankfurt am Main (FRA) *</label>
           <select id="terminal" name="terminal">
             <option value="">Bitte wählen</option>
             <option>Terminal 1</option>
             <option>Terminal 2</option>
+            <option>Terminal 3</option>
             <option>Noch nicht bekannt</option>
           </select>
+          <p class="klein hinweis-fra"><strong>Nur Flughafen Frankfurt am Main (FRA)</strong> – nicht Frankfurt-Hahn (HHN) im Hunsrück,
+            der rund 120 km entfernt liegt. Bitte prüfen Sie den Abflughafen auf Ihrem Ticket.</p>
 
           <label for="flugnummer">Flugnummer (optional)</label>
           <input type="text" id="flugnummer" name="flugnummer" placeholder="z. B. LH 400">
@@ -262,7 +266,7 @@
         </div>
 
         <div class="feldgruppe" data-fuer="koeln">
-          <p class="klein">Feste Verbindung Frankfurt ⇄ Köln. Köln → Frankfurt nur mit mindestens 7 Tagen Vorlauf. Die genaue Abholadresse geben Sie im nächsten Schritt an.</p>
+          <p class="klein">Feste Verbindung Frankfurt ⇄ Köln, an jedem Tag und rund um die Uhr. Köln → Frankfurt nur mit mindestens 7 Tagen Vorlauf. Die genaue Abholadresse geben Sie im nächsten Schritt an.</p>
         </div>
 
         <div class="feld-reihe">
@@ -274,7 +278,7 @@
             <p class="klein" id="terminHinweis" aria-live="polite"></p>
           </div>
           <div>
-            <label for="wunschzeit">Abholzeit (volle Stunde) *</label>
+            <label for="wunschzeit">Abholzeit (rund um die Uhr) *</label>
             <select id="wunschzeit" name="wunschzeit" required>
               <option value="">Bitte wählen</option>
             </select>
@@ -429,7 +433,7 @@
     </details>
     <details>
       <summary>Warum nur Abholungen zur vollen Stunde?</summary>
-      <p>Jede Fahrt ist für ein festes Zeitfenster von 60 Minuten eingeplant. So sind pünktliche Abholungen und eine faire Planung für alle Fahrgäste möglich.</p>
+      <p>Feste Abholzeiten ermöglichen eine verlässliche Planung und pünktliche Abholungen für alle Fahrgäste – rund um die Uhr, auch nachts.</p>
     </details>
     <details>
       <summary>Was kostet Wartezeit?</summary>
@@ -591,6 +595,7 @@
 </dialog>
 
 <script src="termine.js"></script>
+<script src="kalender.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

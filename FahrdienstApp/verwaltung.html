@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>FaOnSa – Verwaltung: Wochenkonto &amp; Buchungsbestätigung</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    main { max-width: 1180px; }
+    header.vw { background: var(--gruen); color: #fff; padding: 18px 16px; }
+    header.vw h1 { margin: 0 auto; max-width: 1180px; font-size: 1.35rem; }
+    header.vw p { margin: 4px auto 0; max-width: 1180px; opacity: .85; font-size: .9rem; }
+    section.box { background: #fff; border: 1px solid var(--rand); border-radius: var(--radius); padding: 20px; margin: 20px 0; }
+    .wochen { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+    .woche { border: 1px solid var(--rand); border-radius: 8px; padding: 12px; background: #fcfdfb; }
+    .woche.aktuell { border-color: var(--gruen); box-shadow: 0 0 0 2px var(--gruen-hell); }
+    .woche.voll { background: #fdf1f0; border-color: #d9a39d; }
+    .woche h3 { margin: 0 0 2px; font-size: 1rem; }
+    .woche .zeitraum { color: var(--text-leise); font-size: .85rem; }
+    .balken { height: 10px; background: #e7e9e4; border-radius: 6px; overflow: hidden; margin: 8px 0 4px; }
+    .balken span { display: block; height: 100%; background: var(--gruen); }
+    .woche.voll .balken span { background: #b23b2e; }
+    .woche .zahlen { font-size: .9rem; }
+    .woche ul { margin: 8px 0 0; padding-left: 18px; font-size: .85rem; }
+    .badge { display: inline-block; font-size: .75rem; padding: 1px 8px; border-radius: 99px; background: var(--gruen-hell); color: var(--gruen-dunkel); margin-left: 6px; }
+    .woche.voll .badge { background: #b23b2e; color: #fff; }
+    .warnungen p { background: #fff4e5; border-left: 4px solid #e69500; padding: 8px 12px; margin: 6px 0; }
+    .raster { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+    @media (max-width: 900px) { .raster { grid-template-columns: 1fr; } }
+    .felder { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+    .felder .breit { grid-column: 1 / -1; }
+    .felder label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: 3px; }
+    .felder input, .felder select, .felder textarea, #import { width: 100%; padding: 8px; border: 1px solid #c8c8c8; border-radius: 6px; font: inherit; }
+    #import { min-height: 90px; font-family: ui-monospace, Consolas, monospace; font-size: .85rem; }
+    .pruefung { padding: 12px 14px; border-radius: 8px; margin: 14px 0; font-size: .95rem; }
+    .pruefung.ok { background: var(--gruen-hell); border: 1px solid var(--gruen); }
+    .pruefung.fehler { background: #fdf1f0; border: 1px solid #b23b2e; color: #7d2118; }
+    .aktionen { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .aktionen .btn { padding: 9px 14px; font-size: .9rem; }
+    #vorschau { width: 100%; height: 1100px; border: 1px solid var(--rand); border-radius: 8px; background: #eef0ec; }
+    #terminZeile { width: 100%; font-family: ui-monospace, Consolas, monospace; font-size: .85rem; padding: 8px; border: 1px dashed var(--gruen); border-radius: 6px; background: #fafcf8; }
+    .meldung { font-size: .85rem; color: var(--gruen-dunkel); min-height: 1.2em; margin-top: 6px; }
+    h2 small { font-weight: normal; color: var(--text-leise); font-size: .9rem; }
+  </style>
+</head>
+<body>
+<header class="vw">
+  <h1>FaOnSa – Verwaltung</h1>
+  <p>Interne Seite (nicht verlinkt). Daten aus termine.js · Eingefügte Kundendaten bleiben nur in diesem Browserfenster.</p>
+</header>
+
+<main>
+  <!-- ===== Wochenkonto ===== -->
+  <section class="box" aria-labelledby="kontoTitel">
+    <h2 id="kontoTitel">Wochenkonto <small id="limitText"></small></h2>
+    <div class="warnungen" id="warnungen"></div>
+    <div class="wochen" id="wochen"></div>
+  </section>
+
+  <!-- ===== Buchungsbestätigung ===== -->
+  <section class="box" aria-labelledby="bestTitel">
+    <h2 id="bestTitel">Buchungsbestätigung erstellen</h2>
+    <div class="raster">
+      <div>
+        <label for="import"><strong>1. Anfrage einfügen</strong> – kompletten Text der Netlify-Benachrichtigung hier hineinkopieren:</label>
+        <textarea id="import" placeholder="… buchungsdaten: FAONSA-DATEN {&quot;fahrtart&quot;: …}"></textarea>
+        <div class="aktionen">
+          <button type="button" class="btn" id="uebernehmen">Daten übernehmen</button>
+          <button type="button" class="btn btn-zweit" id="leeren">Formular leeren</button>
+        </div>
+        <p class="meldung" id="importMeldung"></p>
+
+        <h3>2. Ergänzen &amp; prüfen</h3>
+        <form id="best" class="felder" autocomplete="off" onsubmit="return false">
+          <div><label for="b_nr">Buchungsnummer</label><input id="b_nr"></div>
+          <div><label for="b_anrede">Anrede</label>
+            <select id="b_anrede"><option value="">neutral (Guten Tag Vorname Nachname)</option><option>Frau</option><option>Herr</option></select></div>
+          <div><label for="b_vorname">Vorname</label><input id="b_vorname"></div>
+          <div><label for="b_nachname">Nachname</label><input id="b_nachname"></div>
+          <div><label for="b_email">E-Mail Kunde</label><input id="b_email" type="email"></div>
+          <div><label for="b_telefon">Telefon Kunde</label><input id="b_telefon"></div>
+
+          <div class="breit"><label for="b_fahrtart">Fahrtart</label>
+            <select id="b_fahrtart">
+              <option>Zum Flughafen</option><option>Vom Flughafen</option>
+              <option>Frankfurt → Köln</option><option>Köln → Frankfurt</option><option>Sonderfahrt</option>
+            </select></div>
+
+          <div data-nur="flughafen"><label for="b_terminal">Terminal (FRA) *</label>
+            <select id="b_terminal"><option value="">Bitte wählen</option><option>Terminal 1</option><option>Terminal 2</option><option>Terminal 3</option></select></div>
+          <div data-nur="flughafen"><label for="b_flug">Flugnummer</label><input id="b_flug"></div>
+          <div class="breit" data-nur="flughafen"><label for="b_kundenadresse" id="b_kundenadresseLabel">Abholadresse</label><input id="b_kundenadresse"></div>
+
+          <div class="breit" data-nur="strecke"><label for="b_von">Abholadresse</label><input id="b_von"></div>
+          <div class="breit" data-nur="strecke"><label for="b_nach">Zieladresse</label><input id="b_nach"></div>
+
+          <div><label for="b_datum">Datum (Start)</label><input id="b_datum" type="date"></div>
+          <div><label for="b_zeit">Abholzeit / Arbeitsbeginn</label><input id="b_zeit" type="time" step="300"></div>
+          <div><label for="b_ende">Arbeitsende (über Mitternacht möglich)</label><input id="b_ende" type="time" step="300"></div>
+          <div><label>Fahrtdauer (wird abgezogen)</label><input id="b_dauer" readonly></div>
+
+          <div><label for="b_personen">Fahrgäste</label><select id="b_personen"><option>1</option><option>2</option><option>3</option></select></div>
+          <div><label for="b_gepaeck">Sperriges Gepäck</label><input id="b_gepaeck"></div>
+
+          <div><label for="b_preis">Festpreis (€, vor Rabatt)</label><input id="b_preis" type="number" min="0" step="0.01"></div>
+          <div><label for="b_rabatt">Rabatt (%)</label><input id="b_rabatt" type="number" min="0" max="100" step="1" value="0"></div>
+          <div class="breit"><label for="b_rabattText">Rabatt-Bezeichnung</label><input id="b_rabattText" value="Eröffnungsrabatt Neukunden"></div>
+          <div class="breit"><label for="b_bank">Bankdaten für die Überweisung (nur für diese E-Mail – wird nirgends gespeichert oder hochgeladen)</label>
+            <textarea id="b_bank" rows="3" placeholder="Kontoinhaber: …&#10;IBAN: …&#10;BIC: … · Bank: …"></textarea>
+            <p class="klein">Leer lassen = in der E-Mail steht [BANKDATEN HIER EINTRAGEN] zum späteren Ergänzen in Outlook.</p></div>
+          <div class="breit"><label for="b_frist">Zahlungsfrist</label><input id="b_frist" value="spätestens 24 Stunden vor Fahrtbeginn"></div>
+          <div class="breit"><label for="b_nachricht">Persönliche Nachricht / Treffpunkt (optional)</label>
+            <textarea id="b_nachricht" rows="3"></textarea></div>
+        </form>
+
+        <div class="pruefung" id="pruefung" aria-live="polite"></div>
+
+        <h3>3. Versenden &amp; eintragen</h3>
+        <div class="aktionen">
+          <button type="button" class="btn" id="kopieren">E-Mail formatiert kopieren</button>
+          <button type="button" class="btn btn-zweit" id="eml">Als E-Mail-Datei (.eml) speichern</button>
+          <button type="button" class="btn btn-zweit" id="mailto">Im Mailprogramm öffnen</button>
+        </div>
+        <p class="meldung" id="aktionMeldung"></p>
+
+        <label for="terminZeile"><strong>Zeile für termine.js</strong> (unter <code>fahrten: [</code> einfügen – enthält bewusst keine Kundendaten):</label>
+        <input id="terminZeile" readonly>
+        <div class="aktionen"><button type="button" class="btn btn-zweit" id="zeileKopieren">Zeile kopieren</button></div>
+      </div>
+
+      <div>
+        <h3 style="margin-top:0">Vorschau der E-Mail</h3>
+        <iframe id="vorschau" title="Vorschau der Buchungsbestätigung"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="termine.js"></script>
+<script src="kalender.js"></script>
+<script src="verwaltung.js"></script>
+</body>
+</html>

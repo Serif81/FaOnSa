@@ -1,14 +1,10 @@
 /* =====================================================================
    FaOnSa Airport Transfers – Buchungsanfrage
    ---------------------------------------------------------------------
-   Termine (Startdatum, Wochentags-Regeln, Vorlauf, Sperrtage, belegte Zeiten) werden in
-   termine.js gepflegt – hier nur allgemeine Einstellungen.
+   Termine (Startdatum, Wochenlimit, Vorlauf, Sperrtage, bestätigte Fahrten) werden in
+   termine.js gepflegt, die Rechenlogik steckt in kalender.js – hier nur allgemeine Einstellungen.
    ===================================================================== */
 const EINSTELLUNGEN = {
-  // Wählbare Abholzeiten (volle Stunden)
-  abholzeiten: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00",
-                "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"],
-
   // Richtpreise für die Übersicht
   richtpreise: {
     "Zum Flughafen": "ab 59 € (Festpreis je nach Strecke, wird in der Bestätigung genannt)",
@@ -21,11 +17,12 @@ const EINSTELLUNGEN = {
 
 /* ===================================================================== */
 
-const T = (typeof TERMINE !== "undefined") ? TERMINE : { betriebsstart: null, wochentage: {}, vorlaufTage: {}, gesperrt: [], belegt: {} };
+const T = KALENDER.T;
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-const zwei = n => String(n).padStart(2, "0");
-const isoLokal = d => `${d.getFullYear()}-${zwei(d.getMonth() + 1)}-${zwei(d.getDate())}`;
+const zwei = KALENDER.zwei;
+const isoLokal = KALENDER.isoLokal;
+const FLUGHAFEN = "Flughafen Frankfurt am Main (FRA)";
 
 function datumDE(iso) {
   if (!iso) return "";
@@ -66,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   const frueheste = (T.betriebsstart && T.betriebsstart > morgen) ? T.betriebsstart : morgen;
   const NICHT_VERFUEGBAR = "Die Fahrt ist zu diesem Termin nicht verfügbar.";
-  const TAGNAME = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+  const WOCHE_VOLL = "In dieser Kalenderwoche sind leider alle Fahrzeiten vergeben. Bitte wählen Sie einen Termin in einer anderen Woche.";
 
   /* ---------- Fahrtart: passende Felder einblenden ---------- */
   const gruppen = { flughafen: $('[data-fuer="flughafen"]'), sonderfahrt: $('[data-fuer="sonderfahrt"]'), koeln: $('[data-fuer="koeln"]') };
@@ -77,24 +74,29 @@ document.addEventListener("DOMContentLoaded", () => {
     return "koeln";
   }
 
-  /* ---------- Verfügbarkeit (harte Sperre nach termine.js) ---------- */
+  /* ---------- Verfügbarkeit: 24/7, Wochenlimit & Überschneidungen (Logik in kalender.js) ---------- */
+  const K = KALENDER;
   const plusTage = n => { const d = new Date(); d.setDate(d.getDate() + n); return isoLokal(d); };
   function fruehestesDatum(art) {
     const vorlauf = plusTage((T.vorlaufTage || {})[art] || 0);
     return vorlauf > frueheste ? vorlauf : frueheste;
   }
-  function erlaubtAm(wochentag, art) {
-    const r = (T.wochentage || {})[wochentag];
-    return r && (r.fahrten === "alle" || r.fahrten.includes(art)) ? r : null;
+  const geplanteDauer = art => (T.geplanteDauer || {})[art] || 60;
+  // Rund um die Uhr: alle Abholzeiten von 00:00 bis 23:xx im eingestellten Takt
+  const ABHOLZEITEN = (() => {
+    const takt = Math.max(5, T.taktMinuten || 60), z = [];
+    for (let m = 0; m < 1440; m += takt) z.push(`${zwei(Math.floor(m / 60))}:${zwei(m % 60)}`);
+    return z;
+  })();
+  // Grund (Text), warum ein Datum nicht buchbar ist – oder null
+  function datumGesperrt(iso, art) {
+    if (!iso || iso < fruehestesDatum(art) || (T.gesperrt || []).includes(iso)) return NICHT_VERFUEGBAR;
+    if (K.wocheInfo(K.zuDatum(iso)).voll) return WOCHE_VOLL;
+    return null;
   }
-  // Liefert die Regel des Tages für die Fahrt – oder null, wenn die Fahrt an diesem Datum gesperrt ist.
-  function regelFuer(iso, art) {
-    if (!iso || iso < fruehestesDatum(art) || (T.gesperrt || []).includes(iso)) return null;
-    return erlaubtAm(new Date(iso + "T12:00:00").getDay(), art);
-  }
-  function erlaubteZeiten(iso, art) {
-    const r = regelFuer(iso, art);
-    return r ? EINSTELLUNGEN.abholzeiten.filter(z => z >= r.von && z <= r.bis) : [];
+  const zeitFrei = (iso, z, art) => K.pruefe(K.zuDatum(iso, z), geplanteDauer(art)).ok;
+  function freieZeiten(iso, art) {
+    return datumGesperrt(iso, art) ? [] : ABHOLZEITEN.filter(z => zeitFrei(iso, z, art));
   }
 
   const terminWahl = $("#terminWahl"), datumFrei = $("#wunschdatumFrei"), datumFeld = $("#wunschdatum");
@@ -112,13 +114,17 @@ document.addEventListener("DOMContentLoaded", () => {
   function uebernehmeDatum() {
     const art = fahrtart();
     datumFeld.value = datumFrei.value;
-    const tage = [1, 2, 3, 4, 5, 6, 0].filter(t => erlaubtAm(t, art))
-      .map(t => { const r = erlaubtAm(t, art); return `${TAGNAME[t]} ${r.von}–${r.bis} Uhr`; });
-    if (datumFeld.value && !regelFuer(datumFeld.value, art)) {
-      hinweis.textContent = NICHT_VERFUEGBAR;
+    const sperre = datumFeld.value ? datumGesperrt(datumFeld.value, art) : null;
+    if (sperre) {
+      hinweis.textContent = sperre;
+      hinweis.classList.add("gesperrt");
+    } else if (datumFeld.value && !freieZeiten(datumFeld.value, art).length) {
+      hinweis.textContent = "An diesem Tag ist leider keine passende Abholzeit mehr frei.";
       hinweis.classList.add("gesperrt");
     } else {
-      hinweis.textContent = tage.length ? `Verfügbar: ${tage.join(" · ")}` : NICHT_VERFUEGBAR;
+      const vorlauf = (T.vorlaufTage || {})[art];
+      hinweis.textContent = "Rund um die Uhr buchbar – auch frühmorgens und nachts." +
+        (vorlauf ? ` Mindestens ${vorlauf} Tage Vorlauf.` : "");
       hinweis.classList.remove("gesperrt");
     }
     baueZeiten();
@@ -126,23 +132,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function baueZeiten() {
-    const gewaehlt = zeit.value;
-    const belegt = new Set((T.belegt || {})[datumFeld.value] || []);
-    const erlaubt = datumFeld.value ? erlaubteZeiten(datumFeld.value, fahrtart()) : [];
-    zeit.replaceChildren(new Option(datumFeld.value && !erlaubt.length ? "nicht verfügbar" : "Bitte wählen", ""));
-    erlaubt.forEach(z => {
-      const o = new Option(belegt.has(z) ? `${z} Uhr (belegt)` : `${z} Uhr`, z);
-      o.disabled = belegt.has(z);
+    const gewaehlt = zeit.value, iso = datumFeld.value, art = fahrtart();
+    const optionen = iso && !datumGesperrt(iso, art) ? ABHOLZEITEN.map(z => ({ z, ok: zeitFrei(iso, z, art) })) : [];
+    const frei = optionen.filter(o => o.ok);
+    zeit.replaceChildren(new Option(iso && !frei.length ? "nicht verfügbar" : "Bitte wählen", ""));
+    optionen.forEach(({ z, ok }) => {
+      const o = new Option(ok ? `${z} Uhr` : `${z} Uhr (belegt)`, z);
+      o.disabled = !ok;
       zeit.add(o);
     });
-    zeit.disabled = !erlaubt.length;
-    if (gewaehlt && erlaubt.includes(gewaehlt) && !belegt.has(gewaehlt)) zeit.value = gewaehlt;
+    zeit.disabled = !frei.length;
+    if (gewaehlt && frei.some(o => o.z === gewaehlt)) zeit.value = gewaehlt;
   }
 
   function setzeAnfrageart() {
-    const art = fahrtart();
-    const r = regelFuer(datumFeld.value, art);
-    const aufAnfrage = gruppeFuer(art) === "sonderfahrt" || Boolean(r && r.anfrage);
+    const aufAnfrage = gruppeFuer(fahrtart()) === "sonderfahrt";
     form.elements["anfrageart"].value = aufAnfrage ? "Anfrage (auf Anfrage – Bestätigung folgt)" : "Buchungsanfrage";
     form.elements["termin_status"].value = aufAnfrage ? "auf Anfrage" : "verfügbarer Termin";
     $("#senden").textContent = "Anfrage verbindlich senden";
@@ -190,7 +194,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (nr === 1) {
       if (!datumFeld.value) return melde("Bitte wählen Sie einen Termin.", datumFrei);
-      if (!erlaubteZeiten(datumFeld.value, fahrtart()).includes(zeit.value)) return melde(NICHT_VERFUEGBAR, datumFrei);
+      const sperre = datumGesperrt(datumFeld.value, fahrtart());
+      if (sperre) return melde(sperre, datumFrei);
+      if (!zeit.value) return melde("Bitte wählen Sie eine Abholzeit.", zeit);
+      if (!zeitFrei(datumFeld.value, zeit.value, fahrtart())) return melde("Diese Abholzeit ist leider nicht mehr frei.", zeit);
     }
     fehler.hidden = true;
     return true;
@@ -223,8 +230,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const d = new FormData(form);
     const art = d.get("fahrtart");
     let strecke = "";
-    if (art === "Zum Flughafen") strecke = `${d.get("ort")} → Flughafen Frankfurt, ${d.get("terminal")}`;
-    else if (art === "Vom Flughafen") strecke = `Flughafen Frankfurt, ${d.get("terminal")} → ${d.get("ort")}`;
+    const fra = `${FLUGHAFEN} – ${d.get("terminal")}`;
+    if (art === "Zum Flughafen") strecke = `${d.get("ort")} → ${fra}`;
+    else if (art === "Vom Flughafen") strecke = `${fra} → ${d.get("ort")}`;
     else if (art === "Sonderfahrt") strecke = `${d.get("von_ort")} → ${d.get("nach_ort")}`;
     else strecke = art;
 
@@ -263,13 +271,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const kurz = d.get("anfrageart").split(" (")[0];
     form.elements["subject"].value = `${kurz}: ${art} · ${datumDE(d.get("wunschdatum"))} ${d.get("wunschzeit")} · ${name}`;
     form.elements["zusammenfassung"].value = zeilen.map(([k, v]) => `${k}: ${v}`).concat([`Richtpreis: ${preis}`]).join("\n");
+    // Maschinenlesbare Kopie für verwaltung.html („Anfrage einfügen“ → Bestätigung erstellen)
+    const daten = {};
+    ["fahrtart", "ort", "terminal", "flugnummer", "von_ort", "nach_ort", "wunschdatum", "wunschzeit", "personen", "gepaeck",
+     "vorname", "nachname", "email", "telefon", "rechnung_strasse", "rechnung_plz", "rechnung_ort", "adresse_gleich",
+     "abhol_strasse", "abhol_plz", "abhol_ort", "bemerkung"].forEach(k => { const v = d.get(k); if (v) daten[k] = v; });
+    form.elements["buchungsdaten"].value = "FAONSA-DATEN " + JSON.stringify(daten);
   }
 
   /* ---------- Absenden (Netlify Forms -> E-Mail-Benachrichtigung) ---------- */
   form.addEventListener("submit", async e => {
     e.preventDefault();
     if (!schrittGueltig(1)) { zeigeSchritt(1); return; }
-    if (!schrittGueltig(1)) { zeigeSchritt(1); return; }
+    if (!schrittGueltig(2)) { zeigeSchritt(2); return; }
     if (!schrittGueltig(3)) return;
     baueZusammenfassung();
     const knopf = $("#senden");

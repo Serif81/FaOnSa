@@ -135,16 +135,37 @@ document.addEventListener("DOMContentLoaded", () => {
   function freieZeiten(iso, art) {
     return datumGesperrt(iso, art) ? [] : zeitenAm(iso, art).filter(z => zeitFrei(iso, z, art));
   }
-  const TAGNAME = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+  const TAGNAME_LANG = ["Sonntags", "Montags", "Dienstags", "Mittwochs", "Donnerstags", "Freitags", "Samstags"];
   function verfuegbarText(art) {
     const tage = [1, 2, 3, 4, 5, 6, 0].filter(t => erlaubtAm(t, art))
-      .map(t => { const r = erlaubtAm(t, art); return `${TAGNAME[t]} ${r.von}–${r.bis} Uhr`; });
-    return tage.length ? `Verfügbar: ${tage.join(" · ")}` : NICHT_VERFUEGBAR;
+      .map(t => { const r = erlaubtAm(t, art); return `<strong>${TAGNAME_LANG[t]}</strong> (${r.von}–${r.bis} Uhr)`; });
+    return tage.length ? `📅 Buchbare Tage: ${tage.join(" &amp; ")}` : NICHT_VERFUEGBAR;
   }
 
   const terminWahl = $("#terminWahl"), datumFrei = $("#wunschdatumFrei"), datumFeld = $("#wunschdatum");
   const zeit = $("#wunschzeit"), hinweis = $("#terminHinweis");
   terminWahl.hidden = true;
+
+  // Macht den Termin-Hinweis deutlich sichtbarer (auch auf dem Smartphone)
+  function styleHinweis(gesperrt) {
+    hinweis.style.display = "block";
+    hinweis.style.marginTop = "8px";
+    hinweis.style.padding = "8px 12px";
+    hinweis.style.borderRadius = "8px";
+    hinweis.style.fontSize = "0.9rem";
+    hinweis.style.lineHeight = "1.4";
+    if (gesperrt) {
+      hinweis.style.background = "#fef2f2";
+      hinweis.style.border = "1px solid #fecaca";
+      hinweis.style.color = "#b91c1c";
+      hinweis.style.fontWeight = "600";
+    } else {
+      hinweis.style.background = "#f0fdf4";
+      hinweis.style.border = "1px solid #bbf7d0";
+      hinweis.style.color = "#166534";
+      hinweis.style.fontWeight = "500";
+    }
+  }
 
   function baueTermine() {
     const art = fahrtart();
@@ -159,16 +180,19 @@ document.addEventListener("DOMContentLoaded", () => {
     datumFeld.value = datumFrei.value;
     const sperre = datumFeld.value ? datumGesperrt(datumFeld.value, art) : null;
     if (sperre) {
-      hinweis.textContent = sperre;
+      hinweis.textContent = "⚠️ " + sperre;
       hinweis.classList.add("gesperrt");
+      styleHinweis(true);
     } else if (datumFeld.value && !freieZeiten(datumFeld.value, art).length) {
-      hinweis.textContent = "An diesem Tag ist leider keine passende Abholzeit mehr frei.";
+      hinweis.textContent = "⚠️ An diesem Tag ist leider keine passende Abholzeit mehr frei.";
       hinweis.classList.add("gesperrt");
+      styleHinweis(true);
     } else {
       const vorlauf = (T.vorlaufTage || {})[art];
-      hinweis.textContent = verfuegbarText(art) + "." +
-        (art === "Köln → Frankfurt" && vorlauf ? ` (Freitags mind. ${vorlauf} Tage Vorlauf)` : "");
+      const zusatz = (art === "Köln → Frankfurt" && vorlauf) ? ` · <em>Freitags mind. ${vorlauf} Tage Vorlauf</em>` : "";
+      hinweis.innerHTML = verfuegbarText(art) + zusatz;
       hinweis.classList.remove("gesperrt");
+      styleHinweis(false);
     }
     baueZeiten();
     setzeAnfrageart();
@@ -193,9 +217,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const aufAnfrage = gruppeFuer(art) === "sonderfahrt" || Boolean(r && r.anfrage);
     form.elements["anfrageart"].value = aufAnfrage ? "Anfrage (auf Anfrage – Bestätigung folgt)" : "Buchungsanfrage";
     form.elements["termin_status"].value = aufAnfrage ? "auf Anfrage" : "verfügbarer Termin";
-    $("#senden").textContent = "Anfrage verbindlich senden";
+    $("#senden").textContent = "Fahrt unverbindlich anfragen";
     $("#hinweisSchritt3").innerHTML =
-      "Mit dem Absenden fragen Sie den gewählten Termin an. Der Vertrag kommt erst mit meiner Bestätigung per E-Mail zustande; " +
+      "Mit dem Absenden fragen Sie den gewählten Termin unverbindlich an. Der Vertrag kommt erst mit meiner Bestätigung per E-Mail zustande; " +
       "bezahlt wird vorab per PayPal oder Überweisung.";
   }
 
